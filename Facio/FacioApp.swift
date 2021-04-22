@@ -11,7 +11,7 @@ import SwiftUI
 struct FacioApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }
