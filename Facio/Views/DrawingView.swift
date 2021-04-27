@@ -28,29 +28,65 @@ struct DrawingView: View {
         VStack {
             CanvasView(canvas: $canvas, onSaved: self.saveDrawing)
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationBarBackButtonHidden(true)
+                .navigationBarBackButtonHidden(false)
                 .navigationBarItems(
-                    leading: backButton,
-                    trailing:
-                        HStack {
-                            Button(action: { undoDrawing() }, label: {
-                                Image(systemName: "arrow.uturn.backward")
-                            })
-                            Button(action: { clearCanvas() }, label: {
-                                Image(systemName: "trash")
-                            })
-                        }
+                    leading: backButton
+//                    trailing:
+//                        HStack {
+//                            Button(action: { undoDrawing() }, label: {
+//                                Image(systemName: "arrow.uturn.backward")
+//                            })
+//                            Button(action: { clearCanvas() }, label: {
+//                                Image(systemName: "trash")
+//                            })
+//                        }
                 )
-            Button(action: { getPngImage() }, label: {
-                ZStack {
-                    Circle()
-                        .strokeBorder(THEME_YELLOW,lineWidth: 5)
-                        .background(Circle().foregroundColor(Color.white))
-                        .frame(width: 80, height: 80, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    Image(systemName: "checkmark")
-                }
-            })
-        }
+            HStack{
+                Button(action: { undoDrawing() }, label: {
+                    ZStack {
+                        Circle()
+                            .fill(Color.yellow)
+                            .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        Image(systemName: "arrow.uturn.backward")
+                            .foregroundColor(.white)
+                            .font(Font.system(size: 20).bold())
+                    }
+                })
+                .offset(y:-90)
+                Button(action: { getPngImage() }, label: {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 50, style: .continuous)
+                            .fill(Color.yellow)
+                            .frame(width: 120, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        HStack{
+                            Image(systemName: "arrow.down.to.line")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 20)
+                                .foregroundColor(.white)
+                                .font(Font.system(size: 40) .bold())
+                            Text("Save")
+                                .font(.system(size: 20, weight: .bold, design: .default))
+                                .foregroundColor(.white)
+                        }
+                    }
+                })
+                .offset(y:-90)
+                Button(action: { clearCanvas() }, label: {
+                    ZStack {
+                        Circle()
+                            .fill(Color.red)
+                            .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        Image(systemName: "trash")
+                            .foregroundColor(.white)
+                            .font(Font.system(size: 20).bold())
+                    }
+                })
+                .offset(y:-90)
+            }
+                
+            }
+            
     }
 }
 
