@@ -10,10 +10,12 @@ import PencilKit
 
 struct DrawingView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Environment(\.undoManager) private var undoManager
     
     @State var canvas: PKCanvasView = PKCanvasView()
     @State var rendition: DrawingRendition?
-    @State var image: UIImage?
+    @State var drawingImage: UIImage?
+    @Binding var pngImage: UIImage?
     
     var backButton : some View {
         Button(action: {
@@ -28,19 +30,8 @@ struct DrawingView: View {
         VStack {
             CanvasView(canvas: $canvas, onSaved: self.saveDrawing)
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationBarBackButtonHidden(false)
-                .navigationBarItems(
-                    leading: backButton
-//                    trailing:
-//                        HStack {
-//                            Button(action: { undoDrawing() }, label: {
-//                                Image(systemName: "arrow.uturn.backward")
-//                            })
-//                            Button(action: { clearCanvas() }, label: {
-//                                Image(systemName: "trash")
-//                            })
-//                        }
-                )
+                .navigationBarBackButtonHidden(true)
+                .navigationBarItems(leading: backButton)
             HStack{
                 Button(action: { undoDrawing() }, label: {
                     ZStack {
@@ -48,6 +39,17 @@ struct DrawingView: View {
                             .fill(Color.yellow)
                             .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         Image(systemName: "arrow.uturn.backward")
+                            .foregroundColor(.white)
+                            .font(Font.system(size: 20).bold())
+                    }
+                })
+                .offset(y:-90)
+                Button(action: { redoDrawing() }, label: {
+                    ZStack {
+                        Circle()
+                            .fill(Color.yellow)
+                            .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        Image(systemName: "arrow.uturn.forward")
                             .foregroundColor(.white)
                             .font(Font.system(size: 20).bold())
                     }
@@ -103,23 +105,35 @@ private extension DrawingView {
     }
     
     func undoDrawing() {
-        if let rendition = self.rendition {
-            canvas.drawing = rendition.drawing
-        }
+        undoManager?.undo()
+    }
+    
+    func redoDrawing() {
+        undoManager?.redo()
     }
     
     func getPngImage() {
-        image = canvas.drawing.image(
+        drawingImage = canvas.drawing.image(
             from: canvas.bounds, scale: UIScreen.main.scale)
         
-        let pngImage = UIImage(data: image!.pngData()!)
+        let pngImage = UIImage(data: drawingImage!.pngData()!)
         
-        UIImageWriteToSavedPhotosAlbum(pngImage!, nil, nil, nil)
+//        UIImageWriteToSavedPhotosAlbum(pngImage!, nil, nil, nil)
+        self.pngImage = pngImage!
+        self.presentationMode.wrappedValue.dismiss()
     }
+}
+
+struct DrawingViewPreviewContainer : View {
+    @State var image: UIImage?
+
+     var body: some View {
+        DrawingView(pngImage: $image)
+     }
 }
 
 struct DrawingView_Previews: PreviewProvider {
     static var previews: some View {
-        DrawingView()
+        DrawingViewPreviewContainer()
     }
 }

@@ -18,10 +18,6 @@ struct MainView: View {
             ZStack {
                 ARViewIndicator(showFaceMesh: $showFaceMesh, inputImage: $inputImage)
                 VStack {
-//                    Rectangle()
-//                        .frame(width: UIScreen.main.bounds.size.height, height: 80, alignment: .top)
-//                        .foregroundColor(.yellow)
-                    
                     Spacer()
                     ZStack {
                         Rectangle()
@@ -45,7 +41,7 @@ struct MainView: View {
                             .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
                                 ImagePicker(image: self.$inputImage)
                             }
-                            NavigationLink(destination: DrawingView().preferredColorScheme(.light)) {
+                            NavigationLink(destination: DrawingView(pngImage: self.$inputImage).preferredColorScheme(.light)) {
                                 VStack {
                                     Image(systemName: "scribble")
                                         .resizable()
@@ -102,17 +98,6 @@ struct MainView: View {
         guard let inputImage = inputImage else { return }
         image = Image(uiImage: inputImage)
     }
-//    var body: some View {
-//        TabView {
-//            NavigationView {
-//               DrawingView()
-//            }
-//            .tabItem {
-//                Image(systemName: "square.and.pencil")
-//                Text("Drawing")
-//            }
-//        }
-//    }
 }
 
 struct MainView_Previews: PreviewProvider {

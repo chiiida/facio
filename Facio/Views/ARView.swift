@@ -31,7 +31,7 @@ struct ARViewIndicator: UIViewControllerRepresentable {
 }
 
 class ARView: UIViewController, ARSCNViewDelegate {
-    let noseOptions = ["nose01", "nose02", "nose03", "nose04", "nose05", "nose06", "nose07", "nose08", "nose09"]
+    let noseOptions = ["nose01"]
     let leftEyeOptions = ["leftEye"]
     let rightEyeOptions = ["rightEye"]
     let features = ["nose", "leftEye", "rightEye", "mouth", "hat"]
