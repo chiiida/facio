@@ -1,0 +1,925 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		432C1BAF2700ECCB0024B2EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BAE2700ECCB0024B2EB /* AppDelegate.swift */; };
+		432C1BB82700ECCF0024B2EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 432C1BB72700ECCF0024B2EB /* Assets.xcassets */; };
+		432C1BBB2700ECCF0024B2EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 432C1BB92700ECCF0024B2EB /* LaunchScreen.storyboard */; };
+		432C1BC62700ECCF0024B2EB /* FacioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BC52700ECCF0024B2EB /* FacioTests.swift */; };
+		432C1BD02700ECCF0024B2EB /* FacioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BCF2700ECCF0024B2EB /* FacioUITests.swift */; };
+		432C1BD22700ECCF0024B2EB /* FacioUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BD12700ECCF0024B2EB /* FacioUITestsLaunchTests.swift */; };
+		432C1BDE2700EF190024B2EB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BB22700ECCB0024B2EB /* HomeViewController.swift */; };
+		432C1BF02700F5170024B2EB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BEF2700F5170024B2EB /* R.generated.swift */; };
+		4FCFCC4E334B77035BCD77D7 /* Pods_FacioTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A40CC8405471CDAD7CAF37F /* Pods_FacioTests.framework */; };
+		760B59114D26939584CDFD60 /* Pods_Facio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B274238B33C6BE9BD20F11D /* Pods_Facio.framework */; };
+		DC60B51C616CC26A68518333 /* Pods_Facio_FacioUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37396CAB2084F5032C813D79 /* Pods_Facio_FacioUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		432C1BC22700ECCF0024B2EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 432C1BA32700ECCB0024B2EB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 432C1BAA2700ECCB0024B2EB;
+			remoteInfo = Facio;
+		};
+		432C1BCC2700ECCF0024B2EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 432C1BA32700ECCB0024B2EB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 432C1BAA2700ECCB0024B2EB;
+			remoteInfo = Facio;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0A02B8B632612226BA62C2BF /* Pods-Facio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Facio.debug.xcconfig"; path = "Target Support Files/Pods-Facio/Pods-Facio.debug.xcconfig"; sourceTree = "<group>"; };
+		2FC2C31473651C2F908F8FA5 /* Pods-Facio-FacioUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Facio-FacioUITests.release.xcconfig"; path = "Target Support Files/Pods-Facio-FacioUITests/Pods-Facio-FacioUITests.release.xcconfig"; sourceTree = "<group>"; };
+		37396CAB2084F5032C813D79 /* Pods_Facio_FacioUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Facio_FacioUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		432C1BAB2700ECCB0024B2EB /* Facio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Facio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		432C1BAE2700ECCB0024B2EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		432C1BB22700ECCB0024B2EB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		432C1BB72700ECCF0024B2EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		432C1BBA2700ECCF0024B2EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		432C1BBC2700ECCF0024B2EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		432C1BC12700ECCF0024B2EB /* FacioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FacioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		432C1BC52700ECCF0024B2EB /* FacioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacioTests.swift; sourceTree = "<group>"; };
+		432C1BCB2700ECCF0024B2EB /* FacioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FacioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		432C1BCF2700ECCF0024B2EB /* FacioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacioUITests.swift; sourceTree = "<group>"; };
+		432C1BD12700ECCF0024B2EB /* FacioUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacioUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		432C1BEF2700F5170024B2EB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		4A40CC8405471CDAD7CAF37F /* Pods_FacioTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FacioTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51409F06C8152F91C4B3823F /* Pods-Facio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Facio.release.xcconfig"; path = "Target Support Files/Pods-Facio/Pods-Facio.release.xcconfig"; sourceTree = "<group>"; };
+		63D040C9A73D3660EAEB7597 /* Pods-FacioTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FacioTests.debug.xcconfig"; path = "Target Support Files/Pods-FacioTests/Pods-FacioTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6553BAAF4C5D96E00422561E /* Pods-Facio-FacioUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Facio-FacioUITests.debug.xcconfig"; path = "Target Support Files/Pods-Facio-FacioUITests/Pods-Facio-FacioUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7F02F51ADC653FAB984C667E /* Pods-FacioTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FacioTests.release.xcconfig"; path = "Target Support Files/Pods-FacioTests/Pods-FacioTests.release.xcconfig"; sourceTree = "<group>"; };
+		8B274238B33C6BE9BD20F11D /* Pods_Facio.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Facio.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		432C1BA82700ECCB0024B2EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				760B59114D26939584CDFD60 /* Pods_Facio.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		432C1BBE2700ECCF0024B2EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FCFCC4E334B77035BCD77D7 /* Pods_FacioTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		432C1BC82700ECCF0024B2EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC60B51C616CC26A68518333 /* Pods_Facio_FacioUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		16EC95855F4FD0AF82176A0F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0A02B8B632612226BA62C2BF /* Pods-Facio.debug.xcconfig */,
+				51409F06C8152F91C4B3823F /* Pods-Facio.release.xcconfig */,
+				6553BAAF4C5D96E00422561E /* Pods-Facio-FacioUITests.debug.xcconfig */,
+				2FC2C31473651C2F908F8FA5 /* Pods-Facio-FacioUITests.release.xcconfig */,
+				63D040C9A73D3660EAEB7597 /* Pods-FacioTests.debug.xcconfig */,
+				7F02F51ADC653FAB984C667E /* Pods-FacioTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		432C1BA22700ECCB0024B2EB = {
+			isa = PBXGroup;
+			children = (
+				432C1BAD2700ECCB0024B2EB /* Facio */,
+				432C1BC42700ECCF0024B2EB /* FacioTests */,
+				432C1BCE2700ECCF0024B2EB /* FacioUITests */,
+				432C1BAC2700ECCB0024B2EB /* Products */,
+				16EC95855F4FD0AF82176A0F /* Pods */,
+				CAF8E34668B0F0C267B745E3 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		432C1BAC2700ECCB0024B2EB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				432C1BAB2700ECCB0024B2EB /* Facio.app */,
+				432C1BC12700ECCF0024B2EB /* FacioTests.xctest */,
+				432C1BCB2700ECCF0024B2EB /* FacioUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		432C1BAD2700ECCB0024B2EB /* Facio */ = {
+			isa = PBXGroup;
+			children = (
+				432C1BDF2700F06E0024B2EB /* Application */,
+				432C1BE72700F0E20024B2EB /* Models */,
+				432C1BE62700F0DE0024B2EB /* Modules */,
+				432C1BEC2700F4640024B2EB /* Supports */,
+				432C1BE82700F0E60024B2EB /* Views */,
+			);
+			path = Facio;
+			sourceTree = "<group>";
+		};
+		432C1BC42700ECCF0024B2EB /* FacioTests */ = {
+			isa = PBXGroup;
+			children = (
+				432C1BC52700ECCF0024B2EB /* FacioTests.swift */,
+			);
+			path = FacioTests;
+			sourceTree = "<group>";
+		};
+		432C1BCE2700ECCF0024B2EB /* FacioUITests */ = {
+			isa = PBXGroup;
+			children = (
+				432C1BCF2700ECCF0024B2EB /* FacioUITests.swift */,
+				432C1BD12700ECCF0024B2EB /* FacioUITestsLaunchTests.swift */,
+			);
+			path = FacioUITests;
+			sourceTree = "<group>";
+		};
+		432C1BDF2700F06E0024B2EB /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				432C1BE02700F0740024B2EB /* AppDelegate */,
+				432C1BE42700F0AF0024B2EB /* Configurations */,
+				432C1BE22700F0830024B2EB /* LaunchScreen */,
+				432C1BE12700F07E0024B2EB /* Resources */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		432C1BE02700F0740024B2EB /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				432C1BAE2700ECCB0024B2EB /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		432C1BE12700F07E0024B2EB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				432C1BB72700ECCF0024B2EB /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		432C1BE22700F0830024B2EB /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				432C1BE32700F0890024B2EB /* Base.lproj */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		432C1BE32700F0890024B2EB /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				432C1BB92700ECCF0024B2EB /* LaunchScreen.storyboard */,
+			);
+			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+		432C1BE42700F0AF0024B2EB /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				432C1BE52700F0B50024B2EB /* Plists */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		432C1BE52700F0B50024B2EB /* Plists */ = {
+			isa = PBXGroup;
+			children = (
+				432C1BBC2700ECCF0024B2EB /* Info.plist */,
+			);
+			path = Plists;
+			sourceTree = "<group>";
+		};
+		432C1BE62700F0DE0024B2EB /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				432C1BE92700F0EB0024B2EB /* Home */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		432C1BE72700F0E20024B2EB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		432C1BE82700F0E60024B2EB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		432C1BE92700F0EB0024B2EB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				432C1BB22700ECCB0024B2EB /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		432C1BEC2700F4640024B2EB /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				432C1BED2700F46C0024B2EB /* Helpers */,
+			);
+			path = Supports;
+			sourceTree = "<group>";
+		};
+		432C1BED2700F46C0024B2EB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				432C1BEE2700F4740024B2EB /* R.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		432C1BEE2700F4740024B2EB /* R.swift */ = {
+			isa = PBXGroup;
+			children = (
+				432C1BEF2700F5170024B2EB /* R.generated.swift */,
+			);
+			path = R.swift;
+			sourceTree = "<group>";
+		};
+		CAF8E34668B0F0C267B745E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8B274238B33C6BE9BD20F11D /* Pods_Facio.framework */,
+				37396CAB2084F5032C813D79 /* Pods_Facio_FacioUITests.framework */,
+				4A40CC8405471CDAD7CAF37F /* Pods_FacioTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		432C1BAA2700ECCB0024B2EB /* Facio */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 432C1BD52700ECCF0024B2EB /* Build configuration list for PBXNativeTarget "Facio" */;
+			buildPhases = (
+				AE41681296CD384399019F50 /* [CP] Check Pods Manifest.lock */,
+				432C1BEB2700F3D10024B2EB /* R.swift */,
+				432C1BEA2700F3A50024B2EB /* SwiftLint */,
+				432C1BA72700ECCB0024B2EB /* Sources */,
+				432C1BA82700ECCB0024B2EB /* Frameworks */,
+				432C1BA92700ECCB0024B2EB /* Resources */,
+				A16B5A59F763C8965CA63AE1 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Facio;
+			productName = Facio;
+			productReference = 432C1BAB2700ECCB0024B2EB /* Facio.app */;
+			productType = "com.apple.product-type.application";
+		};
+		432C1BC02700ECCF0024B2EB /* FacioTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 432C1BD82700ECCF0024B2EB /* Build configuration list for PBXNativeTarget "FacioTests" */;
+			buildPhases = (
+				3C8BE8B0C749A9E37C6611A8 /* [CP] Check Pods Manifest.lock */,
+				432C1BBD2700ECCF0024B2EB /* Sources */,
+				432C1BBE2700ECCF0024B2EB /* Frameworks */,
+				432C1BBF2700ECCF0024B2EB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				432C1BC32700ECCF0024B2EB /* PBXTargetDependency */,
+			);
+			name = FacioTests;
+			productName = FacioTests;
+			productReference = 432C1BC12700ECCF0024B2EB /* FacioTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		432C1BCA2700ECCF0024B2EB /* FacioUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 432C1BDB2700ECCF0024B2EB /* Build configuration list for PBXNativeTarget "FacioUITests" */;
+			buildPhases = (
+				C351105AEA1FE09BF3CECEFA /* [CP] Check Pods Manifest.lock */,
+				432C1BC72700ECCF0024B2EB /* Sources */,
+				432C1BC82700ECCF0024B2EB /* Frameworks */,
+				432C1BC92700ECCF0024B2EB /* Resources */,
+				EEC267A4D454FD2FE2FEF52E /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				432C1BCD2700ECCF0024B2EB /* PBXTargetDependency */,
+			);
+			name = FacioUITests;
+			productName = FacioUITests;
+			productReference = 432C1BCB2700ECCF0024B2EB /* FacioUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		432C1BA32700ECCB0024B2EB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					432C1BAA2700ECCB0024B2EB = {
+						CreatedOnToolsVersion = 13.0;
+					};
+					432C1BC02700ECCF0024B2EB = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 432C1BAA2700ECCB0024B2EB;
+					};
+					432C1BCA2700ECCF0024B2EB = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 432C1BAA2700ECCB0024B2EB;
+					};
+				};
+			};
+			buildConfigurationList = 432C1BA62700ECCB0024B2EB /* Build configuration list for PBXProject "Facio" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 432C1BA22700ECCB0024B2EB;
+			productRefGroup = 432C1BAC2700ECCB0024B2EB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				432C1BAA2700ECCB0024B2EB /* Facio */,
+				432C1BC02700ECCF0024B2EB /* FacioTests */,
+				432C1BCA2700ECCF0024B2EB /* FacioUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		432C1BA92700ECCB0024B2EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				432C1BBB2700ECCF0024B2EB /* LaunchScreen.storyboard in Resources */,
+				432C1BB82700ECCF0024B2EB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		432C1BBF2700ECCF0024B2EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		432C1BC92700ECCF0024B2EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3C8BE8B0C749A9E37C6611A8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FacioTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		432C1BEA2700F3A50024B2EB /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		432C1BEB2700F3D10024B2EB /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = R.swift;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/$PROJECT_NAME/Supports/Helpers/R.swift/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/$PROJECT_NAME/Supports/Helpers/R.swift/R.generated.swift\"\n";
+		};
+		A16B5A59F763C8965CA63AE1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Facio/Pods-Facio-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Facio/Pods-Facio-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Facio/Pods-Facio-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE41681296CD384399019F50 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Facio-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C351105AEA1FE09BF3CECEFA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Facio-FacioUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EEC267A4D454FD2FE2FEF52E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Facio-FacioUITests/Pods-Facio-FacioUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Facio-FacioUITests/Pods-Facio-FacioUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Facio-FacioUITests/Pods-Facio-FacioUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		432C1BA72700ECCB0024B2EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				432C1BDE2700EF190024B2EB /* HomeViewController.swift in Sources */,
+				432C1BAF2700ECCB0024B2EB /* AppDelegate.swift in Sources */,
+				432C1BF02700F5170024B2EB /* R.generated.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		432C1BBD2700ECCF0024B2EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				432C1BC62700ECCF0024B2EB /* FacioTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		432C1BC72700ECCF0024B2EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				432C1BD02700ECCF0024B2EB /* FacioUITests.swift in Sources */,
+				432C1BD22700ECCF0024B2EB /* FacioUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		432C1BC32700ECCF0024B2EB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 432C1BAA2700ECCB0024B2EB /* Facio */;
+			targetProxy = 432C1BC22700ECCF0024B2EB /* PBXContainerItemProxy */;
+		};
+		432C1BCD2700ECCF0024B2EB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 432C1BAA2700ECCB0024B2EB /* Facio */;
+			targetProxy = 432C1BCC2700ECCF0024B2EB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		432C1BB92700ECCF0024B2EB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				432C1BBA2700ECCF0024B2EB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		432C1BD32700ECCF0024B2EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		432C1BD42700ECCF0024B2EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		432C1BD62700ECCF0024B2EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A02B8B632612226BA62C2BF /* Pods-Facio.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M29GHD24LZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Facio/Application/Configurations/Plists/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.facio.Facio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		432C1BD72700ECCF0024B2EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51409F06C8152F91C4B3823F /* Pods-Facio.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M29GHD24LZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Facio/Application/Configurations/Plists/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.facio.Facio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		432C1BD92700ECCF0024B2EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63D040C9A73D3660EAEB7597 /* Pods-FacioTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M29GHD24LZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.facio.FacioTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Facio.app/Facio";
+			};
+			name = Debug;
+		};
+		432C1BDA2700ECCF0024B2EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F02F51ADC653FAB984C667E /* Pods-FacioTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M29GHD24LZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.facio.FacioTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Facio.app/Facio";
+			};
+			name = Release;
+		};
+		432C1BDC2700ECCF0024B2EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6553BAAF4C5D96E00422561E /* Pods-Facio-FacioUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M29GHD24LZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.facio.FacioUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Facio;
+			};
+			name = Debug;
+		};
+		432C1BDD2700ECCF0024B2EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FC2C31473651C2F908F8FA5 /* Pods-Facio-FacioUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = M29GHD24LZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.facio.FacioUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Facio;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		432C1BA62700ECCB0024B2EB /* Build configuration list for PBXProject "Facio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				432C1BD32700ECCF0024B2EB /* Debug */,
+				432C1BD42700ECCF0024B2EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		432C1BD52700ECCF0024B2EB /* Build configuration list for PBXNativeTarget "Facio" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				432C1BD62700ECCF0024B2EB /* Debug */,
+				432C1BD72700ECCF0024B2EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		432C1BD82700ECCF0024B2EB /* Build configuration list for PBXNativeTarget "FacioTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				432C1BD92700ECCF0024B2EB /* Debug */,
+				432C1BDA2700ECCF0024B2EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		432C1BDB2700ECCF0024B2EB /* Build configuration list for PBXNativeTarget "FacioUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				432C1BDC2700ECCF0024B2EB /* Debug */,
+				432C1BDD2700ECCF0024B2EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 432C1BA32700ECCB0024B2EB /* Project object */;
+}
