@@ -9,7 +9,7 @@ Checkout the repository
 git clone https://github.com/llleyelll/facio.git
 ```
 
-Bundle install
+Install gem
 ```bash
 bundle install
 ```

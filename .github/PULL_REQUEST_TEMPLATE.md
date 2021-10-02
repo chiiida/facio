@@ -2,7 +2,7 @@ Resolves https://github.com/llleyelll/facio/issues/??
 
 ## What happened 👀
 
-Describe the changes happend in thid pull request.
+Describe the changes that happened in this pull request.
  
 ## Proof of Work 📷
 

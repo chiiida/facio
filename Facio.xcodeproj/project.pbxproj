@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -45,7 +45,7 @@
 		432C1BAE2700ECCB0024B2EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		432C1BB22700ECCB0024B2EB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		432C1BB72700ECCF0024B2EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		432C1BBA2700ECCF0024B2EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		432C1BBA2700ECCF0024B2EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		432C1BBC2700ECCF0024B2EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		432C1BC12700ECCF0024B2EB /* FacioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FacioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		432C1BC52700ECCF0024B2EB /* FacioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacioTests.swift; sourceTree = "<group>"; };
@@ -183,17 +183,9 @@
 		432C1BE22700F0830024B2EB /* LaunchScreen */ = {
 			isa = PBXGroup;
 			children = (
-				432C1BE32700F0890024B2EB /* Base.lproj */,
+				84BAEC292701826D001642AC /* Base.lproj */,
 			);
 			path = LaunchScreen;
-			sourceTree = "<group>";
-		};
-		432C1BE32700F0890024B2EB /* Base.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				432C1BB92700ECCF0024B2EB /* LaunchScreen.storyboard */,
-			);
-			path = Base.lproj;
 			sourceTree = "<group>";
 		};
 		432C1BE42700F0AF0024B2EB /* Configurations */ = {
@@ -264,6 +256,14 @@
 				432C1BEF2700F5170024B2EB /* R.generated.swift */,
 			);
 			path = R.swift;
+			sourceTree = "<group>";
+		};
+		84BAEC292701826D001642AC /* Base.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				432C1BB92700ECCF0024B2EB /* LaunchScreen.storyboard */,
+			);
+			path = Base.lproj;
 			sourceTree = "<group>";
 		};
 		CAF8E34668B0F0C267B745E3 /* Frameworks */ = {
@@ -350,20 +350,20 @@
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					432C1BAA2700ECCB0024B2EB = {
-						CreatedOnToolsVersion = 13.0;
+						CreatedOnToolsVersion = 11.0;
 					};
 					432C1BC02700ECCF0024B2EB = {
-						CreatedOnToolsVersion = 13.0;
+						CreatedOnToolsVersion = 11.0;
 						TestTargetID = 432C1BAA2700ECCB0024B2EB;
 					};
 					432C1BCA2700ECCF0024B2EB = {
-						CreatedOnToolsVersion = 13.0;
+						CreatedOnToolsVersion = 11.0;
 						TestTargetID = 432C1BAA2700ECCB0024B2EB;
 					};
 				};
 			};
 			buildConfigurationList = 432C1BA62700ECCB0024B2EB /* Build configuration list for PBXProject "Facio" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -655,7 +655,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -710,7 +710,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -736,7 +736,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -766,7 +766,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -790,7 +790,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M29GHD24LZ;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -816,7 +816,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M29GHD24LZ;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
