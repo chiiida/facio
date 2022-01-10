@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSCameraUsageDescription</key>
-	<string></string>
+	<string>To take pictures, record video, and detect your face.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string></string>
 </dict>
