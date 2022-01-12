@@ -16,6 +16,15 @@
 		432C1BDE2700EF190024B2EB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BB22700ECCB0024B2EB /* HomeViewController.swift */; };
 		432C1BF02700F5170024B2EB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BEF2700F5170024B2EB /* R.generated.swift */; };
 		43ED95CC279174DB00D29F8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43ED95CB279174DB00D29F8B /* GoogleService-Info.plist */; };
+		43FF067A278F437900C3A6EA /* R.swift+Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FF0679278F437900C3A6EA /* R.swift+Typealias.swift */; };
+		43FF0680278F455D00C3A6EA /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43FF067C278F455D00C3A6EA /* OpenSans-Regular.ttf */; };
+		43FF0681278F455D00C3A6EA /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43FF067D278F455D00C3A6EA /* OpenSans-Bold.ttf */; };
+		43FF0683278F455D00C3A6EA /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43FF067F278F455D00C3A6EA /* OpenSans-SemiBold.ttf */; };
+		43FF0686278F45B700C3A6EA /* Comfortaa-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43FF0685278F45B700C3A6EA /* Comfortaa-Medium.ttf */; };
+		43FF0689278F47F600C3A6EA /* UIView+SubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FF0688278F47F600C3A6EA /* UIView+SubView.swift */; };
+		43FF068D278F49DB00C3A6EA /* Double+DeviceSizeAdjusted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FF068C278F49DB00C3A6EA /* Double+DeviceSizeAdjusted.swift */; };
+		43FF0690278F4A5800C3A6EA /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FF068F278F4A5800C3A6EA /* Device.swift */; };
+		43FF0693278F4D1500C3A6EA /* UIColor+Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FF0692278F4D1500C3A6EA /* UIColor+Application.swift */; };
 		4FCFCC4E334B77035BCD77D7 /* Pods_FacioTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A40CC8405471CDAD7CAF37F /* Pods_FacioTests.framework */; };
 		760B59114D26939584CDFD60 /* Pods_Facio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B274238B33C6BE9BD20F11D /* Pods_Facio.framework */; };
 		DC60B51C616CC26A68518333 /* Pods_Facio_FacioUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37396CAB2084F5032C813D79 /* Pods_Facio_FacioUITests.framework */; };
@@ -55,6 +64,15 @@
 		432C1BD12700ECCF0024B2EB /* FacioUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacioUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		432C1BEF2700F5170024B2EB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		43ED95CB279174DB00D29F8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		43FF0679278F437900C3A6EA /* R.swift+Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "R.swift+Typealias.swift"; sourceTree = "<group>"; };
+		43FF067C278F455D00C3A6EA /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		43FF067D278F455D00C3A6EA /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		43FF067F278F455D00C3A6EA /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		43FF0685278F45B700C3A6EA /* Comfortaa-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Medium.ttf"; sourceTree = "<group>"; };
+		43FF0688278F47F600C3A6EA /* UIView+SubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+SubView.swift"; sourceTree = "<group>"; };
+		43FF068C278F49DB00C3A6EA /* Double+DeviceSizeAdjusted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+DeviceSizeAdjusted.swift"; sourceTree = "<group>"; };
+		43FF068F278F4A5800C3A6EA /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		43FF0692278F4D1500C3A6EA /* UIColor+Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Application.swift"; sourceTree = "<group>"; };
 		4A40CC8405471CDAD7CAF37F /* Pods_FacioTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FacioTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51409F06C8152F91C4B3823F /* Pods-Facio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Facio.release.xcconfig"; path = "Target Support Files/Pods-Facio/Pods-Facio.release.xcconfig"; sourceTree = "<group>"; };
 		63D040C9A73D3660EAEB7597 /* Pods-FacioTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FacioTests.debug.xcconfig"; path = "Target Support Files/Pods-FacioTests/Pods-FacioTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -130,9 +148,11 @@
 			isa = PBXGroup;
 			children = (
 				432C1BDF2700F06E0024B2EB /* Application */,
+				43FF0687278F47C100C3A6EA /* Extensions */,
 				432C1BE72700F0E20024B2EB /* Models */,
 				432C1BE62700F0DE0024B2EB /* Modules */,
 				432C1BEC2700F4640024B2EB /* Supports */,
+				43FF068E278F4A4400C3A6EA /* Utilities */,
 				432C1BE82700F0E60024B2EB /* Views */,
 			);
 			path = Facio;
@@ -177,6 +197,7 @@
 		432C1BE12700F07E0024B2EB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				43FF0678278F433900C3A6EA /* Fonts */,
 				432C1BB72700ECCF0024B2EB /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -257,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				432C1BEF2700F5170024B2EB /* R.generated.swift */,
+				43FF0679278F437900C3A6EA /* R.swift+Typealias.swift */,
 			);
 			path = R.swift;
 			sourceTree = "<group>";
@@ -267,6 +289,83 @@
 				43ED95CB279174DB00D29F8B /* GoogleService-Info.plist */,
 			);
 			path = GoogleService;
+			sourceTree = "<group>";
+		};
+		43FF0678278F433900C3A6EA /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				43FF0684278F456600C3A6EA /* Comfartaa */,
+				43FF067B278F44CF00C3A6EA /* OpenSans */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		43FF067B278F44CF00C3A6EA /* OpenSans */ = {
+			isa = PBXGroup;
+			children = (
+				43FF067D278F455D00C3A6EA /* OpenSans-Bold.ttf */,
+				43FF067C278F455D00C3A6EA /* OpenSans-Regular.ttf */,
+				43FF067F278F455D00C3A6EA /* OpenSans-SemiBold.ttf */,
+			);
+			path = OpenSans;
+			sourceTree = "<group>";
+		};
+		43FF0684278F456600C3A6EA /* Comfartaa */ = {
+			isa = PBXGroup;
+			children = (
+				43FF0685278F45B700C3A6EA /* Comfortaa-Medium.ttf */,
+			);
+			path = Comfartaa;
+			sourceTree = "<group>";
+		};
+		43FF0687278F47C100C3A6EA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				43FF068B278F49C700C3A6EA /* Double */,
+				43FF0691278F4B4200C3A6EA /* UIKit */,
+				43FF068A278F49C100C3A6EA /* UIView */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		43FF068A278F49C100C3A6EA /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				43FF0688278F47F600C3A6EA /* UIView+SubView.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		43FF068B278F49C700C3A6EA /* Double */ = {
+			isa = PBXGroup;
+			children = (
+				43FF068C278F49DB00C3A6EA /* Double+DeviceSizeAdjusted.swift */,
+			);
+			path = Double;
+			sourceTree = "<group>";
+		};
+		43FF068E278F4A4400C3A6EA /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				43FF068F278F4A5800C3A6EA /* Device.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		43FF0691278F4B4200C3A6EA /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				43FF0696278F4D2800C3A6EA /* UIColor */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		43FF0696278F4D2800C3A6EA /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				43FF0692278F4D1500C3A6EA /* UIColor+Application.swift */,
+			);
+			path = UIColor;
 			sourceTree = "<group>";
 		};
 		84BAEC292701826D001642AC /* Base.lproj */ = {
@@ -399,6 +498,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				432C1BBB2700ECCF0024B2EB /* LaunchScreen.storyboard in Resources */,
+				43FF0680278F455D00C3A6EA /* OpenSans-Regular.ttf in Resources */,
+				43FF0681278F455D00C3A6EA /* OpenSans-Bold.ttf in Resources */,
+				43FF0683278F455D00C3A6EA /* OpenSans-SemiBold.ttf in Resources */,
+				43FF0686278F45B700C3A6EA /* Comfortaa-Medium.ttf in Resources */,
 				432C1BB82700ECCF0024B2EB /* Assets.xcassets in Resources */,
 				43ED95CC279174DB00D29F8B /* GoogleService-Info.plist in Resources */,
 			);
@@ -566,8 +669,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43FF0693278F4D1500C3A6EA /* UIColor+Application.swift in Sources */,
+				43FF0689278F47F600C3A6EA /* UIView+SubView.swift in Sources */,
 				432C1BDE2700EF190024B2EB /* HomeViewController.swift in Sources */,
 				432C1BAF2700ECCB0024B2EB /* AppDelegate.swift in Sources */,
+				43FF068D278F49DB00C3A6EA /* Double+DeviceSizeAdjusted.swift in Sources */,
+				43FF067A278F437900C3A6EA /* R.swift+Typealias.swift in Sources */,
+				43FF0690278F4A5800C3A6EA /* Device.swift in Sources */,
 				432C1BF02700F5170024B2EB /* R.generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
