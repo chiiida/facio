@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import PickerView
 
 protocol MenuBarDelegate: AnyObject {
 
@@ -25,7 +24,7 @@ class MenuBar: UIView {
     private let drawButton = UIButton()
     private let textButton = UIButton()
     private let beautificationButton = UIButton()
-    private let cameraModePicker = PickerView()
+    private let cameraModePicker = UIPickerView()
 
     private var currentCameraMode: CameraMode = .camera
     private var cameraModeList = [CameraMode.camera.title, CameraMode.record.title]
@@ -43,6 +42,16 @@ class MenuBar: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func loadLayoutSubviews() {
+        cameraModePicker.snp.remakeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalTo(cameraButton.snp.centerY).offset(cameraButton.frame.height / 2.0 + 30.0)
+            $0.width.equalTo(50.0)
+            $0.height.equalTo(self.bounds.width)
+        }
+        cameraModePicker.subviews.forEach { $0.backgroundColor = .clear }
+    }
+
     private func setUpLayout() {
         self.addSubViews(
             cameraButton,
@@ -55,11 +64,7 @@ class MenuBar: UIView {
 
         setUpButtons()
 
-        cameraModePicker.snp.makeConstraints {
-            $0.centerX.equalToSuperview().inset(100.0)
-            $0.centerY.equalTo(cameraButton.snp.top).inset(90.0)
-            $0.height.width.equalTo(50.0)
-        }
+        cameraModePicker.transform = CGAffineTransform(rotationAngle: -90 * (.pi / 180))
     }
 
     private func setUpButtons() {
@@ -96,7 +101,6 @@ class MenuBar: UIView {
     private func setUpViews() {
         backgroundColor = .white
 
-        cameraModePicker.transform = CGAffineTransform(rotationAngle: -90 * (.pi / 180))
         cameraModePicker.dataSource = self
         cameraModePicker.delegate = self
         cameraModePicker.backgroundColor = .clear
@@ -158,34 +162,42 @@ extension MenuBar {
     }
 }
 
-extension MenuBar: PickerViewDataSource, PickerViewDelegate {
+// MARK: - UIPickerViewDataSource, UIPickerViewDelegate
 
-    func pickerViewNumberOfRows(_ pickerView: PickerView) -> Int {
-        return cameraModeList.count
+extension MenuBar: UIPickerViewDataSource, UIPickerViewDelegate {
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
     }
 
-    func pickerView(_ pickerView: PickerView, titleForRow row: Int) -> String {
-        let item = cameraModeList[row]
-        return item
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+       return cameraModeList.count
     }
 
-    func pickerViewHeightForRows(_ pickerView: PickerView) -> CGFloat {
-        return 50.0
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let modeView = UIView()
+        modeView.frame = CGRect(x: 0, y: 0, width: 80.0, height: 80.0)
+        modeView.backgroundColor = .clear
+        let modeLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 80.0, height: 80.0))
+        modeLabel.font = .regular(.comfortaa, ofSize: .xxSmall)
+        modeLabel.textColor = .primaryGray
+        modeLabel.text = cameraModeList[row]
+        modeLabel.textAlignment = .center
+        modeView.addSubview(modeLabel)
+        modeView.transform = CGAffineTransform(rotationAngle: 90 * (.pi / 180))
+        return modeView
     }
 
-    func pickerView(_ pickerView: PickerView, didSelectRow row: Int) {
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 80.0
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         currentCameraMode = row == 1 ? .record : .camera
         if currentCameraMode == .camera {
             cameraButton.setImage(Asset.mainMenu.captureButton(), for: .normal)
         } else {
             cameraButton.setImage(Asset.mainMenu.recordButton(), for: .normal)
         }
-    }
-
-    func pickerView(_ pickerView: PickerView, styleForLabel label: UILabel, highlighted: Bool) {
-        label.textAlignment = .center
-        label.font = .regular(.comfortaa, ofSize: .xxSmall)
-        label.textColor = .primaryGray
-        label.transform = CGAffineTransform(rotationAngle: 90 * (.pi / 180))
     }
 }

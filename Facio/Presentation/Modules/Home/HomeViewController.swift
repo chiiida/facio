@@ -40,6 +40,7 @@ final class HomeViewController: UIViewController {
     // MARK: - Functions for standard AR view handling
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        menuBar.loadLayoutSubviews()
     }
 
     override func viewWillAppear(_ animated: Bool) {

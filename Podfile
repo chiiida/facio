@@ -7,7 +7,6 @@ target 'Facio' do
   pod 'SnapKit'
   pod 'R.swift'
   pod 'SwiftLint'
-  pod 'PickerView'
 
   target 'FacioTests' do
     inherit! :search_paths

@@ -15,7 +15,6 @@
 		432C1BD22700ECCF0024B2EB /* FacioUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BD12700ECCF0024B2EB /* FacioUITestsLaunchTests.swift */; };
 		432C1BDE2700EF190024B2EB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BB22700ECCB0024B2EB /* HomeViewController.swift */; };
 		432C1BF02700F5170024B2EB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BEF2700F5170024B2EB /* R.generated.swift */; };
-		43ED95CC279174DB00D29F8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43ED95CB279174DB00D29F8B /* GoogleService-Info.plist */; };
 		43ED95AF2790107900D29F8B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95AE2790107900D29F8B /* HomeViewModel.swift */; };
 		43ED95B2279019CA00D29F8B /* UIControl+ActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95B1279019CA00D29F8B /* UIControl+ActionHandler.swift */; };
 		43ED95B727903DCE00D29F8B /* UIFont+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95B627903DCE00D29F8B /* UIFont+Size.swift */; };
@@ -24,6 +23,7 @@
 		43ED95BE2790431900D29F8B /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95BD2790431900D29F8B /* MenuBar.swift */; };
 		43ED95C5279068BE00D29F8B /* DependencyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95C4279068BE00D29F8B /* DependencyFactory.swift */; };
 		43ED95C7279069B600D29F8B /* DependencyFactory+ViewModelFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95C6279069B600D29F8B /* DependencyFactory+ViewModelFactoryProtocol.swift */; };
+		43ED95CC279174DB00D29F8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43ED95CB279174DB00D29F8B /* GoogleService-Info.plist */; };
 		43FF067A278F437900C3A6EA /* R.swift+Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FF0679278F437900C3A6EA /* R.swift+Typealias.swift */; };
 		43FF0680278F455D00C3A6EA /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43FF067C278F455D00C3A6EA /* OpenSans-Regular.ttf */; };
 		43FF0681278F455D00C3A6EA /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43FF067D278F455D00C3A6EA /* OpenSans-Bold.ttf */; };
@@ -71,7 +71,6 @@
 		432C1BCF2700ECCF0024B2EB /* FacioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacioUITests.swift; sourceTree = "<group>"; };
 		432C1BD12700ECCF0024B2EB /* FacioUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacioUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		432C1BEF2700F5170024B2EB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
-		43ED95CB279174DB00D29F8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		43ED95AE2790107900D29F8B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		43ED95B1279019CA00D29F8B /* UIControl+ActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+ActionHandler.swift"; sourceTree = "<group>"; };
 		43ED95B627903DCE00D29F8B /* UIFont+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Size.swift"; sourceTree = "<group>"; };
@@ -80,6 +79,7 @@
 		43ED95BD2790431900D29F8B /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		43ED95C4279068BE00D29F8B /* DependencyFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyFactory.swift; sourceTree = "<group>"; };
 		43ED95C6279069B600D29F8B /* DependencyFactory+ViewModelFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DependencyFactory+ViewModelFactoryProtocol.swift"; sourceTree = "<group>"; };
+		43ED95CB279174DB00D29F8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		43FF0679278F437900C3A6EA /* R.swift+Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "R.swift+Typealias.swift"; sourceTree = "<group>"; };
 		43FF067C278F455D00C3A6EA /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		43FF067D278F455D00C3A6EA /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
@@ -301,14 +301,6 @@
 			path = R.swift;
 			sourceTree = "<group>";
 		};
-		43ED95CA279174C300D29F8B /* GoogleService */ = {
-			isa = PBXGroup;
-			children = (
-				43ED95CB279174DB00D29F8B /* GoogleService-Info.plist */,
-			);
-			path = GoogleService;
-			sourceTree = "<group>";
-		};
 		43ED95AD278FE10400D29F8B /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,6 +357,14 @@
 				43ED95C4279068BE00D29F8B /* DependencyFactory.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		43ED95CA279174C300D29F8B /* GoogleService */ = {
+			isa = PBXGroup;
+			children = (
+				43ED95CB279174DB00D29F8B /* GoogleService-Info.plist */,
+			);
+			path = GoogleService;
 			sourceTree = "<group>";
 		};
 		43FF0678278F433900C3A6EA /* Fonts */ = {
@@ -939,7 +939,7 @@
 				DEVELOPMENT_TEAM = 5W9P9PMHLK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Facio/Application/Configurations/Plists/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "To take pictures, record video, and detect your face.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to take pictures, record video, and detect your face.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -971,7 +971,7 @@
 				DEVELOPMENT_TEAM = 5W9P9PMHLK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Facio/Application/Configurations/Plists/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "To take pictures, record video, and detect your face.";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to take pictures, record video, and detect your face.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
