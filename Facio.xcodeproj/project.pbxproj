@@ -16,6 +16,14 @@
 		432C1BDE2700EF190024B2EB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BB22700ECCB0024B2EB /* HomeViewController.swift */; };
 		432C1BF02700F5170024B2EB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BEF2700F5170024B2EB /* R.generated.swift */; };
 		43ED95CC279174DB00D29F8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43ED95CB279174DB00D29F8B /* GoogleService-Info.plist */; };
+		43ED95AF2790107900D29F8B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95AE2790107900D29F8B /* HomeViewModel.swift */; };
+		43ED95B2279019CA00D29F8B /* UIControl+ActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95B1279019CA00D29F8B /* UIControl+ActionHandler.swift */; };
+		43ED95B727903DCE00D29F8B /* UIFont+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95B627903DCE00D29F8B /* UIFont+Size.swift */; };
+		43ED95B92790405F00D29F8B /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43ED95B82790405F00D29F8B /* Comfortaa-Bold.ttf */; };
+		43ED95BB2790407100D29F8B /* Comfortaa-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43ED95BA2790407100D29F8B /* Comfortaa-SemiBold.ttf */; };
+		43ED95BE2790431900D29F8B /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95BD2790431900D29F8B /* MenuBar.swift */; };
+		43ED95C5279068BE00D29F8B /* DependencyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95C4279068BE00D29F8B /* DependencyFactory.swift */; };
+		43ED95C7279069B600D29F8B /* DependencyFactory+ViewModelFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95C6279069B600D29F8B /* DependencyFactory+ViewModelFactoryProtocol.swift */; };
 		43FF067A278F437900C3A6EA /* R.swift+Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FF0679278F437900C3A6EA /* R.swift+Typealias.swift */; };
 		43FF0680278F455D00C3A6EA /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43FF067C278F455D00C3A6EA /* OpenSans-Regular.ttf */; };
 		43FF0681278F455D00C3A6EA /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43FF067D278F455D00C3A6EA /* OpenSans-Bold.ttf */; };
@@ -64,6 +72,14 @@
 		432C1BD12700ECCF0024B2EB /* FacioUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacioUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		432C1BEF2700F5170024B2EB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		43ED95CB279174DB00D29F8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		43ED95AE2790107900D29F8B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		43ED95B1279019CA00D29F8B /* UIControl+ActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+ActionHandler.swift"; sourceTree = "<group>"; };
+		43ED95B627903DCE00D29F8B /* UIFont+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Size.swift"; sourceTree = "<group>"; };
+		43ED95B82790405F00D29F8B /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
+		43ED95BA2790407100D29F8B /* Comfortaa-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-SemiBold.ttf"; sourceTree = "<group>"; };
+		43ED95BD2790431900D29F8B /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
+		43ED95C4279068BE00D29F8B /* DependencyFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyFactory.swift; sourceTree = "<group>"; };
+		43ED95C6279069B600D29F8B /* DependencyFactory+ViewModelFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DependencyFactory+ViewModelFactoryProtocol.swift"; sourceTree = "<group>"; };
 		43FF0679278F437900C3A6EA /* R.swift+Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "R.swift+Typealias.swift"; sourceTree = "<group>"; };
 		43FF067C278F455D00C3A6EA /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		43FF067D278F455D00C3A6EA /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
@@ -149,11 +165,11 @@
 			children = (
 				432C1BDF2700F06E0024B2EB /* Application */,
 				43FF0687278F47C100C3A6EA /* Extensions */,
+				43ED95BF279067FB00D29F8B /* Factories */,
 				432C1BE72700F0E20024B2EB /* Models */,
-				432C1BE62700F0DE0024B2EB /* Modules */,
+				43ED95AD278FE10400D29F8B /* Presentation */,
 				432C1BEC2700F4640024B2EB /* Supports */,
 				43FF068E278F4A4400C3A6EA /* Utilities */,
-				432C1BE82700F0E60024B2EB /* Views */,
 			);
 			path = Facio;
 			sourceTree = "<group>";
@@ -246,6 +262,7 @@
 		432C1BE82700F0E60024B2EB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				43ED95BC279042E600D29F8B /* MenuBar */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -254,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				432C1BB22700ECCB0024B2EB /* HomeViewController.swift */,
+				43ED95AE2790107900D29F8B /* HomeViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -291,6 +309,64 @@
 			path = GoogleService;
 			sourceTree = "<group>";
 		};
+		43ED95AD278FE10400D29F8B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				432C1BE62700F0DE0024B2EB /* Modules */,
+				432C1BE82700F0E60024B2EB /* Views */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		43ED95B0279019B800D29F8B /* UIControl */ = {
+			isa = PBXGroup;
+			children = (
+				43ED95B1279019CA00D29F8B /* UIControl+ActionHandler.swift */,
+			);
+			path = UIControl;
+			sourceTree = "<group>";
+		};
+		43ED95B527903DBD00D29F8B /* UIFont */ = {
+			isa = PBXGroup;
+			children = (
+				43ED95B627903DCE00D29F8B /* UIFont+Size.swift */,
+			);
+			path = UIFont;
+			sourceTree = "<group>";
+		};
+		43ED95BC279042E600D29F8B /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				43ED95BD2790431900D29F8B /* MenuBar.swift */,
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
+		43ED95BF279067FB00D29F8B /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				43ED95C3279068AF00D29F8B /* Application */,
+				43ED95C02790680400D29F8B /* Presentation */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
+		43ED95C02790680400D29F8B /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				43ED95C6279069B600D29F8B /* DependencyFactory+ViewModelFactoryProtocol.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		43ED95C3279068AF00D29F8B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				43ED95C4279068BE00D29F8B /* DependencyFactory.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 		43FF0678278F433900C3A6EA /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,7 +389,9 @@
 		43FF0684278F456600C3A6EA /* Comfartaa */ = {
 			isa = PBXGroup;
 			children = (
+				43ED95B82790405F00D29F8B /* Comfortaa-Bold.ttf */,
 				43FF0685278F45B700C3A6EA /* Comfortaa-Medium.ttf */,
+				43ED95BA2790407100D29F8B /* Comfortaa-SemiBold.ttf */,
 			);
 			path = Comfartaa;
 			sourceTree = "<group>";
@@ -355,6 +433,8 @@
 		43FF0691278F4B4200C3A6EA /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				43ED95B527903DBD00D29F8B /* UIFont */,
+				43ED95B0279019B800D29F8B /* UIControl */,
 				43FF0696278F4D2800C3A6EA /* UIColor */,
 			);
 			path = UIKit;
@@ -499,11 +579,13 @@
 			files = (
 				432C1BBB2700ECCF0024B2EB /* LaunchScreen.storyboard in Resources */,
 				43FF0680278F455D00C3A6EA /* OpenSans-Regular.ttf in Resources */,
+				43ED95BB2790407100D29F8B /* Comfortaa-SemiBold.ttf in Resources */,
 				43FF0681278F455D00C3A6EA /* OpenSans-Bold.ttf in Resources */,
 				43FF0683278F455D00C3A6EA /* OpenSans-SemiBold.ttf in Resources */,
 				43FF0686278F45B700C3A6EA /* Comfortaa-Medium.ttf in Resources */,
 				432C1BB82700ECCF0024B2EB /* Assets.xcassets in Resources */,
 				43ED95CC279174DB00D29F8B /* GoogleService-Info.plist in Resources */,
+				43ED95B92790405F00D29F8B /* Comfortaa-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -670,13 +752,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				43FF0693278F4D1500C3A6EA /* UIColor+Application.swift in Sources */,
+				43ED95AF2790107900D29F8B /* HomeViewModel.swift in Sources */,
+				43ED95BE2790431900D29F8B /* MenuBar.swift in Sources */,
 				43FF0689278F47F600C3A6EA /* UIView+SubView.swift in Sources */,
 				432C1BDE2700EF190024B2EB /* HomeViewController.swift in Sources */,
 				432C1BAF2700ECCB0024B2EB /* AppDelegate.swift in Sources */,
 				43FF068D278F49DB00C3A6EA /* Double+DeviceSizeAdjusted.swift in Sources */,
+				43ED95B727903DCE00D29F8B /* UIFont+Size.swift in Sources */,
+				43ED95B2279019CA00D29F8B /* UIControl+ActionHandler.swift in Sources */,
+				43ED95C7279069B600D29F8B /* DependencyFactory+ViewModelFactoryProtocol.swift in Sources */,
 				43FF067A278F437900C3A6EA /* R.swift+Typealias.swift in Sources */,
 				43FF0690278F4A5800C3A6EA /* Device.swift in Sources */,
 				432C1BF02700F5170024B2EB /* R.generated.swift in Sources */,
+				43ED95C5279068BE00D29F8B /* DependencyFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

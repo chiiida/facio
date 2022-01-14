@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict/>
+<dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Comfortaa-Medium.ttf</string>
+		<string>Comfortaa-Bold.ttf</string>
+		<string>Comfortaa-SemiBold.ttf</string>
+		<string>OpenSans-Bold.ttf</string>
+		<string>OpenSans-SemiBold.ttf</string>
+		<string>OpenSans-Regular.ttf</string>
+	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Allow access to take pictures, record video, and detect your face.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string></string>
+</dict>
 </plist>
