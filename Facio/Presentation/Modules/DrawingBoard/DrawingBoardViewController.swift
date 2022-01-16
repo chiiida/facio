@@ -7,6 +7,7 @@
 
 import UIKit
 import PencilKit
+import LabelSwitch
 
 @available(iOS 13.0, *)
 final class DrawingBoardViewController: UIViewController {
@@ -16,7 +17,7 @@ final class DrawingBoardViewController: UIViewController {
     private let doneButton = UIButton(type: .system)
     private let clearButton = UIButton(type: .system)
     private let cancelButton = UIButton(type: .system)
-    private let toggleSwitch = UISwitch()
+    private var toggleSwitch = LabelSwitch()
 
     private var toolPicker: PKToolPicker?
 
@@ -70,6 +71,27 @@ extension DrawingBoardViewController {
         canvasView.tool = PKInkingTool(.pen, color: .black, width: 10)
         canvasView.delegate = self
 
+        let lhs = LabelSwitchConfig(
+            text: "Mask",
+            textColor: .primaryGray,
+            font: .regular(ofSize: .xxSmall),
+            backgroundColor: .white
+        )
+
+        let rhs = LabelSwitchConfig(
+            text: "Object",
+            textColor: .primaryGray,
+            font: .regular(ofSize: .xxSmall),
+            backgroundColor: .white
+        )
+
+        toggleSwitch = LabelSwitch(center: .zero, leftConfig: lhs, rightConfig: rhs)
+        toggleSwitch.circleColor = .darkGray
+        toggleSwitch.fullSizeTapEnabled = true
+        toggleSwitch.layer.borderWidth = 1.0
+        toggleSwitch.layer.borderColor = UIColor.darkGray.cgColor
+        toggleSwitch.delegate = self
+
         setUpHeader()
         setUpNavigationBar()
     }
@@ -110,6 +132,12 @@ extension DrawingBoardViewController {
         toolPicker?.setVisible(true, forFirstResponder: canvasView)
         toolPicker?.addObserver(canvasView)
         canvasView.becomeFirstResponder()
+
+        canvasView.snp.remakeConstraints {
+            $0.top.equalTo(view.snp.topMargin).inset(15.0)
+            $0.leading.trailing.equalToSuperview().inset(15.0)
+            $0.bottom.equalToSuperview().inset(100.0.bottomSafeAreaAdjusted)
+        }
     }
 
     private func setUpNavigationBar() {
@@ -154,5 +182,15 @@ extension DrawingBoardViewController: PKCanvasViewDelegate {
             $0.isUserInteractionEnabled = isDrawing
             $0.alpha = 1.0
         }
+    }
+}
+
+// MARK: - LabelSwitchDelegate
+
+@available(iOS 13.0, *)
+extension DrawingBoardViewController: LabelSwitchDelegate {
+
+    func switchChangToState(sender: LabelSwitch) {
+        // TODO: Handle switch state with `sender.curState`
     }
 }
