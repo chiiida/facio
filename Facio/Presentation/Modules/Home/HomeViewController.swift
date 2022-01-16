@@ -97,6 +97,8 @@ extension HomeViewController {
 
         settingsButton.setImage(Asset.common.settings(), for: .normal)
         settingsButton.tintColor = .primaryGray
+
+        menuBar.delegate = self
     }
 }
 
@@ -156,7 +158,10 @@ extension HomeViewController: MenuBarDelegate {
     }
 
     func didTapDrawButton() {
-        // TODO: implement in integration
+        let drawingBoardVC = DrawingBoardViewController()
+        let navVC = UINavigationController(rootViewController: drawingBoardVC)
+        navVC.modalPresentationStyle = .fullScreen
+        navigationController?.present(navVC, animated: true)
     }
 
     func didTapTextButton() {

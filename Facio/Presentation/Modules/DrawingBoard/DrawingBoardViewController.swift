@@ -9,7 +9,6 @@ import UIKit
 import PencilKit
 import LabelSwitch
 
-@available(iOS 13.0, *)
 final class DrawingBoardViewController: UIViewController {
 
     private let canvasView = PKCanvasView(frame: .zero)
@@ -48,7 +47,6 @@ final class DrawingBoardViewController: UIViewController {
 
 // MARK: – Private functions
 
-@available(iOS 13.0, *)
 extension DrawingBoardViewController {
 
     private func setUpLayout() {
@@ -171,7 +169,6 @@ extension DrawingBoardViewController {
 
 // MARK: - PKCanvasViewDelegate
 
-@available(iOS 13.0, *)
 extension DrawingBoardViewController: PKCanvasViewDelegate {
 
     func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
@@ -187,7 +184,6 @@ extension DrawingBoardViewController: PKCanvasViewDelegate {
 
 // MARK: - LabelSwitchDelegate
 
-@available(iOS 13.0, *)
 extension DrawingBoardViewController: LabelSwitchDelegate {
 
     func switchChangToState(sender: LabelSwitch) {
