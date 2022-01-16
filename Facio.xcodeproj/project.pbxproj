@@ -15,6 +15,7 @@
 		432C1BD22700ECCF0024B2EB /* FacioUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BD12700ECCF0024B2EB /* FacioUITestsLaunchTests.swift */; };
 		432C1BDE2700EF190024B2EB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BB22700ECCB0024B2EB /* HomeViewController.swift */; };
 		432C1BF02700F5170024B2EB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BEF2700F5170024B2EB /* R.generated.swift */; };
+		43ED95CC279174DB00D29F8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43ED95CB279174DB00D29F8B /* GoogleService-Info.plist */; };
 		4FCFCC4E334B77035BCD77D7 /* Pods_FacioTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A40CC8405471CDAD7CAF37F /* Pods_FacioTests.framework */; };
 		760B59114D26939584CDFD60 /* Pods_Facio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B274238B33C6BE9BD20F11D /* Pods_Facio.framework */; };
 		DC60B51C616CC26A68518333 /* Pods_Facio_FacioUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37396CAB2084F5032C813D79 /* Pods_Facio_FacioUITests.framework */; };
@@ -53,6 +54,7 @@
 		432C1BCF2700ECCF0024B2EB /* FacioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacioUITests.swift; sourceTree = "<group>"; };
 		432C1BD12700ECCF0024B2EB /* FacioUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacioUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		432C1BEF2700F5170024B2EB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		43ED95CB279174DB00D29F8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4A40CC8405471CDAD7CAF37F /* Pods_FacioTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FacioTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51409F06C8152F91C4B3823F /* Pods-Facio.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Facio.release.xcconfig"; path = "Target Support Files/Pods-Facio/Pods-Facio.release.xcconfig"; sourceTree = "<group>"; };
 		63D040C9A73D3660EAEB7597 /* Pods-FacioTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FacioTests.debug.xcconfig"; path = "Target Support Files/Pods-FacioTests/Pods-FacioTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 		432C1BE52700F0B50024B2EB /* Plists */ = {
 			isa = PBXGroup;
 			children = (
+				43ED95CA279174C300D29F8B /* GoogleService */,
 				432C1BBC2700ECCF0024B2EB /* Info.plist */,
 			);
 			path = Plists;
@@ -256,6 +259,14 @@
 				432C1BEF2700F5170024B2EB /* R.generated.swift */,
 			);
 			path = R.swift;
+			sourceTree = "<group>";
+		};
+		43ED95CA279174C300D29F8B /* GoogleService */ = {
+			isa = PBXGroup;
+			children = (
+				43ED95CB279174DB00D29F8B /* GoogleService-Info.plist */,
+			);
+			path = GoogleService;
 			sourceTree = "<group>";
 		};
 		84BAEC292701826D001642AC /* Base.lproj */ = {
@@ -389,6 +400,7 @@
 			files = (
 				432C1BBB2700ECCF0024B2EB /* LaunchScreen.storyboard in Resources */,
 				432C1BB82700ECCF0024B2EB /* Assets.xcassets in Resources */,
+				43ED95CC279174DB00D29F8B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,11 +739,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 5W9P9PMHLK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Facio/Application/Configurations/Plists/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "To take pictures, record video, and detect your face.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -743,7 +755,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.faciodev.Facio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -759,11 +771,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 5W9P9PMHLK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Facio/Application/Configurations/Plists/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "To take pictures, record video, and detect your face.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -775,7 +787,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.faciodev.Facio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -791,7 +803,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = M29GHD24LZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -817,7 +829,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = M29GHD24LZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -842,7 +854,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = M29GHD24LZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -866,7 +878,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = M29GHD24LZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
