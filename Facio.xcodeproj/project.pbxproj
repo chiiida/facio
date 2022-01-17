@@ -236,7 +236,6 @@
 		432C1BE52700F0B50024B2EB /* Plists */ = {
 			isa = PBXGroup;
 			children = (
-				43ED95CA279174C300D29F8B /* GoogleService */,
 				432C1BBC2700ECCF0024B2EB /* Info.plist */,
 			);
 			path = Plists;
@@ -925,7 +924,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 5W9P9PMHLK;
+				DEVELOPMENT_TEAM = RT44NCJNJ3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Facio/Application/Configurations/Plists/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to take pictures, record video, and detect your face.";
@@ -941,7 +940,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.faciodev.Facio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.facio.Facio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -957,7 +956,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 5W9P9PMHLK;
+				DEVELOPMENT_TEAM = RT44NCJNJ3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Facio/Application/Configurations/Plists/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to take pictures, record video, and detect your face.";
@@ -973,7 +972,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.faciodev.Facio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.facio.Facio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
