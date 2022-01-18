@@ -9,7 +9,7 @@ import UIKit
 import ARKit
 import SnapKit
 
-final class HomeViewController: UIViewController{
+final class HomeViewController: UIViewController {
 
     private let settingsButton = UIButton(type: .system)
     private let menuBar = MenuBar()
@@ -75,12 +75,12 @@ extension HomeViewController {
 
         arView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview().inset(165.0)
+            $0.bottom.equalToSuperview().inset(165.0.bottomSafeAreaAdjusted)
         }
 
         settingsButton.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(20.0)
-            $0.top.equalToSuperview().inset(40.0)
+            $0.top.equalToSuperview().inset(40.0.topSafeAreaAdjusted)
             $0.height.width.equalTo(35.0)
         }
 
@@ -154,13 +154,9 @@ extension HomeViewController: MenuBarDelegate {
     }
     
     func didTapImageButton() {
-        // TODO: implement in integration
-        if #available(iOS 13.0, *) {
-            let imagepickerVC = ImagePickerViewController()
-            let navVC = UINavigationController(rootViewController: imagepickerVC)
-            navVC.modalPresentationStyle = .fullScreen
-            navigationController?.present(imagepickerVC, animated: true)
-        }
+        let imagepickerVC = ImagePickerViewController()
+        imagepickerVC.delegate = self
+        present(imagepickerVC, animated: true, completion: nil)
     }
 
     func didTapDrawButton() {
@@ -176,5 +172,14 @@ extension HomeViewController: MenuBarDelegate {
 
     func didTapBeautificationButton() {
         // TODO: implement in integration
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // TODO: Get image and pass to arview
+        dismiss(animated: true, completion: nil)
     }
 }
