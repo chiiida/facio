@@ -10,9 +10,9 @@ import UIKit
 final class ImagePickerViewController: UIImagePickerController {
     
     override func viewDidLoad() {
-            super.viewDidLoad()
-            setUpViews()
-        }
+        super.viewDidLoad()
+        setUpViews()
+    }
 }
 
 extension ImagePickerViewController {
@@ -21,6 +21,6 @@ extension ImagePickerViewController {
         navigationController?.navigationItem.hidesBackButton = true
         sourceType = .photoLibrary
         allowsEditing = true
-       }
+    }
     
 }
