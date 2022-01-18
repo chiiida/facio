@@ -15,6 +15,7 @@
 		432C1BD22700ECCF0024B2EB /* FacioUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BD12700ECCF0024B2EB /* FacioUITestsLaunchTests.swift */; };
 		432C1BDE2700EF190024B2EB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BB22700ECCB0024B2EB /* HomeViewController.swift */; };
 		432C1BF02700F5170024B2EB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BEF2700F5170024B2EB /* R.generated.swift */; };
+		433537582795785C0057DC75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 433537572795785C0057DC75 /* GoogleService-Info.plist */; };
 		43ED95AF2790107900D29F8B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95AE2790107900D29F8B /* HomeViewModel.swift */; };
 		43ED95B2279019CA00D29F8B /* UIControl+ActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95B1279019CA00D29F8B /* UIControl+ActionHandler.swift */; };
 		43ED95B727903DCE00D29F8B /* UIFont+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95B627903DCE00D29F8B /* UIFont+Size.swift */; };
@@ -70,6 +71,7 @@
 		432C1BCF2700ECCF0024B2EB /* FacioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacioUITests.swift; sourceTree = "<group>"; };
 		432C1BD12700ECCF0024B2EB /* FacioUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacioUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		432C1BEF2700F5170024B2EB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		433537572795785C0057DC75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		43ED95AE2790107900D29F8B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		43ED95B1279019CA00D29F8B /* UIControl+ActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+ActionHandler.swift"; sourceTree = "<group>"; };
 		43ED95B627903DCE00D29F8B /* UIFont+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Size.swift"; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 		432C1BE42700F0AF0024B2EB /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
+				433537542795773A0057DC75 /* GoogleService */,
 				432C1BE52700F0B50024B2EB /* Plists */,
 			);
 			path = Configurations;
@@ -236,7 +239,6 @@
 		432C1BE52700F0B50024B2EB /* Plists */ = {
 			isa = PBXGroup;
 			children = (
-				43ED95CA279174C300D29F8B /* GoogleService */,
 				432C1BBC2700ECCF0024B2EB /* Info.plist */,
 			);
 			path = Plists;
@@ -297,6 +299,14 @@
 				43FF0679278F437900C3A6EA /* R.swift+Typealias.swift */,
 			);
 			path = R.swift;
+			sourceTree = "<group>";
+		};
+		433537542795773A0057DC75 /* GoogleService */ = {
+			isa = PBXGroup;
+			children = (
+				433537572795785C0057DC75 /* GoogleService-Info.plist */,
+			);
+			path = GoogleService;
 			sourceTree = "<group>";
 		};
 		43ED95AD278FE10400D29F8B /* Presentation */ = {
@@ -569,6 +579,7 @@
 			files = (
 				432C1BBB2700ECCF0024B2EB /* LaunchScreen.storyboard in Resources */,
 				43FF0680278F455D00C3A6EA /* OpenSans-Regular.ttf in Resources */,
+				433537582795785C0057DC75 /* GoogleService-Info.plist in Resources */,
 				43ED95BB2790407100D29F8B /* Comfortaa-SemiBold.ttf in Resources */,
 				43FF0681278F455D00C3A6EA /* OpenSans-Bold.ttf in Resources */,
 				43FF0683278F455D00C3A6EA /* OpenSans-SemiBold.ttf in Resources */,
@@ -925,7 +936,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 5W9P9PMHLK;
+				DEVELOPMENT_TEAM = RT44NCJNJ3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Facio/Application/Configurations/Plists/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to take pictures, record video, and detect your face.";
@@ -941,7 +952,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.faciodev.Facio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.facio.Facio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -957,7 +968,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 5W9P9PMHLK;
+				DEVELOPMENT_TEAM = RT44NCJNJ3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Facio/Application/Configurations/Plists/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to take pictures, record video, and detect your face.";
@@ -973,7 +984,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.faciodev.Facio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.facio.Facio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
