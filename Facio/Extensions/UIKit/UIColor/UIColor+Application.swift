@@ -13,6 +13,12 @@ extension UIColor {
 
     /// #434753
     static var primaryGray: UIColor { UIColor(hex: 0x434753) }
+
+    /// #F5F5F5
+    static var lightGray: UIColor { UIColor(hex: 0xF5F5F5) }
+
+    /// #696969
+    static var darkGray: UIColor { UIColor(hex: 0x696969) }
 }
 
 // MARK: - Convenience init
