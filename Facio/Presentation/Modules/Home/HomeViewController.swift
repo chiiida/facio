@@ -152,9 +152,11 @@ extension HomeViewController: MenuBarDelegate {
     func didTapRecordButton() {
         // TODO: implement in integration
     }
-
+    
     func didTapImageButton() {
-        // TODO: implement in integration
+        let imagepickerVC = ImagePickerViewController()
+        imagepickerVC.delegate = self
+        present(imagepickerVC, animated: true, completion: nil)
     }
 
     func didTapDrawButton() {
@@ -170,5 +172,14 @@ extension HomeViewController: MenuBarDelegate {
 
     func didTapBeautificationButton() {
         // TODO: implement in integration
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // TODO: Get image and pass to arview
+        dismiss(animated: true, completion: nil)
     }
 }
