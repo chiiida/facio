@@ -9,6 +9,11 @@ import UIKit
 import PencilKit
 import LabelSwitch
 
+protocol DrawingBoardDelegate: AnyObject {
+
+    func didFinishDrawing(_ image: UIImage)
+}
+
 final class DrawingBoardViewController: UIViewController {
 
     private let canvasView = PKCanvasView(frame: .zero)
@@ -16,9 +21,12 @@ final class DrawingBoardViewController: UIViewController {
     private let doneButton = UIButton(type: .system)
     private let clearButton = UIButton(type: .system)
     private let cancelButton = UIButton(type: .system)
-    private var toggleSwitch = LabelSwitch()
 
+    private var toggleSwitch = LabelSwitch()
     private var toolPicker: PKToolPicker?
+    private var drawingType: DrawingType = .object
+
+    weak var delegate: DrawingBoardDelegate?
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -73,14 +81,14 @@ extension DrawingBoardViewController {
             text: "Mask",
             textColor: .primaryGray,
             font: .regular(ofSize: .xxSmall),
-            backgroundColor: .white
+            backgroundColor: .lightGray
         )
 
         let rhs = LabelSwitchConfig(
             text: "Object",
             textColor: .primaryGray,
             font: .regular(ofSize: .xxSmall),
-            backgroundColor: .white
+            backgroundColor: .lightGray
         )
 
         toggleSwitch = LabelSwitch(center: .zero, leftConfig: lhs, rightConfig: rhs)
@@ -150,6 +158,18 @@ extension DrawingBoardViewController {
         navigationItem.titleView = toggleSwitch
     }
 
+    private func getPNGImage() -> UIImage? {
+        let drawingImage = canvasView.drawing.image(
+            from: canvasView.bounds,
+            scale: UIScreen.main.scale
+        )
+
+        guard let data = drawingImage.pngData(),
+              let pngImage = UIImage(data: data)
+        else { return nil }
+        return pngImage
+    }
+
     @objc private func didTapClearButton() {
         canvasView.drawing = PKDrawing()
     }
@@ -163,7 +183,17 @@ extension DrawingBoardViewController {
     }
 
     @objc private func didTapDoneButton() {
+        guard let pngImage = getPNGImage() else { return }
+        delegate?.didFinishDrawing(pngImage)
         navigationController?.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension DrawingBoardViewController {
+
+    enum DrawingType {
+
+        case object, mask
     }
 }
 
@@ -187,6 +217,9 @@ extension DrawingBoardViewController: PKCanvasViewDelegate {
 extension DrawingBoardViewController: LabelSwitchDelegate {
 
     func switchChangToState(sender: LabelSwitch) {
-        // TODO: Handle switch state with `sender.curState`
+        switch sender.curState {
+        case .L: drawingType = .object
+        case .R: drawingType = .mask
+        }
     }
 }

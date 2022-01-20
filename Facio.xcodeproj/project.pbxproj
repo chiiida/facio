@@ -17,6 +17,7 @@
 		432C1BDE2700EF190024B2EB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BB22700ECCB0024B2EB /* HomeViewController.swift */; };
 		432C1BF02700F5170024B2EB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BEF2700F5170024B2EB /* R.generated.swift */; };
 		433537582795785C0057DC75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 433537572795785C0057DC75 /* GoogleService-Info.plist */; };
+		4344CD6A27954A880070B938 /* FeatureIndices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344CD6927954A880070B938 /* FeatureIndices.swift */; };
 		43EC1E4B2791D139008CF316 /* DrawingBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EC1E4A2791D139008CF316 /* DrawingBoardViewController.swift */; };
 		43ED95AF2790107900D29F8B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95AE2790107900D29F8B /* HomeViewModel.swift */; };
 		43ED95B2279019CA00D29F8B /* UIControl+ActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95B1279019CA00D29F8B /* UIControl+ActionHandler.swift */; };
@@ -26,6 +27,8 @@
 		43ED95BE2790431900D29F8B /* MenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95BD2790431900D29F8B /* MenuBar.swift */; };
 		43ED95C5279068BE00D29F8B /* DependencyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95C4279068BE00D29F8B /* DependencyFactory.swift */; };
 		43ED95C7279069B600D29F8B /* DependencyFactory+ViewModelFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95C6279069B600D29F8B /* DependencyFactory+ViewModelFactoryProtocol.swift */; };
+		43FD29892794300200E34F8C /* FaceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FD29882794300200E34F8C /* FaceNode.swift */; };
+		43FD298B27944B0700E34F8C /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FD298A27944B0700E34F8C /* ARView.swift */; };
 		43FF067A278F437900C3A6EA /* R.swift+Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FF0679278F437900C3A6EA /* R.swift+Typealias.swift */; };
 		43FF0680278F455D00C3A6EA /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43FF067C278F455D00C3A6EA /* OpenSans-Regular.ttf */; };
 		43FF0681278F455D00C3A6EA /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43FF067D278F455D00C3A6EA /* OpenSans-Bold.ttf */; };
@@ -75,6 +78,7 @@
 		432C1BD12700ECCF0024B2EB /* FacioUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacioUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		432C1BEF2700F5170024B2EB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		433537572795785C0057DC75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4344CD6927954A880070B938 /* FeatureIndices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureIndices.swift; sourceTree = "<group>"; };
 		43EC1E4A2791D139008CF316 /* DrawingBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingBoardViewController.swift; sourceTree = "<group>"; };
 		43ED95AE2790107900D29F8B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		43ED95B1279019CA00D29F8B /* UIControl+ActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+ActionHandler.swift"; sourceTree = "<group>"; };
@@ -84,6 +88,9 @@
 		43ED95BD2790431900D29F8B /* MenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBar.swift; sourceTree = "<group>"; };
 		43ED95C4279068BE00D29F8B /* DependencyFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyFactory.swift; sourceTree = "<group>"; };
 		43ED95C6279069B600D29F8B /* DependencyFactory+ViewModelFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DependencyFactory+ViewModelFactoryProtocol.swift"; sourceTree = "<group>"; };
+		43ED95CB279174DB00D29F8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		43FD29882794300200E34F8C /* FaceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceNode.swift; sourceTree = "<group>"; };
+		43FD298A27944B0700E34F8C /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		43FF0679278F437900C3A6EA /* R.swift+Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "R.swift+Typealias.swift"; sourceTree = "<group>"; };
 		43FF067C278F455D00C3A6EA /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		43FF067D278F455D00C3A6EA /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
@@ -150,6 +157,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		430B7EEA27957D18008640D8 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				43ED95CB279174DB00D29F8B /* GoogleService-Info.plist */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		432C1BA22700ECCB0024B2EB = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +174,7 @@
 				432C1BAC2700ECCB0024B2EB /* Products */,
 				16EC95855F4FD0AF82176A0F /* Pods */,
 				CAF8E34668B0F0C267B745E3 /* Frameworks */,
+				430B7EEA27957D18008640D8 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -242,7 +258,6 @@
 		432C1BE42700F0AF0024B2EB /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
-				433537542795773A0057DC75 /* GoogleService */,
 				432C1BE52700F0B50024B2EB /* Plists */,
 			);
 			path = Configurations;
@@ -251,6 +266,7 @@
 		432C1BE52700F0B50024B2EB /* Plists */ = {
 			isa = PBXGroup;
 			children = (
+				433537542795773A0057DC75 /* GoogleService */,
 				432C1BBC2700ECCF0024B2EB /* Info.plist */,
 			);
 			path = Plists;
@@ -269,6 +285,8 @@
 		432C1BE72700F0E20024B2EB /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				43FD29882794300200E34F8C /* FaceNode.swift */,
+				4344CD6927954A880070B938 /* FeatureIndices.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -277,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				43ED95BC279042E600D29F8B /* MenuBar */,
+				43FD298A27944B0700E34F8C /* ARView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -320,7 +339,8 @@
 			children = (
 				433537572795785C0057DC75 /* GoogleService-Info.plist */,
 			);
-			path = GoogleService;
+			name = GoogleService;
+			path = ../GoogleService;
 			sourceTree = "<group>";
 		};
 		43EC1E492791D11A008CF316 /* DrawingBoard */ = {
@@ -778,6 +798,7 @@
 				43ED95BE2790431900D29F8B /* MenuBar.swift in Sources */,
 				43FF0689278F47F600C3A6EA /* UIView+SubView.swift in Sources */,
 				432C1BDE2700EF190024B2EB /* HomeViewController.swift in Sources */,
+				43FD298B27944B0700E34F8C /* ARView.swift in Sources */,
 				432C1BAF2700ECCB0024B2EB /* AppDelegate.swift in Sources */,
 				0EC39ACF2794327700CFA7F2 /* ImagePickerViewController.swift in Sources */,
 				43FF068D278F49DB00C3A6EA /* Double+DeviceSizeAdjusted.swift in Sources */,
@@ -785,9 +806,11 @@
 				43ED95B2279019CA00D29F8B /* UIControl+ActionHandler.swift in Sources */,
 				43ED95C7279069B600D29F8B /* DependencyFactory+ViewModelFactoryProtocol.swift in Sources */,
 				43EC1E4B2791D139008CF316 /* DrawingBoardViewController.swift in Sources */,
+				4344CD6A27954A880070B938 /* FeatureIndices.swift in Sources */,
 				43FF067A278F437900C3A6EA /* R.swift+Typealias.swift in Sources */,
 				43FF0690278F4A5800C3A6EA /* Device.swift in Sources */,
 				432C1BF02700F5170024B2EB /* R.generated.swift in Sources */,
+				43FD29892794300200E34F8C /* FaceNode.swift in Sources */,
 				43ED95C5279068BE00D29F8B /* DependencyFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
