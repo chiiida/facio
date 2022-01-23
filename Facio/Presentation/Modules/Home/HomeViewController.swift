@@ -183,8 +183,14 @@ extension HomeViewController: MenuBarDelegate {
 // MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        // TODO: Get image and pass to arview
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        let pickedImage = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage)!
+        let faceNode = FaceNode(at: FeatureIndices.nose)
+        let timestamp = Date().timeIntervalSince1970
+        let drawNodeName = "draw\(timestamp)"
+        faceNode.name = drawNodeName
+        faceNode.addImage(image: pickedImage)
+        arView.addNode(faceNode)
         dismiss(animated: true, completion: nil)
     }
 }
