@@ -14,7 +14,7 @@ final class HomeViewController: UIViewController {
     private let settingsButton = UIButton(type: .system)
     private let menuBar = MenuBar()
 
-    private var arView = ARSCNView(frame: .zero)
+    private var arView = ARView()
     private var viewModel: HomeViewModelProtocol!
 
     init(viewModel: HomeViewModelProtocol) {
@@ -103,6 +103,7 @@ extension HomeViewController {
 }
 
 // MARK: - ARSCNViewDelegate
+
 extension HomeViewController: ARSCNViewDelegate {
 
     func sessionWasInterrupted(_ session: ARSession) {}
@@ -117,13 +118,14 @@ extension HomeViewController: ARSCNViewDelegate {
     ) {}
 
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-
         let device: MTLDevice!
         device = MTLCreateSystemDefaultDevice()
+        guard let faceAnchor = anchor as? ARFaceAnchor else { return nil }
         let faceGeometry = ARSCNFaceGeometry(device: device)
         let node = SCNNode(geometry: faceGeometry)
+        node.geometry?.firstMaterial?.transparency = 0.0
 
-        node.geometry?.firstMaterial?.fillMode = .lines
+        arView.updateFeatures(for: node, using: faceAnchor)
 
         return node
     }
@@ -131,13 +133,15 @@ extension HomeViewController: ARSCNViewDelegate {
     func renderer(
         _ renderer: SCNSceneRenderer,
         didUpdate node: SCNNode,
-        for anchor: ARAnchor) {
+        for anchor: ARAnchor
+    ) {
         guard let faceAnchor = anchor as? ARFaceAnchor,
               let faceGeometry = node.geometry as? ARSCNFaceGeometry else {
             return
         }
 
         faceGeometry.update(from: faceAnchor.geometry)
+        arView.updateFeatures(for: node, using: faceAnchor)
     }
 }
 
@@ -161,6 +165,7 @@ extension HomeViewController: MenuBarDelegate {
 
     func didTapDrawButton() {
         let drawingBoardVC = DrawingBoardViewController()
+        drawingBoardVC.delegate = self
         let navVC = UINavigationController(rootViewController: drawingBoardVC)
         navVC.modalPresentationStyle = .fullScreen
         navigationController?.present(navVC, animated: true)
@@ -181,5 +186,19 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // TODO: Get image and pass to arview
         dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - DrawingBoardDelegate
+
+extension HomeViewController: DrawingBoardDelegate {
+
+    func didFinishDrawing(_ image: UIImage) {
+        let faceNode = FaceNode(at: FeatureIndices.nose)
+        let timestamp = Date().timeIntervalSince1970
+        let drawNodeName = "draw\(timestamp)"
+        faceNode.name = drawNodeName
+        faceNode.addImage(image: image)
+        arView.addNode(faceNode)
     }
 }
