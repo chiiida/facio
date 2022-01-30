@@ -17,6 +17,7 @@
 		432C1BDE2700EF190024B2EB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BB22700ECCB0024B2EB /* HomeViewController.swift */; };
 		432C1BF02700F5170024B2EB /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BEF2700F5170024B2EB /* R.generated.swift */; };
 		433537582795785C0057DC75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 433537572795785C0057DC75 /* GoogleService-Info.plist */; };
+		433C33BF27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433C33BE27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift */; };
 		4344CD6A27954A880070B938 /* FeatureIndices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344CD6927954A880070B938 /* FeatureIndices.swift */; };
 		43EC1E4B2791D139008CF316 /* DrawingBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EC1E4A2791D139008CF316 /* DrawingBoardViewController.swift */; };
 		43ED95AF2790107900D29F8B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95AE2790107900D29F8B /* HomeViewModel.swift */; };
@@ -78,6 +79,7 @@
 		432C1BD12700ECCF0024B2EB /* FacioUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacioUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		432C1BEF2700F5170024B2EB /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		433537572795785C0057DC75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		433C33BE27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+ARSCNViewDelegate.swift"; sourceTree = "<group>"; };
 		4344CD6927954A880070B938 /* FeatureIndices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureIndices.swift; sourceTree = "<group>"; };
 		43EC1E4A2791D139008CF316 /* DrawingBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingBoardViewController.swift; sourceTree = "<group>"; };
 		43ED95AE2790107900D29F8B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 		432C1BE92700F0EB0024B2EB /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				433C33BD27A053270047FB15 /* Delegates */,
 				432C1BB22700ECCB0024B2EB /* HomeViewController.swift */,
 				43ED95AE2790107900D29F8B /* HomeViewModel.swift */,
 			);
@@ -341,6 +344,14 @@
 			);
 			name = GoogleService;
 			path = ../GoogleService;
+			sourceTree = "<group>";
+		};
+		433C33BD27A053270047FB15 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				433C33BE27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		43EC1E492791D11A008CF316 /* DrawingBoard */ = {
@@ -798,6 +809,7 @@
 				43ED95BE2790431900D29F8B /* MenuBar.swift in Sources */,
 				43FF0689278F47F600C3A6EA /* UIView+SubView.swift in Sources */,
 				432C1BDE2700EF190024B2EB /* HomeViewController.swift in Sources */,
+				433C33BF27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift in Sources */,
 				43FD298B27944B0700E34F8C /* ARView.swift in Sources */,
 				432C1BAF2700ECCB0024B2EB /* AppDelegate.swift in Sources */,
 				0EC39ACF2794327700CFA7F2 /* ImagePickerViewController.swift in Sources */,

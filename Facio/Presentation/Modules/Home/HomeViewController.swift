@@ -14,8 +14,8 @@ final class HomeViewController: UIViewController {
     private let settingsButton = UIButton(type: .system)
     private let menuBar = MenuBar()
     
-    private var arView = ARView()
     private var viewModel: HomeViewModelProtocol!
+    var arView = ARView()
     
     init(viewModel: HomeViewModelProtocol) {
         self.viewModel = viewModel
@@ -94,54 +94,12 @@ extension HomeViewController {
     private func setUpViews() {
         arView.delegate = self
         arView.scene = SCNScene()
+        arView.autoenablesDefaultLighting = true
         
         settingsButton.setImage(Asset.common.settings(), for: .normal)
         settingsButton.tintColor = .primaryGray
         
         menuBar.delegate = self
-    }
-}
-
-// MARK: - ARSCNViewDelegate
-
-extension HomeViewController: ARSCNViewDelegate {
-    
-    func sessionWasInterrupted(_ session: ARSession) {}
-    
-    func sessionInterruptionEnded(_ session: ARSession) {}
-    
-    func session(_ session: ARSession, didFailWithError error: Error) {}
-    
-    func session(
-        _ session: ARSession,
-        cameraDidChangeTrackingState camera: ARCamera
-    ) {}
-    
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let device: MTLDevice!
-        device = MTLCreateSystemDefaultDevice()
-        guard let faceAnchor = anchor as? ARFaceAnchor else { return nil }
-        let faceGeometry = ARSCNFaceGeometry(device: device)
-        let node = SCNNode(geometry: faceGeometry)
-        node.geometry?.firstMaterial?.transparency = 0.0
-        
-        arView.updateFeatures(for: node, using: faceAnchor)
-        
-        return node
-    }
-    
-    func renderer(
-        _ renderer: SCNSceneRenderer,
-        didUpdate node: SCNNode,
-        for anchor: ARAnchor
-    ) {
-        guard let faceAnchor = anchor as? ARFaceAnchor,
-              let faceGeometry = node.geometry as? ARSCNFaceGeometry else {
-            return
-        }
-        
-        faceGeometry.update(from: faceAnchor.geometry)
-        arView.updateFeatures(for: node, using: faceAnchor)
     }
 }
 
@@ -184,7 +142,9 @@ extension HomeViewController: MenuBarDelegate {
 extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let pickedImage = (info[UIImagePickerController.InfoKey.originalImage] as? UIImage)!
+        guard let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage ??
+                info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+
         let faceNode = FaceNode(at: FeatureIndices.nose)
         let timestamp = Date().timeIntervalSince1970
         let drawNodeName = "draw\(timestamp)"
@@ -198,9 +158,9 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
 // MARK: - DrawingBoardDelegate
 
 extension HomeViewController: DrawingBoardDelegate {
-    
-    func didFinishDrawing(_ image: UIImage) {
-        let faceNode = FaceNode(at: FeatureIndices.nose)
+
+    func didFinishDrawing(_ image: UIImage, isFaceMask: Bool) {
+        let faceNode = FaceNode(at: FeatureIndices.nose, isFaceMask: isFaceMask)
         let timestamp = Date().timeIntervalSince1970
         let drawNodeName = "draw\(timestamp)"
         faceNode.name = drawNodeName
