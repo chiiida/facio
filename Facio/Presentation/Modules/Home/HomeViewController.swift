@@ -141,16 +141,17 @@ extension HomeViewController: MenuBarDelegate {
 // MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage ??
                 info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
 
         let faceNode = FaceNode(at: FeatureIndices.nose)
         let timestamp = Date().timeIntervalSince1970
-        let drawNodeName = "draw\(timestamp)"
-        faceNode.name = drawNodeName
-        faceNode.addImage(image: pickedImage)
-        arView.addNode(faceNode)
+        let imageNodeName = "image\(timestamp)"
+        faceNode.name = imageNodeName
+        let viewModel = FaceNodeViewModel(node: faceNode)
+        viewModel.addImage(pickedImage)
+        arView.addNode(from: viewModel)
         dismiss(animated: true, completion: nil)
     }
 }
@@ -160,11 +161,12 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
 extension HomeViewController: DrawingBoardDelegate {
 
     func didFinishDrawing(_ image: UIImage, isFaceMask: Bool) {
-        let faceNode = FaceNode(at: FeatureIndices.nose, isFaceMask: isFaceMask)
+        let drawingNode = DrawingNode(at: FeatureIndices.nose, isFaceMask: isFaceMask)
         let timestamp = Date().timeIntervalSince1970
         let drawNodeName = "draw\(timestamp)"
-        faceNode.name = drawNodeName
-        faceNode.addImage(image: image)
-        arView.addNode(faceNode)
+        drawingNode.name = drawNodeName
+        let viewModel = DrawingNodeViewModel(node: drawingNode)
+        viewModel.addImage(image)
+        arView.addNode(from: viewModel)
     }
 }

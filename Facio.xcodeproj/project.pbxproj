@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0EC39ACF2794327700CFA7F2 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC39ACE2794327700CFA7F2 /* ImagePickerViewController.swift */; };
+		430CB49327A86718005CB711 /* FaceNodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430CB49227A86718005CB711 /* FaceNodeViewModel.swift */; };
+		430CB49527A86F51005CB711 /* DrawingNodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430CB49427A86F51005CB711 /* DrawingNodeViewModel.swift */; };
 		432C1BAF2700ECCB0024B2EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BAE2700ECCB0024B2EB /* AppDelegate.swift */; };
 		432C1BB82700ECCF0024B2EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 432C1BB72700ECCF0024B2EB /* Assets.xcassets */; };
 		432C1BBB2700ECCF0024B2EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 432C1BB92700ECCF0024B2EB /* LaunchScreen.storyboard */; };
@@ -19,6 +21,7 @@
 		433537582795785C0057DC75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 433537572795785C0057DC75 /* GoogleService-Info.plist */; };
 		433C33BF27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433C33BE27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift */; };
 		4344CD6A27954A880070B938 /* FeatureIndices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344CD6927954A880070B938 /* FeatureIndices.swift */; };
+		43AC807C27A7081900983CFC /* DrawingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AC807B27A7081900983CFC /* DrawingNode.swift */; };
 		43EC1E4B2791D139008CF316 /* DrawingBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EC1E4A2791D139008CF316 /* DrawingBoardViewController.swift */; };
 		43ED95AF2790107900D29F8B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95AE2790107900D29F8B /* HomeViewModel.swift */; };
 		43ED95B2279019CA00D29F8B /* UIControl+ActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95B1279019CA00D29F8B /* UIControl+ActionHandler.swift */; };
@@ -66,6 +69,8 @@
 		0EC39ACE2794327700CFA7F2 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
 		2FC2C31473651C2F908F8FA5 /* Pods-Facio-FacioUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Facio-FacioUITests.release.xcconfig"; path = "Target Support Files/Pods-Facio-FacioUITests/Pods-Facio-FacioUITests.release.xcconfig"; sourceTree = "<group>"; };
 		37396CAB2084F5032C813D79 /* Pods_Facio_FacioUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Facio_FacioUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		430CB49227A86718005CB711 /* FaceNodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceNodeViewModel.swift; sourceTree = "<group>"; };
+		430CB49427A86F51005CB711 /* DrawingNodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingNodeViewModel.swift; sourceTree = "<group>"; };
 		432C1BAB2700ECCB0024B2EB /* Facio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Facio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		432C1BAE2700ECCB0024B2EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		432C1BB22700ECCB0024B2EB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +86,7 @@
 		433537572795785C0057DC75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		433C33BE27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+ARSCNViewDelegate.swift"; sourceTree = "<group>"; };
 		4344CD6927954A880070B938 /* FeatureIndices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureIndices.swift; sourceTree = "<group>"; };
+		43AC807B27A7081900983CFC /* DrawingNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingNode.swift; sourceTree = "<group>"; };
 		43EC1E4A2791D139008CF316 /* DrawingBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingBoardViewController.swift; sourceTree = "<group>"; };
 		43ED95AE2790107900D29F8B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		43ED95B1279019CA00D29F8B /* UIControl+ActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+ActionHandler.swift"; sourceTree = "<group>"; };
@@ -167,6 +173,15 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		430CB49127A866FE005CB711 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				430CB49227A86718005CB711 /* FaceNodeViewModel.swift */,
+				430CB49427A86F51005CB711 /* DrawingNodeViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		432C1BA22700ECCB0024B2EB = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +215,7 @@
 				43ED95AD278FE10400D29F8B /* Presentation */,
 				432C1BEC2700F4640024B2EB /* Supports */,
 				43FF068E278F4A4400C3A6EA /* Utilities */,
+				430CB49127A866FE005CB711 /* ViewModels */,
 			);
 			path = Facio;
 			sourceTree = "<group>";
@@ -289,6 +305,7 @@
 			children = (
 				43FD29882794300200E34F8C /* FaceNode.swift */,
 				4344CD6927954A880070B938 /* FeatureIndices.swift */,
+				43AC807B27A7081900983CFC /* DrawingNode.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -817,6 +834,9 @@
 				43ED95B727903DCE00D29F8B /* UIFont+Size.swift in Sources */,
 				43ED95B2279019CA00D29F8B /* UIControl+ActionHandler.swift in Sources */,
 				43ED95C7279069B600D29F8B /* DependencyFactory+ViewModelFactoryProtocol.swift in Sources */,
+				430CB49327A86718005CB711 /* FaceNodeViewModel.swift in Sources */,
+				430CB49527A86F51005CB711 /* DrawingNodeViewModel.swift in Sources */,
+				43AC807C27A7081900983CFC /* DrawingNode.swift in Sources */,
 				43EC1E4B2791D139008CF316 /* DrawingBoardViewController.swift in Sources */,
 				4344CD6A27954A880070B938 /* FeatureIndices.swift in Sources */,
 				43FF067A278F437900C3A6EA /* R.swift+Typealias.swift in Sources */,

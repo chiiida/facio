@@ -10,25 +10,24 @@ import UIKit
 
 final class ARView: ARSCNView {
 
-    private var faceNodes: [FaceNode] = []
+    private var nodeViewModels = [FaceNodeViewModelProtocol]()
 
     var mainNode: SCNNode?
 
-    func addNode(_ node: FaceNode) {
-        faceNodes.append(node)
-        if !node.isFaceMask {
-            mainNode?.addChildNode(node)
-        }
+    func addNode(from viewModel: FaceNodeViewModelProtocol) {
+        nodeViewModels.append(viewModel)
+
+        if let drawingNode = viewModel.node as? DrawingNode,
+           drawingNode.isFaceMask { return }
+        mainNode?.addChildNode(viewModel.node)
     }
 
     func updateFeatures(using anchor: ARFaceAnchor) {
-        faceNodes.forEach { node in
-            if node.isFaceMask {
-                let material = SCNMaterial()
-                material.lightingModel = .physicallyBased
-                material.diffuse.contents = node.image
-                material.transparency = 1.0
-                mainNode?.geometry?.firstMaterial = material
+        nodeViewModels.forEach { viewModel in
+            let node = viewModel.node
+            if let drawNode = node as? DrawingNode,
+               drawNode.isFaceMask {
+                mainNode?.geometry?.firstMaterial = node.material
             } else {
                 let child = mainNode?.childNode(withName: node.name ?? "", recursively: false) as? FaceNode
                 let vertices = node.indices.map { anchor.geometry.vertices[$0] }
