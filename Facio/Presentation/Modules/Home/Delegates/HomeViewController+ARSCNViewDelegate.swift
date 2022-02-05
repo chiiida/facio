@@ -18,6 +18,7 @@ extension HomeViewController: ARSCNViewDelegate {
         material?.transparency = 0.0
 
         let node = SCNNode(geometry: faceGeometry)
+        node.name = "mainNode"
         arView.scene.rootNode.addChildNode(node)
 
         arView.mainNode = node

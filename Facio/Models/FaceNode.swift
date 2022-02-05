@@ -13,7 +13,7 @@ class FaceNode: SCNNode {
     var image: UIImage?
     var width: CGFloat?
     var height: CGFloat?
-    var material: SCNMaterial?
+    var material: SCNMaterial
 
     init(
         at indices: [Int],
