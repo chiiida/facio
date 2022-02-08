@@ -29,8 +29,8 @@ class FaceNodeViewModel: FaceNodeViewModelProtocol {
         let imageRatio = image.size.width / image.size.height
         let isLandscapeImg = image.size.width > image.size.height
         if let plane = node.geometry as? SCNPlane {
-            plane.width = isLandscapeImg ? 0.2 : 0.2 * imageRatio
-            plane.height = isLandscapeImg ? 0.2 * (1 / imageRatio) : 0.2
+            plane.width = isLandscapeImg ? 0.1 : 0.1 * imageRatio
+            plane.height = isLandscapeImg ? 0.1 * (1 / imageRatio) : 0.1
             plane.firstMaterial?.diffuse.contents = image
             plane.firstMaterial?.isDoubleSided = true
         }

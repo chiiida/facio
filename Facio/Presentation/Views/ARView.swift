@@ -15,11 +15,18 @@ final class ARView: ARSCNView {
     var mainNode: SCNNode?
 
     func addNode(from viewModel: FaceNodeViewModelProtocol) {
-        nodeViewModels.append(viewModel)
-
-        if let drawingNode = viewModel.node as? DrawingNode,
-           drawingNode.isFaceMask { return }
+        if let drawingNode = viewModel.node as? DrawingNode, drawingNode.isFaceMask {
+            nodeViewModels.removeAll {
+                if let drawNode = $0.node as? DrawingNode, drawNode.isFaceMask {
+                    return true
+                }
+                return false
+            }
+            nodeViewModels.append(viewModel)
+            return
+        }
         mainNode?.addChildNode(viewModel.node)
+        nodeViewModels.append(viewModel)
     }
 
     func updateFeatures(using anchor: ARFaceAnchor) {
@@ -32,7 +39,19 @@ final class ARView: ARSCNView {
                 let child = mainNode?.childNode(withName: node.name ?? "", recursively: false) as? FaceNode
                 let vertices = node.indices.map { anchor.geometry.vertices[$0] }
                 child?.updatePosition(for: vertices)
+                child?.position.z += 0.01
             }
         }
+    }
+
+    func updateFaceMask(with material: SCNMaterial) {
+        guard let faceMaskViewModel = nodeViewModels.first(where: {
+            if let drawNode = $0 as? DrawingNodeViewModel, drawNode.isFaceMask {
+                return true
+            }
+            return false
+        }) else { return }
+
+        faceMaskViewModel.updateMaterial(with: material)
     }
 }

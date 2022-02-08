@@ -13,6 +13,7 @@ final class HomeViewController: UIViewController {
     
     private let settingsButton = UIButton(type: .system)
     private let menuBar = MenuBar()
+    private let faceMaskMaterialMenu = MaterialMenuView()
     
     private var viewModel: HomeViewModelProtocol!
     var arView = ARView()
@@ -70,7 +71,8 @@ extension HomeViewController {
         view.addSubViews(
             arView,
             settingsButton,
-            menuBar
+            menuBar,
+            faceMaskMaterialMenu
         )
         
         arView.snp.makeConstraints {
@@ -89,17 +91,75 @@ extension HomeViewController {
             $0.bottom.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
         }
+
+        faceMaskMaterialMenu.snp.makeConstraints {
+            $0.bottom.equalTo(menuBar.snp.top)
+            $0.leading.trailing.equalToSuperview()
+        }
     }
     
     private func setUpViews() {
         arView.delegate = self
         arView.scene = SCNScene()
         arView.autoenablesDefaultLighting = true
+
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapARView(_:)))
+        arView.addGestureRecognizer(tapRecognizer)
         
         settingsButton.setImage(Asset.common.settings(), for: .normal)
         settingsButton.tintColor = .primaryGray
+
+        faceMaskMaterialMenu.isHidden = true
+        faceMaskMaterialMenu.delegate = self
         
         menuBar.delegate = self
+
+        view.bringSubviewToFront(settingsButton)
+    }
+
+    private func showFaceMaskMaterialMenu() {
+        faceMaskMaterialMenu.show { [weak self] in
+            guard let self = self else { return }
+            self.faceMaskMaterialMenu.snp.remakeConstraints {
+                $0.height.equalTo(160.0)
+                $0.bottom.equalTo(self.menuBar.snp.top)
+                $0.leading.trailing.equalToSuperview()
+            }
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    private func hideFaceMaskMaterialMenu() {
+        faceMaskMaterialMenu.hide { [weak self] in
+            guard let self = self else { return }
+            self.faceMaskMaterialMenu.snp.remakeConstraints {
+                $0.height.equalTo(0.0)
+                $0.bottom.equalTo(self.menuBar.snp.top)
+                $0.leading.trailing.equalToSuperview()
+            }
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    @objc private func didTapARView(_ sender: UITapGestureRecognizer) {
+        let location = sender.location(in: arView)
+
+        guard let nodeHitTest = arView.hitTest(location, options: nil).first
+        else {
+            if !faceMaskMaterialMenu.isHidden {
+                hideFaceMaskMaterialMenu()
+            }
+            return
+        }
+        let hitNode = nodeHitTest.node
+
+        if hitNode.name == "mainNode",
+           ((hitNode.geometry?.firstMaterial?.diffuse.contents as? UIImage) != nil),
+           faceMaskMaterialMenu.isHidden {
+            showFaceMaskMaterialMenu()
+        } else {
+            hideFaceMaskMaterialMenu()
+        }
     }
 }
 
@@ -168,5 +228,25 @@ extension HomeViewController: DrawingBoardDelegate {
         let viewModel = DrawingNodeViewModel(node: drawingNode)
         viewModel.addImage(image)
         arView.addNode(from: viewModel)
+
+        if isFaceMask {
+            faceMaskMaterialMenu.resetValue()
+            showFaceMaskMaterialMenu()
+        }
+    }
+}
+
+// MARK: - MaterialMenuViewDelegate
+
+extension HomeViewController: MaterialMenuViewDelegate {
+
+    func didUpdateMaterial(type: MaterialMenuView.MaterialType, value: Float) {
+        let material = SCNMaterial()
+        switch type {
+        case .metalness: material.metalness.contents = value
+        case .roughness: material.roughness.contents = value
+        case .shininess: material.shininess = CGFloat(value)
+        }
+        arView.updateFaceMask(with: material)
     }
 }
