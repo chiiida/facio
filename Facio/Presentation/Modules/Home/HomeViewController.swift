@@ -172,7 +172,11 @@ extension HomeViewController: MenuBarDelegate {
     }
     
     func didTapTextButton() {
-        // TODO: implement in integration
+        let textEditorVC = TextEditorViewController()
+        let navVC = UINavigationController(rootViewController: textEditorVC)
+        navVC.modalPresentationStyle = .overFullScreen
+//        navVC.view.alpha = 0.5
+        navigationController?.present(navVC, animated: true)
     }
     
     func didTapBeautificationButton() {

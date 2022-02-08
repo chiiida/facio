@@ -76,13 +76,16 @@ extension TextEditorViewController {
         cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
         
-        colorButton.frame = CGRect(x: 50, y: 50, width: 2, height: 2)
-//        colorButton.clipsToBounds = true
-//        colorButton.layer.masksToBounds = true
-//        colorButton.layer.cornerRadius = colorButton.frame.size.width / 2
-//        colorButton.layer.borderColor = UIColor(ciColor: .gray).cgColor
-//        colorButton.layer.backgroundColor = UIColor(ciColor: .white ).cgColor
-//        colorButton.layer.borderWidth = 1
+//        colorButton.frame = CGRect(x: 50, y: 50, width: 2, height: 2)
+        colorButton.snp.makeConstraints {
+            $0.height.width.equalTo(20.0)
+        }
+        colorButton.clipsToBounds = true
+        colorButton.layer.masksToBounds = true
+        colorButton.layer.cornerRadius = colorButton.frame.width / 2
+        colorButton.layer.borderColor = UIColor(ciColor: .gray).cgColor
+        colorButton.layer.backgroundColor = UIColor(ciColor: .white ).cgColor
+        colorButton.layer.borderWidth = 1
         colorButton.addTarget(self, action: #selector(didTapSelectColor), for: .touchUpInside)
     
         let buttons = [doneButton, cancelButton]
@@ -109,7 +112,6 @@ extension TextEditorViewController {
     
     @objc private func didTapDoneButton() {
         self.text = textField.text!
-        print("\(text)")
         navigationController?.dismiss(animated: true, completion: nil)
         
     }
