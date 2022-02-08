@@ -15,6 +15,7 @@ final class HomeViewController: UIViewController {
     private let settingsButton = UIButton(type: .system)
     private let menuBar = MenuBar()
     private let faceMaskMaterialMenu = MaterialMenuView()
+    private let arToolsView = ToolsView()
     
     private var viewModel: HomeViewModelProtocol!
     var arView = ARView()
@@ -72,9 +73,10 @@ extension HomeViewController {
     private func setUpLayout() {
         view.addSubViews(
             arView,
-            settingsButton,
             menuBar,
-            faceMaskMaterialMenu
+            faceMaskMaterialMenu,
+            settingsButton,
+            arToolsView
         )
         
         arView.snp.makeConstraints {
@@ -98,9 +100,18 @@ extension HomeViewController {
             $0.bottom.equalTo(menuBar.snp.top)
             $0.leading.trailing.equalToSuperview()
         }
+
+        arToolsView.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(20.0)
+            $0.centerY.equalTo(settingsButton.snp.centerY)
+            $0.height.equalTo(30.0)
+            $0.width.equalTo(80.0)
+        }
     }
     
     private func setUpViews() {
+        navigationController?.isNavigationBarHidden = true
+        
         arView.delegate = self
         arView.scene = SCNScene()
         arView.autoenablesDefaultLighting = true
@@ -109,14 +120,15 @@ extension HomeViewController {
         arView.addGestureRecognizer(tapRecognizer)
         
         settingsButton.setImage(Asset.common.settings(), for: .normal)
-        settingsButton.tintColor = .primaryGray
-        
+        settingsButton.tintColor = .white
+
         faceMaskMaterialMenu.isHidden = true
         faceMaskMaterialMenu.delegate = self
+
+        arToolsView.isHidden = true
+        arToolsView.delegate = self
         
         menuBar.delegate = self
-        
-        view.bringSubviewToFront(settingsButton)
     }
     
     private func showFaceMaskMaterialMenu() {
@@ -142,25 +154,29 @@ extension HomeViewController {
             self.view.layoutIfNeeded()
         }
     }
-    
+
+    private func hideARTools() {
+        arToolsView.isHidden = true
+        arView.hideAllHighlights()
+        hideFaceMaskMaterialMenu()
+    }
+
     @objc private func didTapARView(_ sender: UITapGestureRecognizer) {
+        hideARTools()
+
         let location = sender.location(in: arView)
         
         guard let nodeHitTest = arView.hitTest(location, options: nil).first
-        else {
-            if !faceMaskMaterialMenu.isHidden {
-                hideFaceMaskMaterialMenu()
-            }
-            return
-        }
+        else { return }
         let hitNode = nodeHitTest.node
         
         if hitNode.name == "mainNode",
-           ((hitNode.geometry?.firstMaterial?.diffuse.contents as? UIImage) != nil),
-           faceMaskMaterialMenu.isHidden {
+           ((hitNode.geometry?.firstMaterial?.diffuse.contents as? UIImage) != nil) {
             showFaceMaskMaterialMenu()
-        } else {
-            hideFaceMaskMaterialMenu()
+        } else if let node = hitNode as? FaceNode {
+            arView.showHighlight(node)
+            arToolsView.node = hitNode
+            arToolsView.isHidden = false
         }
     }
 }
@@ -254,6 +270,7 @@ extension HomeViewController: DrawingBoardDelegate {
         arView.addNode(from: viewModel)
         
         if isFaceMask {
+            hideARTools()
             faceMaskMaterialMenu.resetValue()
             showFaceMaskMaterialMenu()
         }
@@ -300,5 +317,20 @@ extension HomeViewController: TextEditorDelegate {
         let viewModel = FaceNodeViewModel(node: node)
         
         arView.addNode(from: viewModel)
+    }
+}
+
+// MARK: - ToolsViewDelegate
+
+extension HomeViewController: ToolsViewDelegate {
+
+    func didTapEditButton(_ node: SCNNode) {
+        guard let node = node as? FaceNode else { return }
+    }
+
+    func didTapRemoveButton(_ node: SCNNode) {
+        guard let node = node as? FaceNode else { return }
+        arView.removeNode(node)
+        hideARTools()
     }
 }

@@ -32,6 +32,9 @@ class DrawingNodeViewModel: FaceNodeViewModelProtocol {
                 plane.firstMaterial?.diffuse.contents = image
                 plane.firstMaterial?.isDoubleSided = true
             }
+
+            addHighlightNode()
+            hideHighlight()
         }
     }
 

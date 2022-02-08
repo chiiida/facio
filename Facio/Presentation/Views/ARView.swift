@@ -29,6 +29,13 @@ final class ARView: ARSCNView {
         nodeViewModels.append(viewModel)
     }
 
+    func removeNode(_ node: FaceNode) {
+        if let index = nodeViewModels.firstIndex(where: { $0.node == node }) {
+            nodeViewModels.remove(at: index)
+            node.removeFromParentNode()
+        }
+    }
+
     func updateFeatures(using anchor: ARFaceAnchor) {
         nodeViewModels.forEach { viewModel in
             let node = viewModel.node
@@ -53,5 +60,17 @@ final class ARView: ARSCNView {
         }) else { return }
 
         faceMaskViewModel.updateMaterial(with: material)
+    }
+
+    func showHighlight(_ node: FaceNode) {
+        if let viewModel = nodeViewModels.first(where: { $0.node == node }) {
+            viewModel.showHighlight()
+        }
+    }
+
+    func hideAllHighlights() {
+        nodeViewModels.forEach {
+            $0.hideHighlight()
+        }
     }
 }
