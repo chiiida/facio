@@ -10,9 +10,20 @@ import SceneKit
 class FaceNode: SCNNode {
 
     var indices: [Int]
+    var image: UIImage?
+    var width: CGFloat?
+    var height: CGFloat?
+    var material: SCNMaterial?
 
-    init(at indices: [Int], width: CGFloat = 0.1, height: CGFloat = 0.1) {
+    init(
+        at indices: [Int],
+        width: CGFloat = 0.1,
+        height: CGFloat = 0.1
+    ) {
         self.indices = indices
+        self.width = width
+        self.height = height
+        self.material = SCNMaterial()
 
         super.init()
 
@@ -34,14 +45,5 @@ extension FaceNode {
     func updatePosition(for vectors: [vector_float3]) {
         let newPos = vectors.reduce(vector_float3(), +) / Float(vectors.count)
         position = SCNVector3(newPos)
-    }
-
-    func addImage(image: UIImage) {
-        if let plane = geometry as? SCNPlane {
-            plane.width = image.size.width / 5_000
-            plane.height = image.size.height / 5_000
-            plane.firstMaterial?.diffuse.contents = image
-            plane.firstMaterial?.isDoubleSided = true
-        }
     }
 }

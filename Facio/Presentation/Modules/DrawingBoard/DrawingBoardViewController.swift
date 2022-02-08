@@ -11,16 +11,18 @@ import LabelSwitch
 
 protocol DrawingBoardDelegate: AnyObject {
 
-    func didFinishDrawing(_ image: UIImage)
+    func didFinishDrawing(_ image: UIImage, isFaceMask: Bool)
 }
 
 final class DrawingBoardViewController: UIViewController {
 
     private let canvasView = PKCanvasView(frame: .zero)
+    private let underlayingView = UIView()
     private let undoButton = UIButton(type: .system)
     private let doneButton = UIButton(type: .system)
     private let clearButton = UIButton(type: .system)
     private let cancelButton = UIButton(type: .system)
+    private let faceMeshImageView = UIImageView()
 
     private var toggleSwitch = LabelSwitch()
     private var toolPicker: PKToolPicker?
@@ -59,13 +61,28 @@ extension DrawingBoardViewController {
 
     private func setUpLayout() {
         view.addSubViews(
-            canvasView
+            underlayingView,
+            canvasView,
+            faceMeshImageView
         )
+
+        underlayingView.snp.makeConstraints {
+            $0.top.equalTo(view.snp.topMargin).inset(15.0)
+            $0.leading.trailing.equalToSuperview().inset(15.0)
+            $0.bottom.equalToSuperview().inset(120.0.bottomSafeAreaAdjusted)
+        }
 
         canvasView.snp.makeConstraints {
             $0.top.equalTo(view.snp.topMargin).inset(15.0)
             $0.leading.trailing.equalToSuperview().inset(15.0)
             $0.bottom.equalToSuperview().inset(32.0.bottomSafeAreaAdjusted)
+        }
+
+        faceMeshImageView.snp.makeConstraints {
+            $0.center.equalTo(underlayingView.snp.center)
+            $0.leading.trailing.equalTo(underlayingView)
+            $0.height.equalTo(faceMeshImageView.snp.width)
+            
         }
     }
 
@@ -73,9 +90,15 @@ extension DrawingBoardViewController {
         navigationController?.navigationItem.hidesBackButton = true
         view.backgroundColor = .lightGray
 
+        underlayingView.backgroundColor = .white
+        underlayingView.layer.cornerRadius = 5.0
+
         canvasView.layer.cornerRadius = 5.0
         canvasView.tool = PKInkingTool(.pen, color: .black, width: 10)
         canvasView.delegate = self
+
+        faceMeshImageView.image = Asset.drawingBoard.faceMesh()
+        faceMeshImageView.isHidden = drawingType == .mask ? false : true
 
         let lhs = LabelSwitchConfig(
             text: "Mask",
@@ -142,7 +165,7 @@ extension DrawingBoardViewController {
         canvasView.snp.remakeConstraints {
             $0.top.equalTo(view.snp.topMargin).inset(15.0)
             $0.leading.trailing.equalToSuperview().inset(15.0)
-            $0.bottom.equalToSuperview().inset(100.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(120.0.bottomSafeAreaAdjusted)
         }
     }
 
@@ -184,8 +207,30 @@ extension DrawingBoardViewController {
 
     @objc private func didTapDoneButton() {
         guard let pngImage = getPNGImage() else { return }
-        delegate?.didFinishDrawing(pngImage)
+        switch drawingType {
+        case .object:
+            delegate?.didFinishDrawing(pngImage, isFaceMask: false)
+        case .mask:
+            delegate?.didFinishDrawing(pngImage, isFaceMask: true)
+        }
         navigationController?.dismiss(animated: true, completion: nil)
+    }
+
+    private func showFaceMash() {
+        faceMeshImageView.isHidden = false
+        canvasView.snp.remakeConstraints {
+            $0.center.equalTo(faceMeshImageView)
+            $0.edges.equalTo(faceMeshImageView)
+        }
+    }
+
+    private func hideFaceMesh() {
+        faceMeshImageView.isHidden = true
+        canvasView.snp.remakeConstraints {
+            $0.top.equalTo(view.snp.topMargin).inset(15.0)
+            $0.leading.trailing.equalToSuperview().inset(15.0)
+            $0.bottom.equalToSuperview().inset(120.0.bottomSafeAreaAdjusted)
+        }
     }
 }
 
@@ -217,9 +262,14 @@ extension DrawingBoardViewController: PKCanvasViewDelegate {
 extension DrawingBoardViewController: LabelSwitchDelegate {
 
     func switchChangToState(sender: LabelSwitch) {
+        didTapClearButton()
         switch sender.curState {
-        case .L: drawingType = .object
-        case .R: drawingType = .mask
+        case .L:
+            drawingType = .object
+            hideFaceMesh()
+        case .R:
+            drawingType = .mask
+            showFaceMash()
         }
     }
 }
