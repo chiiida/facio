@@ -1,6 +1,7 @@
 {
-  "colors" : [
+  "images" : [
     {
+      "filename" : "color-picker.png.pdf",
       "idiom" : "universal"
     }
   ],
