@@ -7,12 +7,15 @@
 
 import UIKit
 import ARKit
+import SceneKit
 import SnapKit
 
 final class HomeViewController: UIViewController {
     
     private let settingsButton = UIButton(type: .system)
     private let menuBar = MenuBar()
+    
+    private var sceneView = ARSCNView()
     
     private var arView = ARView()
     private var viewModel: HomeViewModelProtocol!
@@ -31,6 +34,7 @@ final class HomeViewController: UIViewController {
         setUpLayout()
         setUpViews()
         bind(to: viewModel)
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -48,6 +52,8 @@ final class HomeViewController: UIViewController {
         let configuration = ARFaceTrackingConfiguration()
         arView.session.run(configuration)
         arView.delegate = self
+        sceneView.delegate = self
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -175,8 +181,8 @@ extension HomeViewController: MenuBarDelegate {
         let textEditorVC = TextEditorViewController()
         let navVC = UINavigationController(rootViewController: textEditorVC)
         navVC.modalPresentationStyle = .overFullScreen
-//        navVC.view.alpha = 0.5
         navigationController?.present(navVC, animated: true)
+        
     }
     
     func didTapBeautificationButton() {
@@ -210,5 +216,24 @@ extension HomeViewController: DrawingBoardDelegate {
         faceNode.name = drawNodeName
         faceNode.addImage(image: image)
         arView.addNode(faceNode)
+    }
+}
+
+// MARK: - TextEditorDelegate
+
+extension HomeViewController: TextEditorDelegate {
+    func didFinishTyping(_ text: String, color: UIColor) {
+        let typedText = SCNText(string: text, extrusionDepth: 0.2)
+        let material = SCNMaterial()
+        material.diffuse.contents = color
+        typedText.materials = [material]
+        
+        let node = SCNNode()
+        node.position = SCNVector3(x: 10, y: 20, z: -0.1)
+        node.scale = SCNVector3(x: 10, y: 20, z: 0.1)
+        node.geometry = typedText
+        
+        sceneView.scene.rootNode.addChildNode(node)
+        
     }
 }

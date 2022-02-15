@@ -10,9 +10,15 @@ import SceneKit
 import ARKit
 import Alderis
 
+protocol TextEditorDelegate: AnyObject {
+
+    func didFinishTyping(_ text: String, color: UIColor)
+}
+
 final class TextEditorViewController: UIViewController, ColorPickerDelegate {
     
     private var text = " "
+    private var color = UIColor()
     private let textField = UITextView()
     private let colorBar = UIView()
     private let doneButton = UIButton(type: .system)
@@ -24,7 +30,8 @@ final class TextEditorViewController: UIViewController, ColorPickerDelegate {
     private let yellowColor = UIButton(type: .custom)
     private let redColor = UIButton(type: .custom)
     
-    
+    weak var delegate: TextEditorDelegate?
+        
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -88,7 +95,7 @@ extension TextEditorViewController {
         textField.autocapitalizationType = .words
         textField.textAlignment = .center
     }
-
+    
     private func setUpViews() {
         navigationController?.navigationItem.hidesBackButton = true
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
@@ -130,38 +137,42 @@ extension TextEditorViewController {
             $0.bottom.equalToSuperview().inset(0.0.bottomSafeAreaAdjusted)
         }
         
+        setUpColorButton()
+    }
+    
+    private func setUpColorButton() {
         blackColor.snp.makeConstraints {
             $0.height.width.equalTo(35.0)
-            $0.bottom.equalToSuperview().inset(70.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(80.0.bottomSafeAreaAdjusted)
             $0.leading.equalToSuperview().inset(50.0)
         }
         
         blueColor.snp.makeConstraints {
             $0.height.width.equalTo(35.0)
-            $0.bottom.equalToSuperview().inset(70.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(80.0.bottomSafeAreaAdjusted)
             $0.leading.equalToSuperview().inset(100.0)
         }
         
         greenColor.snp.makeConstraints {
             $0.height.width.equalTo(35.0)
-            $0.bottom.equalToSuperview().inset(70.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(80.0.bottomSafeAreaAdjusted)
             $0.leading.equalToSuperview().inset(150.0)
         }
         
         yellowColor.snp.makeConstraints {
             $0.height.width.equalTo(35.0)
-            $0.bottom.equalToSuperview().inset(70.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(80.0.bottomSafeAreaAdjusted)
             $0.leading.equalToSuperview().inset(200.0)
         }
         redColor.snp.makeConstraints {
             $0.height.width.equalTo(35.0)
-            $0.bottom.equalToSuperview().inset(70.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(80.0.bottomSafeAreaAdjusted)
             $0.leading.equalToSuperview().inset(250.0)
         }
         
         colorButton.snp.makeConstraints {
             $0.height.width.equalTo(35.0)
-            $0.bottom.equalToSuperview().inset(70.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(80.0.bottomSafeAreaAdjusted)
             $0.leading.equalToSuperview().inset(300.0)
         }
         
@@ -188,28 +199,35 @@ extension TextEditorViewController {
     
     @objc private func didTapDoneButton() {
         self.text = textField.text!
+        delegate?.didFinishTyping(self.text, color: self.color)
+        print("\(self.text)")
         navigationController?.dismiss(animated: true, completion: nil)
         
     }
     
     @objc private func didTapBlackColor() {
         textField.textColor = .black
+        self.color = .black
     }
     
     @objc private func didTapBlueColor() {
         textField.textColor = .systemBlue
+        self.color = .systemBlue
     }
     
     @objc private func didTapGreenColor() {
         textField.textColor = .systemGreen
+        self.color = .systemGreen
     }
     
     @objc private func didTapYellowColor() {
         textField.textColor = .systemYellow
+        self.color = .systemYellow
     }
     
     @objc private func didTapRedColor() {
         textField.textColor = .red
+        self.color = .red
     }
     
     @objc private func didTapSelectColor() {
@@ -222,12 +240,14 @@ extension TextEditorViewController {
     @objc(colorPicker:didSelectColor:)
     func colorPicker(_ colorPicker: ColorPickerViewController, didSelect selectedColor: UIColor) {
         textField.textColor = selectedColor
+        self.color = selectedColor
         colorButton.layer.backgroundColor = selectedColor.cgColor
     }
     
     @objc(colorPicker:didAcceptColor:)
     func colorPicker(_ colorPicker: ColorPickerViewController, didAccept selectedColor: UIColor) {
         textField.textColor = selectedColor
+        self.color = selectedColor
         colorButton.layer.backgroundColor = selectedColor.cgColor
     }
 }
@@ -235,7 +255,7 @@ extension TextEditorViewController {
 extension UIViewController {
     
     func dismissKeyboard() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer( target: self, action:    #selector(UIViewController.dismissKeyboardTouchOutside))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer( target: self, action: #selector(UIViewController.dismissKeyboardTouchOutside))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
