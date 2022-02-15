@@ -34,7 +34,7 @@ final class HomeViewController: UIViewController {
         setUpLayout()
         setUpViews()
         bind(to: viewModel)
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -222,6 +222,7 @@ extension HomeViewController: DrawingBoardDelegate {
 // MARK: - TextEditorDelegate
 
 extension HomeViewController: TextEditorDelegate {
+    
     func didFinishTyping(_ text: String, color: UIColor) {
         let typedText = SCNText(string: text, extrusionDepth: 0.2)
         let material = SCNMaterial()
@@ -229,11 +230,12 @@ extension HomeViewController: TextEditorDelegate {
         typedText.materials = [material]
         
         let node = SCNNode()
-        node.position = SCNVector3(x: 10, y: 20, z: -0.1)
-        node.scale = SCNVector3(x: 10, y: 20, z: 0.1)
+        node.position = SCNVector3(x: 0, y: 0, z: -0.1)
+        node.scale = SCNVector3(x: 0, y: 0, z: 0.1)
         node.geometry = typedText
         
         sceneView.scene.rootNode.addChildNode(node)
+        sceneView.automaticallyUpdatesLighting = true
         
     }
 }
