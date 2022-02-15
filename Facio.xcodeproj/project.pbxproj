@@ -37,6 +37,11 @@
 		433537582795785C0057DC75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 433537572795785C0057DC75 /* GoogleService-Info.plist */; };
 		433C33BF27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433C33BE27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift */; };
 		4344CD6A27954A880070B938 /* FeatureIndices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344CD6927954A880070B938 /* FeatureIndices.swift */; };
+		438CE38927BBA5D6004E646E /* HomeViewController+ToolsViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438CE38827BBA5D6004E646E /* HomeViewController+ToolsViewDelegate.swift */; };
+		438CE38B27BBA5FE004E646E /* HomeViewController+MenuBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438CE38A27BBA5FE004E646E /* HomeViewController+MenuBarDelegate.swift */; };
+		438CE38D27BBA623004E646E /* HomeViewController+UIImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438CE38C27BBA623004E646E /* HomeViewController+UIImagePickerControllerDelegate.swift */; };
+		438CE38F27BBA643004E646E /* HomeViewContoller+DrawingBoardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438CE38E27BBA643004E646E /* HomeViewContoller+DrawingBoardDelegate.swift */; };
+		438CE39127BBA673004E646E /* HomeViewController+MaterialMenuViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438CE39027BBA673004E646E /* HomeViewController+MaterialMenuViewDelegate.swift */; };
 		439C083027B2A63900F73A85 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439C082F27B2A63900F73A85 /* ToolsView.swift */; };
 		43AC807C27A7081900983CFC /* DrawingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AC807B27A7081900983CFC /* DrawingNode.swift */; };
 		43B0894727A9AC3200E93879 /* MaterialMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B0894627A9AC3200E93879 /* MaterialMenuView.swift */; };
@@ -120,6 +125,11 @@
 		433537572795785C0057DC75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		433C33BE27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+ARSCNViewDelegate.swift"; sourceTree = "<group>"; };
 		4344CD6927954A880070B938 /* FeatureIndices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureIndices.swift; sourceTree = "<group>"; };
+		438CE38827BBA5D6004E646E /* HomeViewController+ToolsViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+ToolsViewDelegate.swift"; sourceTree = "<group>"; };
+		438CE38A27BBA5FE004E646E /* HomeViewController+MenuBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+MenuBarDelegate.swift"; sourceTree = "<group>"; };
+		438CE38C27BBA623004E646E /* HomeViewController+UIImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+UIImagePickerControllerDelegate.swift"; sourceTree = "<group>"; };
+		438CE38E27BBA643004E646E /* HomeViewContoller+DrawingBoardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewContoller+DrawingBoardDelegate.swift"; sourceTree = "<group>"; };
+		438CE39027BBA673004E646E /* HomeViewController+MaterialMenuViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+MaterialMenuViewDelegate.swift"; sourceTree = "<group>"; };
 		439C082F27B2A63900F73A85 /* ToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsView.swift; sourceTree = "<group>"; };
 		43AC807B27A7081900983CFC /* DrawingNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingNode.swift; sourceTree = "<group>"; };
 		43B0894627A9AC3200E93879 /* MaterialMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialMenuView.swift; sourceTree = "<group>"; };
@@ -464,6 +474,11 @@
 			isa = PBXGroup;
 			children = (
 				433C33BE27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift */,
+				438CE38827BBA5D6004E646E /* HomeViewController+ToolsViewDelegate.swift */,
+				438CE38A27BBA5FE004E646E /* HomeViewController+MenuBarDelegate.swift */,
+				438CE38C27BBA623004E646E /* HomeViewController+UIImagePickerControllerDelegate.swift */,
+				438CE38E27BBA643004E646E /* HomeViewContoller+DrawingBoardDelegate.swift */,
+				438CE39027BBA673004E646E /* HomeViewController+MaterialMenuViewDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -930,6 +945,7 @@
 			files = (
 				43FF0693278F4D1500C3A6EA /* UIColor+Application.swift in Sources */,
 				43ED95AF2790107900D29F8B /* HomeViewModel.swift in Sources */,
+				438CE38F27BBA643004E646E /* HomeViewContoller+DrawingBoardDelegate.swift in Sources */,
 				43ED95BE2790431900D29F8B /* MenuBar.swift in Sources */,
 				439C083027B2A63900F73A85 /* ToolsView.swift in Sources */,
 				43FF0689278F47F600C3A6EA /* UIView+SubView.swift in Sources */,
@@ -943,13 +959,17 @@
 				0EBF01CD27A9B071004D1439 /* TextEditorViewController.swift in Sources */,
 				43ED95B727903DCE00D29F8B /* UIFont+Size.swift in Sources */,
 				431F18E427AAED6400E851D1 /* Slider.swift in Sources */,
+				438CE38B27BBA5FE004E646E /* HomeViewController+MenuBarDelegate.swift in Sources */,
 				43ED95B2279019CA00D29F8B /* UIControl+ActionHandler.swift in Sources */,
+				438CE38927BBA5D6004E646E /* HomeViewController+ToolsViewDelegate.swift in Sources */,
 				43ED95C7279069B600D29F8B /* DependencyFactory+ViewModelFactoryProtocol.swift in Sources */,
 				430CB49327A86718005CB711 /* FaceNodeViewModel.swift in Sources */,
 				430CB49527A86F51005CB711 /* DrawingNodeViewModel.swift in Sources */,
 				43AC807C27A7081900983CFC /* DrawingNode.swift in Sources */,
 				43EC1E4B2791D139008CF316 /* DrawingBoardViewController.swift in Sources */,
+				438CE38D27BBA623004E646E /* HomeViewController+UIImagePickerControllerDelegate.swift in Sources */,
 				43B0894727A9AC3200E93879 /* MaterialMenuView.swift in Sources */,
+				438CE39127BBA673004E646E /* HomeViewController+MaterialMenuViewDelegate.swift in Sources */,
 				4344CD6A27954A880070B938 /* FeatureIndices.swift in Sources */,
 				43FF067A278F437900C3A6EA /* R.swift+Typealias.swift in Sources */,
 				43FF0690278F4A5800C3A6EA /* Device.swift in Sources */,

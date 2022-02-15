@@ -130,8 +130,33 @@ extension HomeViewController {
         
         menuBar.delegate = self
     }
-    
-    private func showFaceMaskMaterialMenu() {
+
+    @objc private func didTapARView(_ sender: UITapGestureRecognizer) {
+        hideARTools()
+
+        let location = sender.location(in: arView)
+        
+        guard let nodeHitTest = arView.hitTest(location, options: nil).first
+        else { return }
+        let hitNode = nodeHitTest.node
+
+        arToolsView.node = hitNode
+        arToolsView.isHidden = false
+
+        if hitNode.name == "mainNode",
+           ((hitNode.geometry?.firstMaterial?.diffuse.contents as? UIImage) != nil) {
+            showFaceMaskMaterialMenu()
+        } else if let node = hitNode as? FaceNode {
+            arView.showHighlight(node)
+        }
+    }
+}
+
+// Shared Functions
+
+extension HomeViewController {
+
+    func showFaceMaskMaterialMenu() {
         faceMaskMaterialMenu.show { [weak self] in
             guard let self = self else { return }
             self.faceMaskMaterialMenu.snp.remakeConstraints {
@@ -142,8 +167,8 @@ extension HomeViewController {
             self.view.layoutIfNeeded()
         }
     }
-    
-    private func hideFaceMaskMaterialMenu() {
+
+    func hideFaceMaskMaterialMenu() {
         faceMaskMaterialMenu.hide { [weak self] in
             guard let self = self else { return }
             self.faceMaskMaterialMenu.snp.remakeConstraints {
@@ -153,142 +178,6 @@ extension HomeViewController {
             }
             self.view.layoutIfNeeded()
         }
-    }
-
-    private func hideARTools() {
-        arToolsView.isHidden = true
-        arView.hideAllHighlights()
-        hideFaceMaskMaterialMenu()
-    }
-
-    @objc private func didTapARView(_ sender: UITapGestureRecognizer) {
-        hideARTools()
-
-        let location = sender.location(in: arView)
-        
-        guard let nodeHitTest = arView.hitTest(location, options: nil).first
-        else { return }
-        let hitNode = nodeHitTest.node
-        
-        if hitNode.name == "mainNode",
-           ((hitNode.geometry?.firstMaterial?.diffuse.contents as? UIImage) != nil) {
-            showFaceMaskMaterialMenu()
-        } else if let node = hitNode as? FaceNode {
-            arView.showHighlight(node)
-            arToolsView.node = hitNode
-            arToolsView.isHidden = false
-        }
-    }
-}
-
-// MARK: - MenuBarDelegate
-
-extension HomeViewController: MenuBarDelegate {
-    
-    func didTapCameraButton(state: MenuBar.CameraMode) {
-        // TODO: implement in integration
-    }
-    
-    func didTapRecordButton() {
-        // TODO: implement in integration
-    }
-    
-    func didTapImageButton() {
-        let imagepickerVC = ImagePickerViewController()
-        imagepickerVC.delegate = self
-        present(imagepickerVC, animated: true, completion: nil)
-    }
-    
-    func didTapDrawButton() {
-        let drawingBoardVC = DrawingBoardViewController()
-        drawingBoardVC.delegate = self
-        let navVC = UINavigationController(rootViewController: drawingBoardVC)
-        navVC.modalPresentationStyle = .fullScreen
-        navigationController?.present(navVC, animated: true)
-    }
-    
-    func didTapTextButton() {
-        let textEditorVC = TextEditorViewController()
-        textEditorVC.delegate = self
-        let navVC = UINavigationController(rootViewController: textEditorVC)
-        navVC.modalPresentationStyle = .overFullScreen
-        navigationController?.present(navVC, animated: true)
-        
-    }
-    
-    func didTapBeautificationButton() {
-        // TODO: implement in integration
-    }
-}
-
-// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
-extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        guard let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage ??
-                info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-        
-        let imageToDisplay = fixOrientation(img: pickedImage)
-        let faceNode = FaceNode(at: FeatureIndices.nose)
-        let timestamp = Date().timeIntervalSince1970
-        let imageNodeName = "image\(timestamp)"
-        faceNode.name = imageNodeName
-        let viewModel = FaceNodeViewModel(node: faceNode)
-        viewModel.addImage(imageToDisplay)
-        arView.addNode(from: viewModel)
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func fixOrientation(img: UIImage) -> UIImage {
-        if (img.imageOrientation == .up) {
-            return img
-        }
-        
-        UIGraphicsBeginImageContextWithOptions(img.size, false, img.scale)
-        let rect = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
-        img.draw(in: rect)
-        
-        let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        return normalizedImage
-    }
-    
-}
-
-// MARK: - DrawingBoardDelegate
-
-extension HomeViewController: DrawingBoardDelegate {
-    
-    func didFinishDrawing(_ image: UIImage, isFaceMask: Bool) {
-        let drawingNode = DrawingNode(at: FeatureIndices.nose, isFaceMask: isFaceMask)
-        let timestamp = Date().timeIntervalSince1970
-        let drawNodeName = "draw\(timestamp)"
-        drawingNode.name = drawNodeName
-        let viewModel = DrawingNodeViewModel(node: drawingNode)
-        viewModel.addImage(image)
-        arView.addNode(from: viewModel)
-        
-        if isFaceMask {
-            hideARTools()
-            faceMaskMaterialMenu.resetValue()
-            showFaceMaskMaterialMenu()
-        }
-    }
-}
-
-// MARK: - MaterialMenuViewDelegate
-
-extension HomeViewController: MaterialMenuViewDelegate {
-    
-    func didUpdateMaterial(type: MaterialMenuView.MaterialType, value: Float) {
-        let material = SCNMaterial()
-        switch type {
-        case .metalness: material.metalness.contents = value
-        case .roughness: material.roughness.contents = value
-        case .shininess: material.shininess = CGFloat(value)
-        }
-        arView.updateFaceMask(with: material)
     }
 }
 
@@ -324,13 +213,13 @@ extension HomeViewController: TextEditorDelegate {
 
 extension HomeViewController: ToolsViewDelegate {
 
-    func didTapEditButton(_ node: SCNNode) {
-        guard let node = node as? FaceNode else { return }
+    func hideARTools() {
+        arToolsView.isHidden = true
+        arView.hideAllHighlights()
+        hideFaceMaskMaterialMenu()
     }
 
-    func didTapRemoveButton(_ node: SCNNode) {
-        guard let node = node as? FaceNode else { return }
-        arView.removeNode(node)
-        hideARTools()
+    func resetFaceMaskMenu() {
+        faceMaskMaterialMenu.resetValue()
     }
 }

@@ -29,7 +29,11 @@ final class ARView: ARSCNView {
         nodeViewModels.append(viewModel)
     }
 
-    func removeNode(_ node: FaceNode) {
+    func removeNode(_ node: SCNNode) {
+        if node == mainNode {
+            mainNode?.geometry?.firstMaterial?.diffuse.contents = nil
+            mainNode?.geometry?.firstMaterial?.transparency = 0.0
+        }
         if let index = nodeViewModels.firstIndex(where: { $0.node == node }) {
             nodeViewModels.remove(at: index)
             node.removeFromParentNode()
