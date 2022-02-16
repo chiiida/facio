@@ -15,8 +15,6 @@ final class HomeViewController: UIViewController {
     private let settingsButton = UIButton(type: .system)
     private let menuBar = MenuBar()
     
-    private var sceneView = ARSCNView()
-    
     private var arView = ARView()
     private var viewModel: HomeViewModelProtocol!
     
@@ -52,8 +50,6 @@ final class HomeViewController: UIViewController {
         let configuration = ARFaceTrackingConfiguration()
         arView.session.run(configuration)
         arView.delegate = self
-        sceneView.delegate = self
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -179,6 +175,7 @@ extension HomeViewController: MenuBarDelegate {
     
     func didTapTextButton() {
         let textEditorVC = TextEditorViewController()
+        textEditorVC.delegate = self
         let navVC = UINavigationController(rootViewController: textEditorVC)
         navVC.modalPresentationStyle = .overFullScreen
         navigationController?.present(navVC, animated: true)
@@ -226,16 +223,16 @@ extension HomeViewController: TextEditorDelegate {
     func didFinishTyping(_ text: String, color: UIColor) {
         let typedText = SCNText(string: text, extrusionDepth: 0.2)
         let material = SCNMaterial()
-        material.diffuse.contents = color
+        material.diffuse.contents = color.cgColor
         typedText.materials = [material]
         
-        let node = SCNNode()
-        node.position = SCNVector3(x: 0, y: 0, z: -0.1)
-        node.scale = SCNVector3(x: 0, y: 0, z: 0.1)
+        let node = FaceNode(at: FeatureIndices.hat)
+        let timestamp = Date().timeIntervalSince1970
+        let textNodeName = "text\(timestamp)"
+        node.name = textNodeName
+        node.scale = SCNVector3(x: 0.005, y: 0.005, z: 0.005)
         node.geometry = typedText
-        
-        sceneView.scene.rootNode.addChildNode(node)
-        sceneView.automaticallyUpdatesLighting = true
-        
+
+        arView.addNode(node)
     }
 }

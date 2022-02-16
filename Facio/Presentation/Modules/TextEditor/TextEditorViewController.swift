@@ -18,7 +18,7 @@ protocol TextEditorDelegate: AnyObject {
 final class TextEditorViewController: UIViewController, ColorPickerDelegate {
     
     private var text = " "
-    private var color = UIColor()
+    private var color = UIColor.white
     private let textField = UITextView()
     private let colorBar = UIView()
     private let doneButton = UIButton(type: .system)
@@ -207,27 +207,27 @@ extension TextEditorViewController {
     
     @objc private func didTapBlackColor() {
         textField.textColor = .black
-        self.color = .black
+        self.color = UIColor.black
     }
     
     @objc private func didTapBlueColor() {
         textField.textColor = .systemBlue
-        self.color = .systemBlue
+        self.color = UIColor.systemBlue
     }
     
     @objc private func didTapGreenColor() {
         textField.textColor = .systemGreen
-        self.color = .systemGreen
+        self.color = UIColor.systemGreen
     }
     
     @objc private func didTapYellowColor() {
         textField.textColor = .systemYellow
-        self.color = .systemYellow
+        self.color = UIColor.systemYellow
     }
     
     @objc private func didTapRedColor() {
         textField.textColor = .red
-        self.color = .red
+        self.color = UIColor.red
     }
     
     @objc private func didTapSelectColor() {
