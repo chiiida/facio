@@ -11,15 +11,17 @@ import ARKit
 import Alderis
 
 protocol TextEditorDelegate: AnyObject {
-
-    func didFinishTyping(_ text: String, color: UIColor)
+    
+    func didFinishTyping(_ text: String, color: UIColor, size: CGFloat)
 }
 
 final class TextEditorViewController: UIViewController, ColorPickerDelegate {
     
     private var text = " "
+    private var fontSize = CGFloat(30.0)
     private var color = UIColor.white
     private let textField = UITextView()
+    private let fontSlider = UISlider()
     private let colorBar = UIView()
     private let doneButton = UIButton(type: .system)
     private let cancelButton = UIButton(type: .system)
@@ -31,7 +33,7 @@ final class TextEditorViewController: UIViewController, ColorPickerDelegate {
     private let redColor = UIButton(type: .custom)
     
     weak var delegate: TextEditorDelegate?
-        
+    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -58,7 +60,7 @@ final class TextEditorViewController: UIViewController, ColorPickerDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        colorBar.layer.backgroundColor = UIColor(ciColor: CIColor(color: .systemGray5) ).cgColor
+        colorBar.layer.backgroundColor = UIColor(ciColor: CIColor(color: .systemGray6) ).cgColor
         blackColor.layer.backgroundColor = UIColor(ciColor: .black ).cgColor
         blueColor.layer.backgroundColor = UIColor(ciColor: CIColor(color: .systemBlue) ).cgColor
         greenColor.layer.backgroundColor = UIColor(ciColor: CIColor(color: .systemGreen) ).cgColor
@@ -91,7 +93,7 @@ extension TextEditorViewController {
         textField.center = self.view.center
         textField.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
         textField.textColor = .white
-        textField.font = UIFont.systemFont(ofSize: 30)
+        textField.font = UIFont.systemFont(ofSize: self.fontSize)
         textField.autocapitalizationType = .words
         textField.textAlignment = .center
     }
@@ -127,8 +129,23 @@ extension TextEditorViewController {
             greenColor,
             yellowColor,
             redColor,
-            colorButton
+            colorButton,
+            fontSlider
         )
+        // fontSlider
+        fontSlider.snp.makeConstraints {
+            $0.width.equalTo(100)
+            $0.bottom.equalToSuperview().inset(120.0.bottomSafeAreaAdjusted)
+            $0.leading.trailing.equalToSuperview().inset(50.0)
+        }
+        fontSlider.minimumValue = 10
+        fontSlider.maximumValue = 100
+        fontSlider.minimumValueImage = Asset.common.smallText()
+        fontSlider.maximumValueImage = Asset.common.largeText()
+        fontSlider.minimumTrackTintColor = .systemGray3
+        fontSlider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
+        fontSlider.isContinuous = true
+        
         // colorBar
         colorBar.snp.makeConstraints {
             $0.width.equalToSuperview()
@@ -143,36 +160,36 @@ extension TextEditorViewController {
     private func setUpColorButton() {
         blackColor.snp.makeConstraints {
             $0.height.width.equalTo(35.0)
-            $0.bottom.equalToSuperview().inset(80.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(60.0.bottomSafeAreaAdjusted)
             $0.leading.equalToSuperview().inset(50.0)
         }
         
         blueColor.snp.makeConstraints {
             $0.height.width.equalTo(35.0)
-            $0.bottom.equalToSuperview().inset(80.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(60.0.bottomSafeAreaAdjusted)
             $0.leading.equalToSuperview().inset(100.0)
         }
         
         greenColor.snp.makeConstraints {
             $0.height.width.equalTo(35.0)
-            $0.bottom.equalToSuperview().inset(80.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(60.0.bottomSafeAreaAdjusted)
             $0.leading.equalToSuperview().inset(150.0)
         }
         
         yellowColor.snp.makeConstraints {
             $0.height.width.equalTo(35.0)
-            $0.bottom.equalToSuperview().inset(80.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(60.0.bottomSafeAreaAdjusted)
             $0.leading.equalToSuperview().inset(200.0)
         }
         redColor.snp.makeConstraints {
             $0.height.width.equalTo(35.0)
-            $0.bottom.equalToSuperview().inset(80.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(60.0.bottomSafeAreaAdjusted)
             $0.leading.equalToSuperview().inset(250.0)
         }
         
         colorButton.snp.makeConstraints {
             $0.height.width.equalTo(35.0)
-            $0.bottom.equalToSuperview().inset(80.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(60.0.bottomSafeAreaAdjusted)
             $0.leading.equalToSuperview().inset(300.0)
         }
         
@@ -193,16 +210,19 @@ extension TextEditorViewController {
         ]
     }
     
+    @objc func sliderValueDidChange(_ sender : UISlider!) {
+        self.fontSize = CGFloat(sender.value)
+        textField.font = UIFont.systemFont(ofSize: CGFloat(sender.value))
+    }
+    
     @objc private func didTapCancelButton() {
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @objc private func didTapDoneButton() {
         self.text = textField.text!
-        delegate?.didFinishTyping(self.text, color: self.color)
-        print("\(self.text)")
+        delegate?.didFinishTyping(self.text, color: self.color, size: self.fontSize)
         navigationController?.dismiss(animated: true, completion: nil)
-        
     }
     
     @objc private func didTapBlackColor() {
