@@ -11,7 +11,10 @@ import UIKit
 final class ARView: ARSCNView {
 
     private var nodeViewModels = [FaceNodeViewModelProtocol]()
-
+    
+    var lastDragPosition: SCNVector3?
+    var draggingNode: SCNNode?
+    var panStartZ: CGFloat?
     var mainNode: SCNNode?
 
     private func getViewModel(from node: SCNNode) -> FaceNodeViewModelProtocol? {
@@ -69,8 +72,12 @@ final class ARView: ARSCNView {
     }
 
     func updatePosition(for node: FaceNode, with position: SCNVector3) {
-        guard let viewModel = getViewModel(from: node) else { return }
+        guard let viewModel = getViewModel(from: node)
+        else { return }
         viewModel.panPosition = position
+        if position.z > 0.08 || position.z < 0.05 {
+            viewModel.panPosition?.z = 0.07
+        }
     }
 
     func updateFaceMask(with material: SCNMaterial) {

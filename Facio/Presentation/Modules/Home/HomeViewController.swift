@@ -19,10 +19,6 @@ final class HomeViewController: UIViewController {
     
     private var viewModel: HomeViewModelProtocol!
     var arView = ARView()
-
-    var lastDragPosition: SCNVector3?
-    var draggingNode: SCNNode?
-    var panStartZ: CGFloat?
     
     init(viewModel: HomeViewModelProtocol) {
         self.viewModel = viewModel
@@ -165,13 +161,13 @@ extension HomeViewController {
         case .began:
             guard let nodeHitTest = arView.hitTest(location, options: nil).first
             else { return }
-            lastDragPosition = nodeHitTest.localCoordinates
-            draggingNode = nodeHitTest.node
-            panStartZ = CGFloat(arView.projectPoint(nodeHitTest.node.position).z)
+            arView.lastDragPosition = nodeHitTest.localCoordinates
+            arView.draggingNode = nodeHitTest.node
+            arView.panStartZ = CGFloat(arView.projectPoint(nodeHitTest.node.position).z)
         case .changed:
-            guard let lastDragPosition = lastDragPosition,
-                  let draggingNode = draggingNode as? FaceNode,
-                  let panStartZ = panStartZ
+            guard let lastDragPosition = arView.lastDragPosition,
+                  let draggingNode = arView.draggingNode as? FaceNode,
+                  let panStartZ = arView.panStartZ
             else { return }
             let localTouchPosition = arView.unprojectPoint(SCNVector3(location.x, location.y, panStartZ))
             let movementVector = SCNVector3(
@@ -179,11 +175,12 @@ extension HomeViewController {
                 (localTouchPosition.y * -1.0),
                 lastDragPosition.z
             )
+            arView.draggingNode?.localTranslate(by: movementVector)
             arView.updatePosition(for: draggingNode, with: movementVector)
 
-            self.lastDragPosition = localTouchPosition
+            arView.lastDragPosition = localTouchPosition
         case .ended:
-            (lastDragPosition, draggingNode, panStartZ) = (nil, nil, nil)
+            (arView.lastDragPosition, arView.draggingNode, arView.panStartZ) = (nil, nil, nil)
         default:
             break
         }
