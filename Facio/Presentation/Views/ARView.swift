@@ -13,7 +13,7 @@ final class ARView: ARSCNView {
     private var nodeViewModels = [FaceNodeViewModelProtocol]()
     
     var lastDragPosition: SCNVector3?
-    var draggingNode: SCNNode?
+    var selectedNode: SCNNode?
     var panStartZ: CGFloat?
     var mainNode: SCNNode?
 

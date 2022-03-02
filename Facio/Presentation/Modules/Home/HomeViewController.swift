@@ -122,6 +122,9 @@ extension HomeViewController {
         let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didMoveARNode(_:)))
         arView.addGestureRecognizer(panRecognizer)
         
+        let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(didResizeARNode(_:)))
+        arView.addGestureRecognizer(pinchRecognizer)
+        
         settingsButton.setImage(Asset.common.settings(), for: .normal)
         settingsButton.tintColor = .white
 
@@ -152,6 +155,8 @@ extension HomeViewController {
         } else if let node = hitNode as? FaceNode {
             arView.showHighlight(node)
         }
+        
+        arView.selectedNode = hitNode
     }
 
     @objc private func didMoveARNode(_ sender: UIPanGestureRecognizer) {
@@ -162,11 +167,11 @@ extension HomeViewController {
             guard let nodeHitTest = arView.hitTest(location, options: nil).first
             else { return }
             arView.lastDragPosition = nodeHitTest.localCoordinates
-            arView.draggingNode = nodeHitTest.node
+            arView.selectedNode = nodeHitTest.node
             arView.panStartZ = CGFloat(arView.projectPoint(nodeHitTest.node.position).z)
         case .changed:
             guard let lastDragPosition = arView.lastDragPosition,
-                  let draggingNode = arView.draggingNode as? FaceNode,
+                  let draggingNode = arView.selectedNode as? FaceNode,
                   let panStartZ = arView.panStartZ
             else { return }
             let localTouchPosition = arView.unprojectPoint(SCNVector3(location.x, location.y, panStartZ))
@@ -175,14 +180,30 @@ extension HomeViewController {
                 (localTouchPosition.y * -1.0),
                 lastDragPosition.z
             )
-            arView.draggingNode?.localTranslate(by: movementVector)
+            arView.selectedNode?.localTranslate(by: movementVector)
             arView.updatePosition(for: draggingNode, with: movementVector)
 
             arView.lastDragPosition = localTouchPosition
         case .ended:
-            (arView.lastDragPosition, arView.draggingNode, arView.panStartZ) = (nil, nil, nil)
+            (arView.lastDragPosition, arView.selectedNode, arView.panStartZ) = (nil, nil, nil)
         default:
             break
+        }
+    }
+    
+    @objc private func didResizeARNode(_ sender: UIPinchGestureRecognizer) {
+        if let selectedNode = arView.selectedNode, selectedNode.name != "mainNode" {
+            switch sender.state {
+            case .changed:
+                let pinchScaleX = Float(sender.scale) * selectedNode.scale.x
+                let pinchScaleY = Float(sender.scale) * selectedNode.scale.y
+                let pinchScaleZ = Float(sender.scale) * selectedNode.scale.z
+                arView.selectedNode?.scale = SCNVector3(pinchScaleX, pinchScaleY, pinchScaleZ)
+                sender.scale = 1
+            default:
+                break
+            }
+            
         }
     }
 }
