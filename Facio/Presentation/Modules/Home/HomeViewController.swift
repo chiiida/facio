@@ -19,6 +19,10 @@ final class HomeViewController: UIViewController {
     
     private var viewModel: HomeViewModelProtocol!
     var arView = ARView()
+
+    var lastDragPosition: SCNVector3?
+    var draggingNode: SCNNode?
+    var panStartZ: CGFloat?
     
     init(viewModel: HomeViewModelProtocol) {
         self.viewModel = viewModel
@@ -118,6 +122,9 @@ extension HomeViewController {
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapARView(_:)))
         arView.addGestureRecognizer(tapRecognizer)
+
+        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didMoveARNode(_:)))
+        arView.addGestureRecognizer(panRecognizer)
         
         settingsButton.setImage(Asset.common.settings(), for: .normal)
         settingsButton.tintColor = .white
@@ -148,6 +155,37 @@ extension HomeViewController {
             showFaceMaskMaterialMenu()
         } else if let node = hitNode as? FaceNode {
             arView.showHighlight(node)
+        }
+    }
+
+    @objc private func didMoveARNode(_ sender: UIPanGestureRecognizer) {
+        let location = sender.location(in: arView)
+
+        switch sender.state {
+        case .began:
+            guard let nodeHitTest = arView.hitTest(location, options: nil).first
+            else { return }
+            lastDragPosition = nodeHitTest.localCoordinates
+            draggingNode = nodeHitTest.node
+            panStartZ = CGFloat(arView.projectPoint(nodeHitTest.node.position).z)
+        case .changed:
+            guard let lastDragPosition = lastDragPosition,
+                  let draggingNode = draggingNode as? FaceNode,
+                  let panStartZ = panStartZ
+            else { return }
+            let localTouchPosition = arView.unprojectPoint(SCNVector3(location.x, location.y, panStartZ))
+            let movementVector = SCNVector3(
+                (localTouchPosition.x * -1.0) - lastDragPosition.x,
+                (localTouchPosition.y * -1.0),
+                lastDragPosition.z
+            )
+            arView.updatePosition(for: draggingNode, with: movementVector)
+
+            self.lastDragPosition = localTouchPosition
+        case .ended:
+            (lastDragPosition, draggingNode, panStartZ) = (nil, nil, nil)
+        default:
+            break
         }
     }
 }

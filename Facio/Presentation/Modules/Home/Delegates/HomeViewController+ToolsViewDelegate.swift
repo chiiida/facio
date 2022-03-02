@@ -10,7 +10,7 @@ import ARKit
 extension HomeViewController: ToolsViewDelegate {
 
     func didTapEditButton(_ node: SCNNode) {
-        guard let node = node as? FaceNode else { return }
+        // TODO: handle editing drawing
     }
 
     func didTapRemoveButton(_ node: SCNNode) {

@@ -11,16 +11,19 @@ import UIKit
 protocol FaceNodeViewModelProtocol: AnyObject {
 
     var node: FaceNode { get set }
+    var panPosition: SCNVector3? { get set }
 
     func updateMaterial(with material: SCNMaterial)
     func addImage(_ image: UIImage)
     func showHighlight()
     func hideHighlight()
+    func updatePosition(with vector: SCNVector3)
 }
 
 class FaceNodeViewModel: FaceNodeViewModelProtocol {
 
     var node: FaceNode
+    var panPosition: SCNVector3?
 
     init(node: FaceNode) {
         self.node = node
@@ -98,5 +101,9 @@ extension FaceNodeViewModelProtocol {
         highlightningNodes.forEach {
             $0.isHidden = true
         }
+    }
+
+    func updatePosition(with vector: SCNVector3) {
+        node.position = vector
     }
 }
