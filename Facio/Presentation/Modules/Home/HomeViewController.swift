@@ -222,12 +222,11 @@ extension HomeViewController: TextEditorDelegate {
     
     func didFinishTyping(_ text: String, color: UIColor, size: CGFloat) {
         let typedText = SCNText(string: text, extrusionDepth: 0.2)
-//        typedText.font = UIFont.systemFont(ofSize: size)
-        typedText.font = UIFont.monospacedSystemFont(ofSize: size, weight: .regular)
-//        typedText.containerFrame = CGRect(origin: .init(x: 0.0, y: 0.0), size: CGSize(width: 300.0, height: 200.0))
-//        typedText.isWrapped = true
-//        typedText.alignmentMode = "center"
-//        typedText.truncationMode = "middle"
+        typedText.font = UIFont.systemFont(ofSize: size)
+        typedText.containerFrame = CGRect(origin: .init(x: 0.0, y: 0.0), size: CGSize(width: 275.0, height: 300.0))
+        typedText.isWrapped = true
+        typedText.alignmentMode = "center"
+        typedText.truncationMode = "end"
         
         let material = SCNMaterial()
         material.diffuse.contents = color.cgColor

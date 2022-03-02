@@ -22,6 +22,7 @@ final class TextEditorViewController: UIViewController, ColorPickerDelegate {
     private var color = UIColor.white
     private let textField = UITextView()
     private let fontSlider = UISlider()
+    private let navBar = UIView()
     private let colorBar = UIView()
     private let doneButton = UIButton(type: .system)
     private let cancelButton = UIButton(type: .system)
@@ -60,6 +61,7 @@ final class TextEditorViewController: UIViewController, ColorPickerDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        navBar.layer.backgroundColor = UIColor(ciColor: CIColor(color: .systemGray6) ).cgColor
         colorBar.layer.backgroundColor = UIColor(ciColor: CIColor(color: .systemGray6) ).cgColor
         blackColor.layer.backgroundColor = UIColor(ciColor: .black ).cgColor
         blueColor.layer.backgroundColor = UIColor(ciColor: CIColor(color: .systemBlue) ).cgColor
@@ -93,13 +95,13 @@ extension TextEditorViewController {
         textField.center = self.view.center
         textField.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
         textField.textColor = .white
-        textField.font = UIFont.systemFont(ofSize: self.fontSize, weight: <#T##UIFont.Weight#>)
+        textField.font = UIFont.systemFont(ofSize: self.fontSize)
         textField.autocapitalizationType = .words
         textField.textAlignment = .center
     }
     
     private func setUpViews() {
-        navigationController?.navigationItem.hidesBackButton = true
+        navigationController?.navigationItem.hidesBackButton = false
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
         
         setUpHeader()
@@ -108,6 +110,17 @@ extension TextEditorViewController {
     }
     
     private func setUpHeader() {
+        view.addSubview(
+            navBar
+        )
+        
+        navBar.snp.makeConstraints {
+            $0.width.equalToSuperview()
+            $0.height.equalTo(95.0)
+            $0.leading.equalToSuperview().inset(0.0)
+            $0.top.equalToSuperview().inset(0.0.topSafeAreaAdjusted)
+        }
+        
         doneButton.setTitle("Done", for: .normal)
         doneButton.addTarget(self, action: #selector(didTapDoneButton), for: .touchUpInside)
         
@@ -119,6 +132,15 @@ extension TextEditorViewController {
             $0.titleLabel?.font = .regular(ofSize: .small)
             $0.tintColor = .primaryGray
         }
+    }
+    
+    private func setUpNavigationBar() {
+        navigationItem.leftBarButtonItems = [
+            UIBarButtonItem(customView: cancelButton)
+        ]
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(customView: doneButton)
+        ]
     }
     
     private func setUpFooter() {
@@ -148,7 +170,7 @@ extension TextEditorViewController {
     private func setUpFontSlider() {
         fontSlider.snp.makeConstraints {
             $0.width.equalTo(100)
-            $0.bottom.equalToSuperview().inset(90.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(110.0.bottomSafeAreaAdjusted)
             $0.leading.trailing.equalToSuperview().inset(50.0)
         }
         
@@ -165,36 +187,36 @@ extension TextEditorViewController {
     private func setUpColorButton() {
         blackColor.snp.makeConstraints {
             $0.height.width.equalTo(35.0)
-            $0.bottom.equalToSuperview().inset(40.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(50.0.bottomSafeAreaAdjusted)
             $0.leading.equalToSuperview().inset(50.0)
         }
         
         blueColor.snp.makeConstraints {
             $0.height.width.equalTo(35.0)
-            $0.bottom.equalToSuperview().inset(40.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(50.0.bottomSafeAreaAdjusted)
             $0.leading.equalToSuperview().inset(100.0)
         }
         
         greenColor.snp.makeConstraints {
             $0.height.width.equalTo(35.0)
-            $0.bottom.equalToSuperview().inset(40.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(50.0.bottomSafeAreaAdjusted)
             $0.leading.equalToSuperview().inset(150.0)
         }
         
         yellowColor.snp.makeConstraints {
             $0.height.width.equalTo(35.0)
-            $0.bottom.equalToSuperview().inset(40.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(50.0.bottomSafeAreaAdjusted)
             $0.leading.equalToSuperview().inset(200.0)
         }
         redColor.snp.makeConstraints {
             $0.height.width.equalTo(35.0)
-            $0.bottom.equalToSuperview().inset(40.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(50.0.bottomSafeAreaAdjusted)
             $0.leading.equalToSuperview().inset(250.0)
         }
         
         colorButton.snp.makeConstraints {
             $0.height.width.equalTo(35.0)
-            $0.bottom.equalToSuperview().inset(40.0.bottomSafeAreaAdjusted)
+            $0.bottom.equalToSuperview().inset(50.0.bottomSafeAreaAdjusted)
             $0.leading.equalToSuperview().inset(300.0)
         }
         
@@ -204,15 +226,6 @@ extension TextEditorViewController {
         yellowColor.addTarget(self, action: #selector(didTapYellowColor), for: .touchUpInside)
         redColor.addTarget(self, action: #selector(didTapRedColor), for: .touchUpInside)
         colorButton.addTarget(self, action: #selector(didTapSelectColor), for: .touchUpInside)
-    }
-    
-    private func setUpNavigationBar() {
-        navigationItem.leftBarButtonItems = [
-            UIBarButtonItem(customView: cancelButton)
-        ]
-        navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(customView: doneButton)
-        ]
     }
     
     @objc func sliderValueDidChange(_ sender : UISlider!) {
@@ -228,10 +241,6 @@ extension TextEditorViewController {
         self.text = textField.text!
         delegate?.didFinishTyping(self.text, color: self.color, size: self.fontSize)
         navigationController?.dismiss(animated: true, completion: nil)
-    }
-    
-    @objc private func didTapBoldFont() {
-        textField.font = UIFont.systemFont(ofSize: self.fontSize, weight: .bold)
     }
     
     @objc private func didTapBlackColor() {
