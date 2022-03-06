@@ -47,6 +47,7 @@
 		43B0894727A9AC3200E93879 /* MaterialMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B0894627A9AC3200E93879 /* MaterialMenuView.swift */; };
 		43E5F06E27D632E900E0E1A0 /* HomeViewController+TextEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5F06D27D632E900E0E1A0 /* HomeViewController+TextEditorDelegate.swift */; };
 		43B4B4E327D2915E00FB425E /* SnapshotPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B4B4E227D2915E00FB425E /* SnapshotPreviewViewController.swift */; };
+		43B4B4E527D29D7300FB425E /* VideoPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B4B4E427D29D7300FB425E /* VideoPreviewViewController.swift */; };
 		43EC1E4B2791D139008CF316 /* DrawingBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EC1E4A2791D139008CF316 /* DrawingBoardViewController.swift */; };
 		43ED95AF2790107900D29F8B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95AE2790107900D29F8B /* HomeViewModel.swift */; };
 		43ED95B2279019CA00D29F8B /* UIControl+ActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95B1279019CA00D29F8B /* UIControl+ActionHandler.swift */; };
@@ -137,6 +138,7 @@
 		43B0894627A9AC3200E93879 /* MaterialMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialMenuView.swift; sourceTree = "<group>"; };
 		43E5F06D27D632E900E0E1A0 /* HomeViewController+TextEditorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+TextEditorDelegate.swift"; sourceTree = "<group>"; };
 		43B4B4E227D2915E00FB425E /* SnapshotPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotPreviewViewController.swift; sourceTree = "<group>"; };
+		43B4B4E427D29D7300FB425E /* VideoPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPreviewViewController.swift; sourceTree = "<group>"; };
 		43EC1E4A2791D139008CF316 /* DrawingBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingBoardViewController.swift; sourceTree = "<group>"; };
 		43ED95AE2790107900D29F8B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		43ED95B1279019CA00D29F8B /* UIControl+ActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+ActionHandler.swift"; sourceTree = "<group>"; };
@@ -400,7 +402,7 @@
 			isa = PBXGroup;
 			children = (
 				0EBF01CB27A9B023004D1439 /* TextEditor */,
-				43B4B4E127D2907100FB425E /* SnapshotPreview */,
+				43B4B4E127D2907100FB425E /* Preview */,
 				43EC1E492791D11A008CF316 /* DrawingBoard */,
 				0EC39AC927942EED00CFA7F2 /* ImagePicker */,
 				432C1BE92700F0EB0024B2EB /* Home */,
@@ -489,12 +491,13 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
-		43B4B4E127D2907100FB425E /* SnapshotPreview */ = {
+		43B4B4E127D2907100FB425E /* Preview */ = {
 			isa = PBXGroup;
 			children = (
 				43B4B4E227D2915E00FB425E /* SnapshotPreviewViewController.swift */,
+				43B4B4E427D29D7300FB425E /* VideoPreviewViewController.swift */,
 			);
-			path = SnapshotPreview;
+			path = Preview;
 			sourceTree = "<group>";
 		};
 		43EC1E492791D11A008CF316 /* DrawingBoard */ = {
@@ -968,6 +971,7 @@
 				431F18E227AADE7600E851D1 /* SliderView.swift in Sources */,
 				432C1BDE2700EF190024B2EB /* HomeViewController.swift in Sources */,
 				433C33BF27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift in Sources */,
+				43B4B4E527D29D7300FB425E /* VideoPreviewViewController.swift in Sources */,
 				43FD298B27944B0700E34F8C /* ARView.swift in Sources */,
 				432C1BAF2700ECCB0024B2EB /* AppDelegate.swift in Sources */,
 				0EC39ACF2794327700CFA7F2 /* ImagePickerViewController.swift in Sources */,

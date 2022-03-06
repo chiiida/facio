@@ -1,5 +1,5 @@
 //
-//  SnapshotPreviewViewController.swift
+//  VideoPreviewViewController.swift
 //  Facio
 //
 //  Created by Chananchida Fuachai on 5/3/2565 BE.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class SnapshotPreviewViewController: UIViewController {
+final class VideoPreviewViewController: UIViewController {
     
     private let imageView = UIImageView()
     private let saveButton = UIButton(type: .system)
@@ -40,7 +40,7 @@ final class SnapshotPreviewViewController: UIViewController {
 
 // MARK: - Private functions
 
-extension SnapshotPreviewViewController {
+extension VideoPreviewViewController {
     
     private func setUpLayout() {
         view.addSubViews(
@@ -108,3 +108,4 @@ extension SnapshotPreviewViewController {
         present(actionVC, animated: true, completion: nil)
     }
 }
+
