@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCameraUsageDescription</key>
-	<string>Allow access to take pictures, record video, and detect your face.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Allow access to photo library</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Comfortaa-Medium.ttf</string>
@@ -14,8 +10,11 @@
 		<string>OpenSans-Bold.ttf</string>
 		<string>OpenSans-SemiBold.ttf</string>
 		<string>OpenSans-Regular.ttf</string>
+		<string>Nunito-Regular.ttf</string>
+		<string>Oswald-Regular.ttf</string>
+		<string>Poppins-Regular.ttf</string>
+		<string>FiraMono-Regular.ttf</string>
+		<string>MrDeHaviland-Regular.ttf</string>
 	</array>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 </dict>
 </plist>

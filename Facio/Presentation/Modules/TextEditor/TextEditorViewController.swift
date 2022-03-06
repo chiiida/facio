@@ -12,26 +12,39 @@ import Alderis
 
 protocol TextEditorDelegate: AnyObject {
     
-    func didFinishTyping(_ text: String, color: UIColor, size: CGFloat)
+    func didFinishTyping(_ text: String, color: UIColor, size: CGFloat, font: String)
 }
 
 final class TextEditorViewController: UIViewController, ColorPickerDelegate {
     
+    //    Default values
     private var text = " "
-    private var fontSize = CGFloat(30.0)
     private var color = UIColor.white
+    private var fontSize = CGFloat(30.0)
+    private var fontName = "OpenSans-Regular"
+    
     private let textField = UITextView()
     private let fontSlider = UISlider()
     private let navBar = UIView()
     private let colorBar = UIView()
+    
+    //    Button
     private let doneButton = UIButton(type: .system)
     private let cancelButton = UIButton(type: .system)
+    
     private let colorButton = UIButton(type: .custom)
     private let blackColor = UIButton(type: .custom)
     private let blueColor = UIButton(type: .custom)
     private let greenColor = UIButton(type: .custom)
     private let yellowColor = UIButton(type: .custom)
     private let redColor = UIButton(type: .custom)
+    
+    private let nunitoFont = UIButton(type: .custom)
+    private let openSansFont = UIButton(type: .custom)
+    private let oswaldFont = UIButton(type: .custom)
+    private let poppinsFont = UIButton(type: .custom)
+    private let firaMonoFont = UIButton(type: .custom)
+    private let mrDeHavilandFont = UIButton(type: .custom)
     
     weak var delegate: TextEditorDelegate?
     
@@ -69,14 +82,16 @@ final class TextEditorViewController: UIViewController, ColorPickerDelegate {
         yellowColor.layer.backgroundColor = UIColor(ciColor: CIColor(color: .systemYellow) ).cgColor
         redColor.layer.backgroundColor = UIColor(ciColor: CIColor(color: .systemRed) ).cgColor
         colorButton.setBackgroundImage(Asset.common.color(), for: .normal)
-        let buttons = [blackColor, blueColor, greenColor, yellowColor, redColor, colorButton]
+        let buttons = [
+            blackColor, blueColor, greenColor, yellowColor, redColor,colorButton,
+            nunitoFont, openSansFont, oswaldFont, poppinsFont, firaMonoFont, mrDeHavilandFont
+        ]
         buttons.forEach {
             $0.layer.cornerRadius = $0.bounds.size.width / 2
             $0.layer.borderColor = UIColor(ciColor: .white).cgColor
             $0.layer.borderWidth = 3
         }
     }
-    
 }
 
 extension TextEditorViewController {
@@ -95,7 +110,7 @@ extension TextEditorViewController {
         textField.center = self.view.center
         textField.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
         textField.textColor = .white
-        textField.font = UIFont.systemFont(ofSize: self.fontSize)
+        textField.font = UIFont(name: self.fontName, size: self.fontSize)
         textField.autocapitalizationType = .words
         textField.textAlignment = .center
     }
@@ -155,7 +170,6 @@ extension TextEditorViewController {
             fontSlider
         )
         
-        // colorBar
         colorBar.snp.makeConstraints {
             $0.width.equalToSuperview()
             $0.height.equalTo(180.0)
@@ -165,6 +179,78 @@ extension TextEditorViewController {
         
         setUpFontSlider()
         setUpColorButton()
+        setUpFontSelector()
+    }
+    
+    private func setUpFontSelector() {
+        view.addSubViews(
+            openSansFont,
+            nunitoFont,
+            oswaldFont,
+            poppinsFont,
+            firaMonoFont,
+            mrDeHavilandFont
+        )
+        
+        openSansFont.snp.makeConstraints {
+            $0.width.height.equalTo(42)
+            $0.bottom.equalToSuperview().inset(200.0.bottomSafeAreaAdjusted)
+            $0.leading.equalToSuperview().inset(25.0)
+        }
+        
+        nunitoFont.snp.makeConstraints {
+            $0.width.height.equalTo(42)
+            $0.bottom.equalToSuperview().inset(200.0.bottomSafeAreaAdjusted)
+            $0.leading.equalToSuperview().inset(85.0)
+        }
+        
+        oswaldFont.snp.makeConstraints {
+            $0.width.height.equalTo(42)
+            $0.bottom.equalToSuperview().inset(200.0.bottomSafeAreaAdjusted)
+            $0.leading.equalToSuperview().inset(145.0)
+        }
+        
+        poppinsFont.snp.makeConstraints {
+            $0.width.height.equalTo(42)
+            $0.bottom.equalToSuperview().inset(200.0.bottomSafeAreaAdjusted)
+            $0.leading.equalToSuperview().inset(205.0)
+        }
+        
+        firaMonoFont.snp.makeConstraints {
+            $0.width.height.equalTo(42)
+            $0.bottom.equalToSuperview().inset(200.0.bottomSafeAreaAdjusted)
+            $0.leading.equalToSuperview().inset(265.0)
+        }
+        
+        mrDeHavilandFont.snp.makeConstraints {
+            $0.width.height.equalTo(42)
+            $0.bottom.equalToSuperview().inset(200.0.bottomSafeAreaAdjusted)
+            $0.leading.equalToSuperview().inset(325.0)
+        }
+        
+        setUpFontButton()
+    }
+    
+    private func setUpFontButton() {
+        let buttons = [nunitoFont, openSansFont, oswaldFont, poppinsFont, firaMonoFont, mrDeHavilandFont]
+        buttons.forEach {
+            $0.setTitle("Aa", for: .normal)
+            $0.setTitleColor(.white, for: .normal)
+        }
+        
+        openSansFont.titleLabel?.font = UIFont(name: "OpenSans-Regular", size: 20)
+        nunitoFont.titleLabel?.font = UIFont(name: "Nunito-Regular", size: 20)
+        oswaldFont.titleLabel?.font = UIFont(name: "Oswald-Regular", size: 20)
+        poppinsFont.titleLabel?.font = UIFont(name: "Poppins-Regular", size: 20)
+        firaMonoFont.titleLabel?.font = UIFont(name: "FiraMono-Regular", size: 20)
+        mrDeHavilandFont.titleLabel?.font = UIFont(name: "MrDeHaviland-Regular", size: 20)
+        
+        openSansFont.addTarget(self, action: #selector(didTapOpenSansFont), for: .touchUpInside)
+        nunitoFont.addTarget(self, action: #selector(didTapNunitoFont), for: .touchUpInside)
+        oswaldFont.addTarget(self, action: #selector(didTapOswaldFont), for: .touchUpInside)
+        poppinsFont.addTarget(self, action: #selector(didTapPoppinsFont), for: .touchUpInside)
+        firaMonoFont.addTarget(self, action: #selector(didTapFiraMonoFont), for: .touchUpInside)
+        mrDeHavilandFont.addTarget(self, action: #selector(didTapmrDeFont), for: .touchUpInside)
     }
     
     private func setUpFontSlider() {
@@ -176,9 +262,11 @@ extension TextEditorViewController {
         
         fontSlider.minimumValue = 10
         fontSlider.maximumValue = 100
+        fontSlider.value = 30
         fontSlider.minimumValueImage = Asset.common.smallText()
         fontSlider.maximumValueImage = Asset.common.largeText()
         fontSlider.minimumTrackTintColor = .systemGray3
+        fontSlider.trackRect(forBounds: CGRect(x: 10, y: 10, width: 100, height: 1))
         fontSlider.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
         fontSlider.isContinuous = true
         
@@ -230,7 +318,7 @@ extension TextEditorViewController {
     
     @objc func sliderValueDidChange(_ sender : UISlider!) {
         self.fontSize = CGFloat(sender.value)
-        textField.font = UIFont.systemFont(ofSize: CGFloat(sender.value))
+        textField.font = UIFont(name: self.fontName, size: CGFloat(sender.value))
     }
     
     @objc private func didTapCancelButton() {
@@ -239,8 +327,38 @@ extension TextEditorViewController {
     
     @objc private func didTapDoneButton() {
         self.text = textField.text!
-        delegate?.didFinishTyping(self.text, color: self.color, size: self.fontSize)
+        delegate?.didFinishTyping(self.text, color: self.color, size: self.fontSize, font: self.fontName)
         navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func didTapNunitoFont() {
+        textField.font = UIFont(name: "Nunito-Regular", size: self.fontSize)
+        self.fontName = "Nunito-Regular"
+    }
+    
+    @objc private func didTapOpenSansFont() {
+        textField.font = UIFont(name: "OpenSans-Regular", size: self.fontSize)
+        self.fontName = "OpenSans-Regular"
+    }
+    
+    @objc private func didTapOswaldFont() {
+        textField.font = UIFont(name: "Oswald-Regular", size: self.fontSize)
+        self.fontName = "Oswald-Regular"
+    }
+    
+    @objc private func didTapPoppinsFont() {
+        textField.font = UIFont(name: "Poppins-Regular", size: self.fontSize)
+        self.fontName = "Poppins-Regular"
+    }
+    
+    @objc private func didTapFiraMonoFont() {
+        textField.font = UIFont(name: "FiraMono-Regular", size: self.fontSize)
+        self.fontName = "FiraMono-Regular"
+    }
+    
+    @objc private func didTapmrDeFont() {
+        textField.font = UIFont(name: "MrDeHaviland-Regular", size: self.fontSize)
+        self.fontName = "MrDeHaviland-Regular"
     }
     
     @objc private func didTapBlackColor() {

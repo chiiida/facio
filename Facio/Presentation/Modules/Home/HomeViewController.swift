@@ -220,9 +220,9 @@ extension HomeViewController: DrawingBoardDelegate {
 
 extension HomeViewController: TextEditorDelegate {
     
-    func didFinishTyping(_ text: String, color: UIColor, size: CGFloat) {
+    func didFinishTyping(_ text: String, color: UIColor, size: CGFloat, font: String) {
         let typedText = SCNText(string: text, extrusionDepth: 0.2)
-        typedText.font = UIFont.systemFont(ofSize: size)
+        typedText.font = UIFont(name: font, size: size)
         typedText.containerFrame = CGRect(origin: .init(x: 0.0, y: 0.0), size: CGSize(width: 275.0, height: 300.0))
         typedText.isWrapped = true
         typedText.alignmentMode = "center"
@@ -232,7 +232,7 @@ extension HomeViewController: TextEditorDelegate {
         material.diffuse.contents = color.cgColor
         typedText.materials = [material]
         
-        let node = FaceNode(at: FeatureIndices.hat)
+        let node = FaceNode(at: FeatureIndices.nose)
         let timestamp = Date().timeIntervalSince1970
         let textNodeName = "text\(timestamp)"
         node.name = textNodeName
