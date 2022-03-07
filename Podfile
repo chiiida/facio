@@ -8,6 +8,7 @@ target 'Facio' do
   pod 'R.swift'
   pod 'SwiftLint'
   pod 'LabelSwitch'
+  pod 'Alderis', '~> 1.1'
 
   target 'FacioTests' do
     inherit! :search_paths

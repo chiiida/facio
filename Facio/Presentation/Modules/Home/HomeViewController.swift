@@ -7,6 +7,7 @@
 
 import UIKit
 import ARKit
+import SceneKit
 import SnapKit
 
 final class HomeViewController: UIViewController {
@@ -32,6 +33,7 @@ final class HomeViewController: UIViewController {
         setUpLayout()
         setUpViews()
         bind(to: viewModel)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -190,7 +192,12 @@ extension HomeViewController: MenuBarDelegate {
     }
     
     func didTapTextButton() {
-        // TODO: implement in integration
+        let textEditorVC = TextEditorViewController()
+        textEditorVC.delegate = self
+        let navVC = UINavigationController(rootViewController: textEditorVC)
+        navVC.modalPresentationStyle = .overFullScreen
+        navigationController?.present(navVC, animated: true)
+        
     }
     
     func didTapBeautificationButton() {
@@ -248,5 +255,32 @@ extension HomeViewController: MaterialMenuViewDelegate {
         case .shininess: material.shininess = CGFloat(value)
         }
         arView.updateFaceMask(with: material)
+    }
+}
+
+// MARK: - TextEditorDelegate
+
+extension HomeViewController: TextEditorDelegate {
+    
+    func didFinishTyping(_ text: String, color: UIColor, size: CGFloat, font: String) {
+        let typedText = SCNText(string: text, extrusionDepth: 0.2)
+        typedText.font = UIFont(name: font, size: size)
+        typedText.containerFrame = CGRect(origin: .init(x: 0.0, y: 0.0), size: CGSize(width: 275.0, height: 300.0))
+        typedText.isWrapped = true
+        typedText.alignmentMode = "center"
+        typedText.truncationMode = "end"
+        
+        let material = SCNMaterial()
+        material.diffuse.contents = color.cgColor
+        typedText.materials = [material]
+        
+        let node = FaceNode(at: FeatureIndices.nose)
+        let timestamp = Date().timeIntervalSince1970
+        let textNodeName = "text\(timestamp)"
+        node.name = textNodeName
+        node.scale = SCNVector3(x: 0.001, y: 0.001, z: 0.001)
+        node.geometry = typedText
+
+        arView.addNode(node)
     }
 }
