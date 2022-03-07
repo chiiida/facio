@@ -106,6 +106,11 @@ extension TextEditorViewController {
             $0.leading.trailing.equalToSuperview().inset(50.0)
             $0.bottom.equalToSuperview().inset(100.0.bottomSafeAreaAdjusted)
         }
+    }
+    
+    private func setUpViews() {
+        navigationController?.navigationItem.hidesBackButton = false
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
         
         textField.center = self.view.center
         textField.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
@@ -113,11 +118,6 @@ extension TextEditorViewController {
         textField.font = UIFont(name: self.fontName, size: self.fontSize)
         textField.autocapitalizationType = .words
         textField.textAlignment = .center
-    }
-    
-    private func setUpViews() {
-        navigationController?.navigationItem.hidesBackButton = false
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
         
         setUpHeader()
         setUpFooter()
