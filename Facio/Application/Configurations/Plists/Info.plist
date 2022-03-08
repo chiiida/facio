@@ -5,7 +5,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Allow access to take pictures, record video, and detect your face.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Allow access to photo library</string>
+	<string>Allow access to photo library and save videos and photos.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Comfortaa-Medium.ttf</string>

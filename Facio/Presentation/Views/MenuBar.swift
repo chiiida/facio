@@ -149,10 +149,8 @@ class MenuBar: UIView {
             AudioServicesPlayAlertSound(1_108)
             delegate?.didTapCameraButton()
         case .record:
-            if isRecording {
-                isRecording = true
-            }
             AudioServicesPlayAlertSound(1_118)
+            isRecording.toggle()
             delegate?.didTapRecordButton(isRecording)
         }
     }

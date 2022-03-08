@@ -18,7 +18,11 @@ extension HomeViewController: MenuBarDelegate {
     }
 
     func didTapRecordButton(_ isRecording: Bool) {
-        // TODO: implement in integration
+        if isRecording {
+            arRecoder.record()
+        } else {
+            arRecoder.stopAndSave()
+        }
     }
 
     func didTapImageButton() {

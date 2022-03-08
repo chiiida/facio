@@ -41,4 +41,8 @@ extension HomeViewController: ARSCNViewDelegate {
         arView.mainNode = node
         arView.updateFeatures(using: faceAnchor)
     }
+    
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        arRecoder.didUpdateAtTime(time: time)
+    }
 }

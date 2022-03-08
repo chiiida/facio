@@ -19,9 +19,11 @@ final class HomeViewController: UIViewController {
     
     private var viewModel: HomeViewModelProtocol!
     var arView = ARView()
+    var arRecoder: ARRecorder!
     
     init(viewModel: HomeViewModelProtocol) {
         self.viewModel = viewModel
+        arRecoder = ARRecorder(arView: arView)
         super.init(nibName: nil, bundle: nil)
     }
     
