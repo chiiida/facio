@@ -102,11 +102,6 @@ extension TextEditorViewController {
             textView
         )
         
-//        textView.snp.makeConstraints {
-//            $0.top.equalTo(view.snp.topMargin).inset(100.0)
-//            $0.leading.trailing.equalToSuperview().inset(50.0)
-//            $0.bottom.equalToSuperview().inset(100.0.bottomSafeAreaAdjusted)
-//        }
     }
     
     private func setUpViews() {
@@ -119,15 +114,12 @@ extension TextEditorViewController {
         textView.font = UIFont(name: self.fontName, size: self.fontSize)
         textView.autocapitalizationType = .words
         textView.textAlignment = .center
-//        textView.translatesAutoresizingMaskIntoConstraints = true
-//        textView.sizeToFit()
-//        textView.layoutIfNeeded()
         textView.isScrollEnabled = false
         
         setUpHeader()
         setUpFooter()
         setUpNavigationBar()
-//        textViewDidChange(textView)
+        
     }
     
     private func textViewDidChange(_ textView: UITextView) {
@@ -341,9 +333,8 @@ extension TextEditorViewController {
         self.text = textView.text!
         textViewDidChange(textView)
         delegate?.didFinishTyping(self.text, color: self.color, size: self.fontSize, font: self.fontName,
-                                  width: CGFloat(textView.contentSize.width), height: CGFloat(textView.contentSize.height))
-        print("\(textView.contentSize.height)")
-        print("\(textView.contentSize.width)")
+                                  width: CGFloat(textView.contentSize.width),
+                                  height: CGFloat(textView.contentSize.height))
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
