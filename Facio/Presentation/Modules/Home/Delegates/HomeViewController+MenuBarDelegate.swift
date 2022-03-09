@@ -21,7 +21,15 @@ extension HomeViewController: MenuBarDelegate {
         if isRecording {
             arRecoder.record()
         } else {
-            arRecoder.stopAndSave()
+            arRecoder.stop { videoPath in
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    let previewVC = VideoPreviewViewController(videoPath: videoPath, arRecoder: self.arRecoder)
+                    let navVC = UINavigationController(rootViewController: previewVC)
+                    navVC.modalPresentationStyle = .fullScreen
+                    self.navigationController?.present(navVC, animated: true)
+                }
+            }
         }
     }
 

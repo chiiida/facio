@@ -1,5 +1,5 @@
 //
-//  SnapshotPreviewViewController.swift
+//  VideoPreviewViewController.swift
 //  Facio
 //
 //  Created by Chananchida Fuachai on 5/3/2565 BE.
@@ -7,19 +7,26 @@
 
 import UIKit
 import SnapKit
+import AVKit
 
-final class SnapshotPreviewViewController: UIViewController {
+final class VideoPreviewViewController: UIViewController {
     
-    private let imageView = UIImageView()
+    private let videoView = UIView()
     private let saveButton = UIButton(type: .system)
     private let shareButton = UIButton(type: .system)
     private let cancelButton = UIButton(type: .system)
-    private let activityIndicator = UIActivityIndicatorView()
     
-    private var image: UIImage
+    private var videoPath: URL
+    private var arRecoder: ARRecorder
     
-    init(image: UIImage) {
-        self.image = image
+    private var videoPlayer: AVPlayer?
+    private var playerLayer: AVPlayerLayer?
+    private var playerItem: AVPlayerItem?
+    private var playerController = AVPlayerViewController()
+    
+    init(videoPath: URL, arRecoder: ARRecorder) {
+        self.videoPath = videoPath
+        self.arRecoder = arRecoder
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -31,42 +38,41 @@ final class SnapshotPreviewViewController: UIViewController {
         super.viewDidLoad()
         setUpLayout()
         setUpViews()
+        setUpVideoPlayer()
         setUpNavigationBar()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        playerLayer?.frame = videoView.frame
     }
 }
 
 // MARK: - Private functions
 
-extension SnapshotPreviewViewController {
+extension VideoPreviewViewController {
     
     private func setUpLayout() {
         view.addSubViews(
-            imageView,
+            videoView,
             saveButton,
             shareButton,
             cancelButton
         )
         
-        let imageScale = 1.0 / (image.size.width / image.size.height)
-        
-        imageView.snp.makeConstraints {
+        guard let image = arRecoder.snapshotArray.first?["image"] as? UIImage else { return }
+        let scale = 1 / (image.size.width / image.size.height)
+
+        videoView.snp.makeConstraints {
             $0.top.equalTo(view.snp.topMargin).offset(50.0.topSafeAreaAdjusted)
             $0.leading.trailing.equalToSuperview().inset(20.0)
-            $0.height.equalTo(imageView.snp.width).multipliedBy(imageScale)
+            $0.height.equalTo(videoView.snp.width).multipliedBy(scale)
         }
     }
     
     private func setUpViews() {
         navigationController?.navigationItem.hidesBackButton = true
         view.backgroundColor = .white
-        
-        imageView.image = image
-        imageView.layer.cornerRadius = 20.0
-        imageView.clipsToBounds = true
         
         cancelButton.setTitle("Cancel", for: .normal)
         cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
@@ -82,6 +88,40 @@ extension SnapshotPreviewViewController {
         shareButton.tintColor = .primaryGray
         shareButton.addTarget(self, action: #selector(didTapShareButton), for: .touchUpInside)
         shareButton.imageEdgeInsets = UIEdgeInsets(top: 0.0, left: 5.0, bottom: 0.0, right: 0.0)
+        
+        videoView.layer.cornerRadius = 20.0
+        videoView.backgroundColor = .red
+    }
+    
+    private func setUpVideoPlayer() {
+        playerItem = AVPlayerItem(url: URL(fileURLWithPath: videoPath.path))
+        videoPlayer = AVPlayer(playerItem: playerItem)
+        videoPlayer?.actionAtItemEnd = .none
+        
+        playerController.player = videoPlayer
+        self.addChild(playerController)
+        videoView.addSubview(playerController.view)
+
+        playerController.view.snp.makeConstraints {
+            $0.height.width.equalToSuperview()
+            $0.top.equalToSuperview()
+        }
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(playerItemDidReachEnd(notification:)),
+            name: .AVPlayerItemDidPlayToEndTime,
+            object: videoPlayer?.currentItem
+        )
+    
+        videoPlayer?.play()
+    }
+    
+    @objc func playerItemDidReachEnd(notification: Notification) {
+        if let playerItem = notification.object as? AVPlayerItem {
+            playerItem.seek(to: CMTime.zero, completionHandler: nil)
+            videoPlayer?.play()
+        }
     }
     
     private func setUpNavigationBar() {
@@ -96,15 +136,22 @@ extension SnapshotPreviewViewController {
     
     @objc private func didTapCancelButton() {
         navigationController?.dismiss(animated: true, completion: nil)
+        NotificationCenter.default.removeObserver(self)
     }
     
     @objc private func didTapSaveButton() {
-        UIImageWriteToSavedPhotosAlbum(image, showSavedIndicator(), nil, nil)
+        arRecoder.export { [weak self] isSaved in
+            DispatchQueue.main.async {
+                if isSaved {
+                    self?.showSavedIndicator()
+                }
+            }
+        }
     }
     
     @objc private func didTapShareButton() {
-        let shareText = "Checkout my snapshot from Facio App!"
-        let actionVC = UIActivityViewController(activityItems: [shareText, image], applicationActivities: [])
+        let shareText = "Checkout my video from Facio App!"
+        let actionVC = UIActivityViewController(activityItems: [shareText, videoPath], applicationActivities: [])
         present(actionVC, animated: true, completion: nil)
     }
     
@@ -139,8 +186,7 @@ extension SnapshotPreviewViewController {
             $0.center.equalToSuperview()
         }
         alertView.view.snp.makeConstraints {
-            $0.height.equalTo(150.0)
-            $0.width.equalTo(150.0)
+            $0.height.width.equalTo(150.0)
         }
         
         present(alertView, animated: true, completion: nil)

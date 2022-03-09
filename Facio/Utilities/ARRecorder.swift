@@ -20,8 +20,9 @@ class ARRecorder {
     var assetWriter: AVAssetWriter?
     var videoInput: AVAssetWriterInput?
     var audioInput: AVAssetWriterInput?
+    var currentVideoFileName: String = ""
     
-    var arView: ARSCNView
+    private var arView: ARSCNView
     
     init(arView: ARSCNView) {
         self.arView = arView
@@ -30,17 +31,28 @@ class ARRecorder {
     func record() {
         lastTime = 0
         isRecording = true
-    }
-    
-    func stopAndSave() {
-        isRecording = false
-        export()
+        snapshotArray.removeAll()
+        currentVideoFileName = ""
     }
     
     func stop(_ completionHandler: @escaping (URL) -> Void) {
         isRecording = false
-        let videoPath = finishVideo()
-        completionHandler(videoPath)
+        createFileName()
+        
+        guard let image = snapshotArray.first?["image"] as? UIImage else { return }
+        let size = image.size
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.createURLForVideo { videoURL in
+                self?.prepareWriterAndInput(size: size, videoURL: videoURL) { error in
+                    guard error == nil else { return }
+                    self?.createVideo(fps: 30, size: size) { _ in
+                        guard error == nil, let self = self else { return }
+                        self.finishVideo(completionHandler)
+                    }
+                }
+            }
+        }
     }
     
     func didUpdateAtTime(time: TimeInterval) {
@@ -64,32 +76,43 @@ class ARRecorder {
         }
     }
     
-    func export(withName: String = "ar_video", fps: Int = 30) {
+    func export(fps: Int = 30, completionHanlder: ((Bool) -> Void)? = nil) {
         guard let image = snapshotArray.first?["image"] as? UIImage else { return }
         let size = image.size
         
-        createURLForVideo(withName: withName) { [weak self] videoURL in
+        createURLForVideo { [weak self] videoURL in
             self?.prepareWriterAndInput(size: size, videoURL: videoURL) { error in
                 guard error == nil else { return }
                 self?.createVideo(fps: fps, size: size) { _ in
                     guard error == nil else { return }
-                    self?.finishVideoRecordingAndSave()
+                    self?.finishVideoRecordingAndSave(completionHanlder)
                 }
             }
         }
     }
     
-    private func createURLForVideo(withName: String, completionHandler: @escaping (URL) -> Void) {
+    private func createFileName() {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        formatter.timeStyle = .full
+        formatter.dateFormat = "yyyy-MM-dd'@'HH-mm-ss"
+
+        let date = Date(timeIntervalSince1970: Date().timeIntervalSince1970)
+        currentVideoFileName = "facioAR_\(formatter.string(from: date))"
+    }
+    
+    private func createURLForVideo(completionHandler: @escaping (URL) -> Void) {
         // Clear the location for the temporary file.
-        let temporaryDirectoryURL: URL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
-        let targetURL: URL = temporaryDirectoryURL.appendingPathComponent("\(withName).mp4")
+        guard let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+        else { return }
+        let targetURL: URL = documentsPath.appendingPathComponent("\(currentVideoFileName).mp4")
+        
         // Delete the file, incase it exists.
         do {
             try FileManager.default.removeItem(at: targetURL)
         } catch let error {
             NSLog("Unable to delete file, with error: \(error)")
         }
-        // return the URL
         completionHandler(targetURL)
     }
     
@@ -175,7 +198,6 @@ class ARRecorder {
             }
         }
         
-        // FINISHED
         completionHandler(nil)
     }
 
@@ -209,36 +231,28 @@ class ARRecorder {
         completionHandler(nil, pixelBuffer)
     }
     
-    private func finishVideo() -> URL {
+    private func finishVideo(_ completionHandler: @escaping (URL) -> Void) {
         videoInput?.markAsFinished()
-        guard let assetWriter = assetWriter else {
-            return URL(fileURLWithPath: "")
-        }
+        guard let assetWriter = assetWriter else { return }
 
-        assetWriter.finishWriting {
-            print("finished record video")
+        if FileManager.default.fileExists(atPath: assetWriter.outputURL.path) {
+            assetWriter.finishWriting {
+                completionHandler(assetWriter.outputURL)
+            }
         }
-        snapshotArray.removeAll()
-        return assetWriter.outputURL
     }
     
-    private func finishVideoRecordingAndSave() {
+    private func finishVideoRecordingAndSave(_ completionHanlder: ((Bool) -> Void)? = nil) {
         guard let videoInput = videoInput else { return }
         
         videoInput.markAsFinished()
         self.assetWriter?.finishWriting(completionHandler: { [weak self] in
             guard let assetWriter = self?.assetWriter else { return }
-            
             PHPhotoLibrary.requestAuthorization { _ in
                 PHPhotoLibrary.shared().performChanges({
                     PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: assetWriter.outputURL)
-                }) { [weak self] saved, _ in
-                    
-                    if saved {
-                        print("Saved video")
-                    }
-                    // Clear the original array
-                    self?.snapshotArray.removeAll()
+                }) { saved, _ in
+                    completionHanlder?(saved)
                 }
             }
         })
