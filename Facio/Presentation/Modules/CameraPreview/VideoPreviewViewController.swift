@@ -17,14 +17,14 @@ final class VideoPreviewViewController: UIViewController {
     private let cancelButton = UIButton(type: .system)
     
     private var videoPath: URL
-    private var arRecoder: ARRecorder
+    private var arRecoder: ARCapture?
+    private var videoSize: CGSize?
     
     private var videoPlayer: AVPlayer?
-    private var playerLayer: AVPlayerLayer?
     private var playerItem: AVPlayerItem?
     private var playerController = AVPlayerViewController()
     
-    init(videoPath: URL, arRecoder: ARRecorder) {
+    init(videoPath: URL, arRecoder: ARCapture?) {
         self.videoPath = videoPath
         self.arRecoder = arRecoder
         super.init(nibName: nil, bundle: nil)
@@ -42,9 +42,8 @@ final class VideoPreviewViewController: UIViewController {
         setUpNavigationBar()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        playerLayer?.frame = videoView.frame
+    func setVideoSize(_ size: CGSize) {
+        videoSize = size
     }
 }
 
@@ -60,9 +59,9 @@ extension VideoPreviewViewController {
             cancelButton
         )
         
-        guard let image = arRecoder.snapshotArray.first?["image"] as? UIImage else { return }
-        let scale = 1 / (image.size.width / image.size.height)
-
+        guard let videoSize = videoSize else { return }
+        let scale = 1 / (videoSize.width / videoSize.height)
+        
         videoView.snp.makeConstraints {
             $0.top.equalTo(view.snp.topMargin).offset(50.0.topSafeAreaAdjusted)
             $0.leading.trailing.equalToSuperview().inset(20.0)
@@ -140,7 +139,7 @@ extension VideoPreviewViewController {
     }
     
     @objc private func didTapSaveButton() {
-        arRecoder.export { [weak self] isSaved in
+        arRecoder?.addVideoToLibrary(from: videoPath) {[weak self] isSaved in
             DispatchQueue.main.async {
                 if isSaved {
                     self?.showSavedIndicator()

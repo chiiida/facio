@@ -18,13 +18,16 @@ extension HomeViewController: MenuBarDelegate {
     }
 
     func didTapRecordButton(_ isRecording: Bool) {
+        hideARTools()
         if isRecording {
-            arRecoder.record()
+            arRecoder?.start(captureType: .imageCapture)
         } else {
-            arRecoder.stop { videoPath in
+            arRecoder?.stop { videoPath in
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
+                    let imageSize = self.arView.snapshot().size
                     let previewVC = VideoPreviewViewController(videoPath: videoPath, arRecoder: self.arRecoder)
+                    previewVC.setVideoSize(imageSize)
                     let navVC = UINavigationController(rootViewController: previewVC)
                     navVC.modalPresentationStyle = .fullScreen
                     self.navigationController?.present(navVC, animated: true)
