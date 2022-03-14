@@ -12,7 +12,7 @@ import Alderis
 
 protocol TextEditorDelegate: AnyObject {
     
-    func didFinishTyping(_ text: String, color: UIColor, size: CGFloat, font: String)
+    func didFinishTyping(_ text: String, color: UIColor, size: CGFloat, font: String, width: CGFloat, height: CGFloat)
 }
 
 final class TextEditorViewController: UIViewController, ColorPickerDelegate {
@@ -23,7 +23,7 @@ final class TextEditorViewController: UIViewController, ColorPickerDelegate {
     private var fontSize = CGFloat(30.0)
     private var fontName = "OpenSans-Regular"
     
-    private let textField = UITextView()
+    private let textView = UITextView()
     private let fontSlider = UISlider()
     private let navBar = UIView()
     private let colorBar = UIView()
@@ -92,36 +92,40 @@ final class TextEditorViewController: UIViewController, ColorPickerDelegate {
             $0.layer.borderWidth = 3
         }
     }
+    
 }
 
 extension TextEditorViewController {
     
     private func setUpLayout() {
         view.addSubViews(
-            textField
+            textView
         )
         
-        textField.snp.makeConstraints {
-            $0.top.equalTo(view.snp.topMargin).inset(100.0)
-            $0.leading.trailing.equalToSuperview().inset(50.0)
-            $0.bottom.equalToSuperview().inset(100.0.bottomSafeAreaAdjusted)
-        }
     }
     
     private func setUpViews() {
         navigationController?.navigationItem.hidesBackButton = false
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
-        
-        textField.center = self.view.center
-        textField.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
-        textField.textColor = .white
-        textField.font = UIFont(name: self.fontName, size: self.fontSize)
-        textField.autocapitalizationType = .words
-        textField.textAlignment = .center
+        textView.frame = CGRect(x: 100, y: 100, width: 300, height: 500)
+        textView.center = self.view.center
+        textView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+        textView.textColor = .white
+        textView.font = UIFont(name: self.fontName, size: self.fontSize)
+        textView.autocapitalizationType = .words
+        textView.textAlignment = .center
+        textView.isScrollEnabled = false
         
         setUpHeader()
         setUpFooter()
         setUpNavigationBar()
+        
+    }
+    
+    private func textViewDidChange(_ textView: UITextView) {
+        let fixedWidth = textView.frame.size.width
+        let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+        textView.frame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
     }
     
     private func setUpHeader() {
@@ -318,7 +322,7 @@ extension TextEditorViewController {
     
     @objc func sliderValueDidChange(_ sender : UISlider!) {
         self.fontSize = CGFloat(sender.value)
-        textField.font = UIFont(name: self.fontName, size: CGFloat(sender.value))
+        textView.font = UIFont(name: self.fontName, size: CGFloat(sender.value))
     }
     
     @objc private func didTapCancelButton() {
@@ -326,63 +330,66 @@ extension TextEditorViewController {
     }
     
     @objc private func didTapDoneButton() {
-        self.text = textField.text!
-        delegate?.didFinishTyping(self.text, color: self.color, size: self.fontSize, font: self.fontName)
+        self.text = textView.text!
+        textViewDidChange(textView)
+        delegate?.didFinishTyping(self.text, color: self.color, size: self.fontSize, font: self.fontName,
+                                  width: CGFloat(textView.contentSize.width),
+                                  height: CGFloat(textView.contentSize.height))
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @objc private func didTapNunitoFont() {
-        textField.font = UIFont(name: "Nunito-Regular", size: self.fontSize)
+        textView.font = UIFont(name: "Nunito-Regular", size: self.fontSize)
         self.fontName = "Nunito-Regular"
     }
     
     @objc private func didTapOpenSansFont() {
-        textField.font = UIFont(name: "OpenSans-Regular", size: self.fontSize)
+        textView.font = UIFont(name: "OpenSans-Regular", size: self.fontSize)
         self.fontName = "OpenSans-Regular"
     }
     
     @objc private func didTapOswaldFont() {
-        textField.font = UIFont(name: "Oswald-Regular", size: self.fontSize)
+        textView.font = UIFont(name: "Oswald-Regular", size: self.fontSize)
         self.fontName = "Oswald-Regular"
     }
     
     @objc private func didTapPoppinsFont() {
-        textField.font = UIFont(name: "Poppins-Regular", size: self.fontSize)
+        textView.font = UIFont(name: "Poppins-Regular", size: self.fontSize)
         self.fontName = "Poppins-Regular"
     }
     
     @objc private func didTapFiraMonoFont() {
-        textField.font = UIFont(name: "FiraMono-Regular", size: self.fontSize)
+        textView.font = UIFont(name: "FiraMono-Regular", size: self.fontSize)
         self.fontName = "FiraMono-Regular"
     }
     
     @objc private func didTapmrDeFont() {
-        textField.font = UIFont(name: "MrDeHaviland-Regular", size: self.fontSize)
+        textView.font = UIFont(name: "MrDeHaviland-Regular", size: self.fontSize)
         self.fontName = "MrDeHaviland-Regular"
     }
     
     @objc private func didTapBlackColor() {
-        textField.textColor = .black
+        textView.textColor = .black
         self.color = UIColor.black
     }
     
     @objc private func didTapBlueColor() {
-        textField.textColor = .systemBlue
+        textView.textColor = .systemBlue
         self.color = UIColor.systemBlue
     }
     
     @objc private func didTapGreenColor() {
-        textField.textColor = .systemGreen
+        textView.textColor = .systemGreen
         self.color = UIColor.systemGreen
     }
     
     @objc private func didTapYellowColor() {
-        textField.textColor = .systemYellow
+        textView.textColor = .systemYellow
         self.color = UIColor.systemYellow
     }
     
     @objc private func didTapRedColor() {
-        textField.textColor = .red
+        textView.textColor = .red
         self.color = UIColor.red
     }
     
@@ -395,14 +402,14 @@ extension TextEditorViewController {
     
     @objc(colorPicker:didSelectColor:)
     func colorPicker(_ colorPicker: ColorPickerViewController, didSelect selectedColor: UIColor) {
-        textField.textColor = selectedColor
+        textView.textColor = selectedColor
         self.color = selectedColor
         colorButton.layer.backgroundColor = selectedColor.cgColor
     }
     
     @objc(colorPicker:didAcceptColor:)
     func colorPicker(_ colorPicker: ColorPickerViewController, didAccept selectedColor: UIColor) {
-        textField.textColor = selectedColor
+        textView.textColor = selectedColor
         self.color = selectedColor
         colorButton.layer.backgroundColor = selectedColor.cgColor
     }
