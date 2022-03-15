@@ -151,6 +151,11 @@ class MenuBar: UIView {
         case .record:
             AudioServicesPlayAlertSound(1_118)
             isRecording.toggle()
+            if isRecording {
+                cameraButton.setImage(Asset.mainMenu.recordingButton(), for: .normal)
+            } else {
+                cameraButton.setImage(Asset.mainMenu.recordButton(), for: .normal)
+            }
             delegate?.didTapRecordButton(isRecording)
         }
     }
