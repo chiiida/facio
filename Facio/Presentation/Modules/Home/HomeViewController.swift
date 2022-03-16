@@ -93,7 +93,7 @@ extension HomeViewController {
             $0.bottom.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
         }
-
+        
         faceMaskMaterialMenu.snp.makeConstraints {
             $0.bottom.equalTo(menuBar.snp.top)
             $0.leading.trailing.equalToSuperview()
@@ -104,21 +104,21 @@ extension HomeViewController {
         arView.delegate = self
         arView.scene = SCNScene()
         arView.autoenablesDefaultLighting = true
-
+        
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapARView(_:)))
         arView.addGestureRecognizer(tapRecognizer)
         
         settingsButton.setImage(Asset.common.settings(), for: .normal)
         settingsButton.tintColor = .primaryGray
-
+        
         faceMaskMaterialMenu.isHidden = true
         faceMaskMaterialMenu.delegate = self
         
         menuBar.delegate = self
-
+        
         view.bringSubviewToFront(settingsButton)
     }
-
+    
     private func showFaceMaskMaterialMenu() {
         faceMaskMaterialMenu.show { [weak self] in
             guard let self = self else { return }
@@ -130,7 +130,7 @@ extension HomeViewController {
             self.view.layoutIfNeeded()
         }
     }
-
+    
     private func hideFaceMaskMaterialMenu() {
         faceMaskMaterialMenu.hide { [weak self] in
             guard let self = self else { return }
@@ -142,10 +142,10 @@ extension HomeViewController {
             self.view.layoutIfNeeded()
         }
     }
-
+    
     @objc private func didTapARView(_ sender: UITapGestureRecognizer) {
         let location = sender.location(in: arView)
-
+        
         guard let nodeHitTest = arView.hitTest(location, options: nil).first
         else {
             if !faceMaskMaterialMenu.isHidden {
@@ -154,7 +154,7 @@ extension HomeViewController {
             return
         }
         let hitNode = nodeHitTest.node
-
+        
         if hitNode.name == "mainNode",
            ((hitNode.geometry?.firstMaterial?.diffuse.contents as? UIImage) != nil),
            faceMaskMaterialMenu.isHidden {
@@ -211,7 +211,7 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         guard let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage ??
                 info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-
+        
         let imageToDisplay = fixOrientation(img: pickedImage)
         let faceNode = FaceNode(at: FeatureIndices.nose)
         let timestamp = Date().timeIntervalSince1970
@@ -224,26 +224,26 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
     }
     
     func fixOrientation(img: UIImage) -> UIImage {
-            if (img.imageOrientation == .up) {
-                return img
-            }
-
-            UIGraphicsBeginImageContextWithOptions(img.size, false, img.scale)
-            let rect = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
-            img.draw(in: rect)
-
-            let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()!
-            UIGraphicsEndImageContext()
-
-            return normalizedImage
+        if (img.imageOrientation == .up) {
+            return img
         }
-
+        
+        UIGraphicsBeginImageContextWithOptions(img.size, false, img.scale)
+        let rect = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
+        img.draw(in: rect)
+        
+        let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return normalizedImage
+    }
+    
 }
 
 // MARK: - DrawingBoardDelegate
 
 extension HomeViewController: DrawingBoardDelegate {
-
+    
     func didFinishDrawing(_ image: UIImage, isFaceMask: Bool) {
         let drawingNode = DrawingNode(at: FeatureIndices.nose, isFaceMask: isFaceMask)
         let timestamp = Date().timeIntervalSince1970
@@ -252,7 +252,7 @@ extension HomeViewController: DrawingBoardDelegate {
         let viewModel = DrawingNodeViewModel(node: drawingNode)
         viewModel.addImage(image)
         arView.addNode(from: viewModel)
-
+        
         if isFaceMask {
             faceMaskMaterialMenu.resetValue()
             showFaceMaskMaterialMenu()
@@ -263,7 +263,7 @@ extension HomeViewController: DrawingBoardDelegate {
 // MARK: - MaterialMenuViewDelegate
 
 extension HomeViewController: MaterialMenuViewDelegate {
-
+    
     func didUpdateMaterial(type: MaterialMenuView.MaterialType, value: Float) {
         let material = SCNMaterial()
         switch type {
@@ -298,7 +298,7 @@ extension HomeViewController: TextEditorDelegate {
         node.scale = SCNVector3(x: 0.001, y: 0.001, z: 0.001)
         node.geometry = typedText
         let viewModel = FaceNodeViewModel(node: node)
-
+        
         arView.addNode(from: viewModel)
     }
 }
