@@ -212,15 +212,32 @@ extension HomeViewController: UIImagePickerControllerDelegate, UINavigationContr
         guard let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage ??
                 info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
 
+        let imageToDisplay = fixOrientation(img: pickedImage)
         let faceNode = FaceNode(at: FeatureIndices.nose)
         let timestamp = Date().timeIntervalSince1970
         let imageNodeName = "image\(timestamp)"
         faceNode.name = imageNodeName
         let viewModel = FaceNodeViewModel(node: faceNode)
-        viewModel.addImage(pickedImage)
+        viewModel.addImage(imageToDisplay)
         arView.addNode(from: viewModel)
         dismiss(animated: true, completion: nil)
     }
+    
+    func fixOrientation(img: UIImage) -> UIImage {
+            if (img.imageOrientation == .up) {
+                return img
+            }
+
+            UIGraphicsBeginImageContextWithOptions(img.size, false, img.scale)
+            let rect = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
+            img.draw(in: rect)
+
+            let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+
+            return normalizedImage
+        }
+
 }
 
 // MARK: - DrawingBoardDelegate
