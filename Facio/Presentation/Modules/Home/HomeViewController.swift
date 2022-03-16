@@ -280,7 +280,8 @@ extension HomeViewController: TextEditorDelegate {
         node.name = textNodeName
         node.scale = SCNVector3(x: 0.001, y: 0.001, z: 0.001)
         node.geometry = typedText
+        let viewModel = FaceNodeViewModel(node: node)
 
-        arView.addNode(node)
+        arView.addNode(from: viewModel)
     }
 }
