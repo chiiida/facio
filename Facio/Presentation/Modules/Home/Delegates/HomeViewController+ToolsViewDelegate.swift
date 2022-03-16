@@ -17,4 +17,10 @@ extension HomeViewController: ToolsViewDelegate {
         arView.removeNode(node)
         hideARTools()
     }
+    
+    func didUpdatePositionZ(_ node: SCNNode, posZ: Float) {
+        guard let node = node as? FaceNode else { return }
+        let position = SCNVector3(x: node.position.x, y: node.position.y, z: posZ)
+        arView.updatePosition(for: node, with: position)
+    }
 }

@@ -45,6 +45,7 @@
 		439C083027B2A63900F73A85 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439C082F27B2A63900F73A85 /* ToolsView.swift */; };
 		43AC807C27A7081900983CFC /* DrawingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AC807B27A7081900983CFC /* DrawingNode.swift */; };
 		43B0894727A9AC3200E93879 /* MaterialMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B0894627A9AC3200E93879 /* MaterialMenuView.swift */; };
+		43E5F06E27D632E900E0E1A0 /* HomeViewController+TextEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E5F06D27D632E900E0E1A0 /* HomeViewController+TextEditorDelegate.swift */; };
 		43EC1E4B2791D139008CF316 /* DrawingBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EC1E4A2791D139008CF316 /* DrawingBoardViewController.swift */; };
 		43ED95AF2790107900D29F8B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95AE2790107900D29F8B /* HomeViewModel.swift */; };
 		43ED95B2279019CA00D29F8B /* UIControl+ActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43ED95B1279019CA00D29F8B /* UIControl+ActionHandler.swift */; };
@@ -133,6 +134,7 @@
 		439C082F27B2A63900F73A85 /* ToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsView.swift; sourceTree = "<group>"; };
 		43AC807B27A7081900983CFC /* DrawingNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingNode.swift; sourceTree = "<group>"; };
 		43B0894627A9AC3200E93879 /* MaterialMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialMenuView.swift; sourceTree = "<group>"; };
+		43E5F06D27D632E900E0E1A0 /* HomeViewController+TextEditorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+TextEditorDelegate.swift"; sourceTree = "<group>"; };
 		43EC1E4A2791D139008CF316 /* DrawingBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingBoardViewController.swift; sourceTree = "<group>"; };
 		43ED95AE2790107900D29F8B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		43ED95B1279019CA00D29F8B /* UIControl+ActionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+ActionHandler.swift"; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 				438CE38C27BBA623004E646E /* HomeViewController+UIImagePickerControllerDelegate.swift */,
 				438CE38E27BBA643004E646E /* HomeViewContoller+DrawingBoardDelegate.swift */,
 				438CE39027BBA673004E646E /* HomeViewController+MaterialMenuViewDelegate.swift */,
+				43E5F06D27D632E900E0E1A0 /* HomeViewController+TextEditorDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -949,6 +952,7 @@
 				43ED95BE2790431900D29F8B /* MenuBar.swift in Sources */,
 				439C083027B2A63900F73A85 /* ToolsView.swift in Sources */,
 				43FF0689278F47F600C3A6EA /* UIView+SubView.swift in Sources */,
+				43E5F06E27D632E900E0E1A0 /* HomeViewController+TextEditorDelegate.swift in Sources */,
 				431F18E227AADE7600E851D1 /* SliderView.swift in Sources */,
 				432C1BDE2700EF190024B2EB /* HomeViewController.swift in Sources */,
 				433C33BF27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift in Sources */,

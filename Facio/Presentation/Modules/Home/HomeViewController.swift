@@ -34,7 +34,6 @@ final class HomeViewController: UIViewController {
         setUpLayout()
         setUpViews()
         bind(to: viewModel)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -102,10 +101,9 @@ extension HomeViewController {
         }
 
         arToolsView.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(20.0)
-            $0.centerY.equalTo(settingsButton.snp.centerY)
-            $0.height.equalTo(30.0)
-            $0.width.equalTo(80.0)
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(settingsButton.snp.top)
+            $0.bottom.equalTo(menuBar.snp.top)
         }
     }
     
@@ -147,13 +145,22 @@ extension HomeViewController {
         let hitNode = nodeHitTest.node
 
         arToolsView.node = hitNode
-        arToolsView.isHidden = false
 
         if hitNode.name == "mainNode",
            ((hitNode.geometry?.firstMaterial?.diffuse.contents as? UIImage) != nil) {
             showFaceMaskMaterialMenu()
+            arToolsView.isHidden = false
+            arToolsView.hidePosZSlider(true)
         } else if let node = hitNode as? FaceNode {
             arView.showHighlight(node)
+            arToolsView.isHidden = false
+            arToolsView.resetSlider()
+            arToolsView.hidePosZSlider(false)
+            if node as? DrawingNode != nil {
+                arToolsView.hideEditButton(false)
+            } else {
+                arToolsView.hideEditButton(true)
+            }
         }
         
         arView.selectedNode = hitNode
@@ -235,46 +242,13 @@ extension HomeViewController {
             self.view.layoutIfNeeded()
         }
     }
-}
-
-// MARK: - TextEditorDelegate
-
-extension HomeViewController: TextEditorDelegate {
     
-    func didFinishTyping(_ text: String, color: UIColor, size: CGFloat, font: String, width: CGFloat, height: CGFloat) {
-        let typedText = SCNText(string: text, extrusionDepth: 0.2)
-        typedText.font = UIFont(name: font, size: size)
-        typedText.containerFrame = CGRect(origin: .init(x: 0.0, y: 0.0), size: CGSize(width: width, height: height))
-        typedText.isWrapped = true
-        typedText.alignmentMode = "center"
-        typedText.truncationMode = "end"
-        
-        let material = SCNMaterial()
-        material.diffuse.contents = color.cgColor
-        typedText.materials = [material]
-        
-        let node = FaceNode(at: FeatureIndices.nose)
-        let timestamp = Date().timeIntervalSince1970
-        let textNodeName = "text\(timestamp)"
-        node.name = textNodeName
-        node.scale = SCNVector3(x: 0.001, y: 0.001, z: 0.001)
-        node.geometry = typedText
-        let viewModel = FaceNodeViewModel(node: node)
-        
-        arView.addNode(from: viewModel)
-    }
-}
-
-// MARK: - ToolsViewDelegate
-
-extension HomeViewController: ToolsViewDelegate {
-
     func hideARTools() {
         arToolsView.isHidden = true
         arView.hideAllHighlights()
         hideFaceMaskMaterialMenu()
     }
-
+    
     func resetFaceMaskMenu() {
         faceMaskMaterialMenu.resetValue()
     }

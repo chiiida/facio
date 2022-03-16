@@ -22,6 +22,8 @@ class SliderView: UIView {
     private var scale: Float
 
     weak var delegate: SliderViewDelegate?
+    
+    var valueFormal: ValueFormat = .none
 
     init(title: String, min: Float, max: Float, scale: Float = 0.1) {
         self.scale = scale
@@ -35,8 +37,12 @@ class SliderView: UIView {
     }
 
     func setCurrentValue(_ value: Float) {
-        valueLabel.text = String(format: "%.0f", value)
-        slider.setValue(value, animated: true)
+        var inputValue = value
+        if scale != 0.1 {
+            inputValue = value * (1 / scale)
+        }
+        valueLabel.text = String(format: valueFormal.string, inputValue)
+        slider.setValue(inputValue, animated: true)
     }
 
     func setSliderTag(_ tag: Int) {
@@ -82,7 +88,28 @@ class SliderView: UIView {
     }
 
     @objc private func sliderValueDidChange(_ sender: UISlider) {
-        valueLabel.text = String(format: "%.0f", sender.value)
+        valueLabel.text = String(format: valueFormal.string, sender.value)
         delegate?.sliderDidChange(tag: sender.tag, value: sender.value * scale)
+    }
+}
+
+extension SliderView {
+    
+    enum ValueFormat {
+        
+        case none
+        case oneDecimal
+        case twoDecimal
+        
+        var string: String {
+            switch self {
+            case .none:
+                return "%.0f"
+            case .oneDecimal:
+                return "%.1f"
+            case .twoDecimal:
+                return "%.2f"
+            }
+        }
     }
 }

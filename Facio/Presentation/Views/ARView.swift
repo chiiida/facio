@@ -75,7 +75,7 @@ final class ARView: ARSCNView {
         guard let viewModel = getViewModel(from: node)
         else { return }
         viewModel.panPosition = position
-        if position.z > 0.08 || position.z < 0.05 {
+        if position.z > 2.0 || position.z < 0.05 {
             viewModel.panPosition?.z = 0.07
         }
     }
