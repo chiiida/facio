@@ -24,6 +24,9 @@
 		0EC39ACF2794327700CFA7F2 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC39ACE2794327700CFA7F2 /* ImagePickerViewController.swift */; };
 		430CB49327A86718005CB711 /* FaceNodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430CB49227A86718005CB711 /* FaceNodeViewModel.swift */; };
 		430CB49527A86F51005CB711 /* DrawingNodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430CB49427A86F51005CB711 /* DrawingNodeViewModel.swift */; };
+		431DF95B27E8662A007FBDA5 /* ARAssetWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431DF95A27E8662A007FBDA5 /* ARAssetWriter.swift */; };
+		431DF95D27E86657007FBDA5 /* ARFrameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431DF95C27E86657007FBDA5 /* ARFrameGenerator.swift */; };
+		431DF95F27E86676007FBDA5 /* ARCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431DF95E27E86676007FBDA5 /* ARCapture.swift */; };
 		431F18E227AADE7600E851D1 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F18E127AADE7600E851D1 /* SliderView.swift */; };
 		431F18E427AAED6400E851D1 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F18E327AAED6400E851D1 /* Slider.swift */; };
 		432C1BAF2700ECCB0024B2EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BAE2700ECCB0024B2EB /* AppDelegate.swift */; };
@@ -42,9 +45,6 @@
 		438CE38D27BBA623004E646E /* HomeViewController+UIImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438CE38C27BBA623004E646E /* HomeViewController+UIImagePickerControllerDelegate.swift */; };
 		438CE38F27BBA643004E646E /* HomeViewController+DrawingBoardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438CE38E27BBA643004E646E /* HomeViewController+DrawingBoardDelegate.swift */; };
 		438CE39127BBA673004E646E /* HomeViewController+MaterialMenuViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438CE39027BBA673004E646E /* HomeViewController+MaterialMenuViewDelegate.swift */; };
-		4392C2DE27DBD37A003BD739 /* ARAssetWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4392C2DD27DBD37A003BD739 /* ARAssetWriter.swift */; };
-		4392C2E027DBD3A0003BD739 /* ARCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4392C2DF27DBD3A0003BD739 /* ARCapture.swift */; };
-		4392C2E227DBD3AF003BD739 /* ARFrameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4392C2E127DBD3AF003BD739 /* ARFrameGenerator.swift */; };
 		439C083027B2A63900F73A85 /* ToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439C082F27B2A63900F73A85 /* ToolsView.swift */; };
 		43AC807C27A7081900983CFC /* DrawingNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43AC807B27A7081900983CFC /* DrawingNode.swift */; };
 		43B0894727A9AC3200E93879 /* MaterialMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B0894627A9AC3200E93879 /* MaterialMenuView.swift */; };
@@ -114,6 +114,9 @@
 		37396CAB2084F5032C813D79 /* Pods_Facio_FacioUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Facio_FacioUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		430CB49227A86718005CB711 /* FaceNodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceNodeViewModel.swift; sourceTree = "<group>"; };
 		430CB49427A86F51005CB711 /* DrawingNodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingNodeViewModel.swift; sourceTree = "<group>"; };
+		431DF95A27E8662A007FBDA5 /* ARAssetWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAssetWriter.swift; sourceTree = "<group>"; };
+		431DF95C27E86657007FBDA5 /* ARFrameGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARFrameGenerator.swift; sourceTree = "<group>"; };
+		431DF95E27E86676007FBDA5 /* ARCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCapture.swift; sourceTree = "<group>"; };
 		431F18E127AADE7600E851D1 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		431F18E327AAED6400E851D1 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 		432C1BAB2700ECCB0024B2EB /* Facio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Facio.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,9 +139,6 @@
 		438CE38C27BBA623004E646E /* HomeViewController+UIImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+UIImagePickerControllerDelegate.swift"; sourceTree = "<group>"; };
 		438CE38E27BBA643004E646E /* HomeViewController+DrawingBoardDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+DrawingBoardDelegate.swift"; sourceTree = "<group>"; };
 		438CE39027BBA673004E646E /* HomeViewController+MaterialMenuViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+MaterialMenuViewDelegate.swift"; sourceTree = "<group>"; };
-		4392C2DD27DBD37A003BD739 /* ARAssetWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ARAssetWriter.swift; path = ../../../../../ARAssetWriter.swift; sourceTree = "<group>"; };
-		4392C2DF27DBD3A0003BD739 /* ARCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCapture.swift; sourceTree = "<group>"; };
-		4392C2E127DBD3AF003BD739 /* ARFrameGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARFrameGenerator.swift; sourceTree = "<group>"; };
 		439C082F27B2A63900F73A85 /* ToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsView.swift; sourceTree = "<group>"; };
 		43AC807B27A7081900983CFC /* DrawingNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingNode.swift; sourceTree = "<group>"; };
 		43B0894627A9AC3200E93879 /* MaterialMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialMenuView.swift; sourceTree = "<group>"; };
@@ -500,9 +500,9 @@
 		4392C2DC27DBD363003BD739 /* ARCapture */ = {
 			isa = PBXGroup;
 			children = (
-				4392C2DD27DBD37A003BD739 /* ARAssetWriter.swift */,
-				4392C2DF27DBD3A0003BD739 /* ARCapture.swift */,
-				4392C2E127DBD3AF003BD739 /* ARFrameGenerator.swift */,
+				431DF95A27E8662A007FBDA5 /* ARAssetWriter.swift */,
+				431DF95E27E86676007FBDA5 /* ARCapture.swift */,
+				431DF95C27E86657007FBDA5 /* ARFrameGenerator.swift */,
 			);
 			path = ARCapture;
 			sourceTree = "<group>";
@@ -977,13 +977,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				431DF95D27E86657007FBDA5 /* ARFrameGenerator.swift in Sources */,
 				43FF0693278F4D1500C3A6EA /* UIColor+Application.swift in Sources */,
 				43ED95AF2790107900D29F8B /* HomeViewModel.swift in Sources */,
+				431DF95F27E86676007FBDA5 /* ARCapture.swift in Sources */,
 				438CE38F27BBA643004E646E /* HomeViewController+DrawingBoardDelegate.swift in Sources */,
-				4392C2E027DBD3A0003BD739 /* ARCapture.swift in Sources */,
 				43B4B4E327D2915E00FB425E /* SnapshotPreviewViewController.swift in Sources */,
 				43ED95BE2790431900D29F8B /* MenuBar.swift in Sources */,
-				4392C2E227DBD3AF003BD739 /* ARFrameGenerator.swift in Sources */,
 				439C083027B2A63900F73A85 /* ToolsView.swift in Sources */,
 				43FF0689278F47F600C3A6EA /* UIView+SubView.swift in Sources */,
 				43E5F06E27D632E900E0E1A0 /* HomeViewController+TextEditorDelegate.swift in Sources */,
@@ -992,6 +992,7 @@
 				433C33BF27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift in Sources */,
 				43B4B4E527D29D7300FB425E /* VideoPreviewViewController.swift in Sources */,
 				43FD298B27944B0700E34F8C /* ARView.swift in Sources */,
+				431DF95B27E8662A007FBDA5 /* ARAssetWriter.swift in Sources */,
 				432C1BAF2700ECCB0024B2EB /* AppDelegate.swift in Sources */,
 				0EC39ACF2794327700CFA7F2 /* ImagePickerViewController.swift in Sources */,
 				43FF068D278F49DB00C3A6EA /* Double+DeviceSizeAdjusted.swift in Sources */,
@@ -1004,7 +1005,6 @@
 				43ED95C7279069B600D29F8B /* DependencyFactory+ViewModelFactoryProtocol.swift in Sources */,
 				430CB49327A86718005CB711 /* FaceNodeViewModel.swift in Sources */,
 				430CB49527A86F51005CB711 /* DrawingNodeViewModel.swift in Sources */,
-				4392C2DE27DBD37A003BD739 /* ARAssetWriter.swift in Sources */,
 				43AC807C27A7081900983CFC /* DrawingNode.swift in Sources */,
 				43EC1E4B2791D139008CF316 /* DrawingBoardViewController.swift in Sources */,
 				438CE38D27BBA623004E646E /* HomeViewController+UIImagePickerControllerDelegate.swift in Sources */,

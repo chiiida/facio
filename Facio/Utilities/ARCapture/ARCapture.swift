@@ -1,8 +1,8 @@
 //
 //  ARCapture.swift
-//  ARCapture framework
+//  Facio
 //
-//  Created by Volkov Alexander on 6/6/21.
+//  Created by Chananchida Fuachai on 21/3/2565 BE.
 //
 
 import Foundation
