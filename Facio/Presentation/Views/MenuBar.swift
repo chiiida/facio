@@ -6,12 +6,11 @@
 //
 
 import UIKit
-import ARKit
 
 protocol MenuBarDelegate: AnyObject {
 
-    func didTapCameraButton()
-    func didTapRecordButton(_ isRecording: Bool)
+    func didTapCameraButton(state: MenuBar.CameraMode)
+    func didTapRecordButton()
     func didTapImageButton()
     func didTapDrawButton()
     func didTapTextButton()
@@ -29,7 +28,6 @@ class MenuBar: UIView {
 
     private var currentCameraMode: CameraMode = .camera
     private var cameraModeList = [CameraMode.camera.title, CameraMode.record.title]
-    private var isRecording = false
     
     weak var delegate: MenuBarDelegate?
 
@@ -144,17 +142,7 @@ class MenuBar: UIView {
     }
 
     @objc private func didTapCameraButton(_ sender: UIButton) {
-        switch currentCameraMode {
-        case .camera:
-            AudioServicesPlayAlertSound(1_108)
-            delegate?.didTapCameraButton()
-        case .record:
-            if isRecording {
-                isRecording = true
-            }
-            AudioServicesPlayAlertSound(1_118)
-            delegate?.didTapRecordButton(isRecording)
-        }
+        delegate?.didTapCameraButton(state: currentCameraMode)
     }
 }
 
