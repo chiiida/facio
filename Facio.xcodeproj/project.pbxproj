@@ -34,6 +34,7 @@
 		431DF95B27E8662A007FBDA5 /* ARAssetWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431DF95A27E8662A007FBDA5 /* ARAssetWriter.swift */; };
 		431DF95D27E86657007FBDA5 /* ARFrameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431DF95C27E86657007FBDA5 /* ARFrameGenerator.swift */; };
 		431DF95F27E86676007FBDA5 /* ARCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431DF95E27E86676007FBDA5 /* ARCapture.swift */; };
+		431DF96127E8E3FB007FBDA5 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 431DF96027E8E3FB007FBDA5 /* art.scnassets */; };
 		431F18E227AADE7600E851D1 /* SliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F18E127AADE7600E851D1 /* SliderView.swift */; };
 		431F18E427AAED6400E851D1 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431F18E327AAED6400E851D1 /* Slider.swift */; };
 		432C1BAF2700ECCB0024B2EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432C1BAE2700ECCB0024B2EB /* AppDelegate.swift */; };
@@ -131,6 +132,7 @@
 		431DF95A27E8662A007FBDA5 /* ARAssetWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAssetWriter.swift; sourceTree = "<group>"; };
 		431DF95C27E86657007FBDA5 /* ARFrameGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARFrameGenerator.swift; sourceTree = "<group>"; };
 		431DF95E27E86676007FBDA5 /* ARCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCapture.swift; sourceTree = "<group>"; };
+		431DF96027E8E3FB007FBDA5 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		431F18E127AADE7600E851D1 /* SliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderView.swift; sourceTree = "<group>"; };
 		431F18E327AAED6400E851D1 /* Slider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
 		432C1BAB2700ECCB0024B2EB /* Facio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Facio.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -411,6 +413,7 @@
 				0E585C5C27EB9CBB0009B4C4 /* Documents */,
 				43FF0678278F433900C3A6EA /* Fonts */,
 				432C1BB72700ECCF0024B2EB /* Assets.xcassets */,
+				431DF96027E8E3FB007FBDA5 /* art.scnassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -791,6 +794,7 @@
 				TargetAttributes = {
 					432C1BAA2700ECCB0024B2EB = {
 						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1320;
 					};
 					432C1BC02700ECCF0024B2EB = {
 						CreatedOnToolsVersion = 11.0;
@@ -828,6 +832,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EBFCF0E27CF701400CA3017 /* Nunito-Regular.ttf in Resources */,
+				431DF96127E8E3FB007FBDA5 /* art.scnassets in Resources */,
 				0EBFCF2527D50A8A00CA3017 /* FiraMono-Bold.ttf in Resources */,
 				0EBFCF2827D50CFB00CA3017 /* MrDeHaviland-Regular.ttf in Resources */,
 				432C1BBB2700ECCF0024B2EB /* LaunchScreen.storyboard in Resources */,
@@ -1252,6 +1257,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
