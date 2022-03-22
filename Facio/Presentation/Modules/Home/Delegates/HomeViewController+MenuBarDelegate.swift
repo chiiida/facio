@@ -9,12 +9,31 @@ import UIKit
 
 extension HomeViewController: MenuBarDelegate {
 
-    func didTapCameraButton(state: MenuBar.CameraMode) {
-        // TODO: implement in integration
+    func didTapCameraButton() {
+        let image = arView.snapshot()
+        let previewVC = SnapshotPreviewViewController(image: image)
+        let navVC = UINavigationController(rootViewController: previewVC)
+        navVC.modalPresentationStyle = .fullScreen
+        navigationController?.present(navVC, animated: true)
     }
 
-    func didTapRecordButton() {
-        // TODO: implement in integration
+    func didTapRecordButton(_ isRecording: Bool) {
+        hideARTools()
+        if isRecording {
+            arRecoder?.start(captureType: .imageCapture)
+        } else {
+            arRecoder?.stop { videoPath in
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    let imageSize = self.arView.snapshot().size
+                    let previewVC = VideoPreviewViewController(videoPath: videoPath, arRecoder: self.arRecoder)
+                    previewVC.setVideoSize(imageSize)
+                    let navVC = UINavigationController(rootViewController: previewVC)
+                    navVC.modalPresentationStyle = .fullScreen
+                    self.navigationController?.present(navVC, animated: true)
+                }
+            }
+        }
     }
 
     func didTapImageButton() {

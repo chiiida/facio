@@ -19,6 +19,7 @@ final class HomeViewController: UIViewController {
     
     private var viewModel: HomeViewModelProtocol!
     var arView = ARView()
+    var arRecoder: ARCapture?
     
     init(viewModel: HomeViewModelProtocol) {
         self.viewModel = viewModel
@@ -34,6 +35,7 @@ final class HomeViewController: UIViewController {
         setUpLayout()
         setUpViews()
         bind(to: viewModel)
+        arRecoder = ARCapture(view: arView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
