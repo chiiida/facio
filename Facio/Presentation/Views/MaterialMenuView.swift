@@ -80,11 +80,9 @@ class MaterialMenuView: UIView {
                     self?.alpha = 0.0
                     self?.sliderStackView.isHidden = true
                     self?.layoutIfNeeded()
-                },
-                completion: { _ in
-                    self?.isHidden = true
                 }
             )
+            self?.isHidden = true
         }
     }
 

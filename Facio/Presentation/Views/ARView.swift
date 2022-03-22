@@ -11,8 +11,18 @@ import UIKit
 final class ARView: ARSCNView {
 
     private var nodeViewModels = [FaceNodeViewModelProtocol]()
-
+    
+    var lastDragPosition: SCNVector3?
+    var selectedNode: SCNNode?
+    var panStartZ: CGFloat?
     var mainNode: SCNNode?
+
+    private func getViewModel(from node: SCNNode) -> FaceNodeViewModelProtocol? {
+        guard let viewModel = nodeViewModels.first(where: {
+            $0.node == node
+        }) else { return nil }
+        return viewModel
+    }
 
     func addNode(from viewModel: FaceNodeViewModelProtocol) {
         if let drawingNode = viewModel.node as? DrawingNode, drawingNode.isFaceMask {
@@ -29,6 +39,17 @@ final class ARView: ARSCNView {
         nodeViewModels.append(viewModel)
     }
 
+    func removeNode(_ node: SCNNode) {
+        if node == mainNode {
+            mainNode?.geometry?.firstMaterial?.diffuse.contents = nil
+            mainNode?.geometry?.firstMaterial?.transparency = 0.0
+        }
+        if let index = nodeViewModels.firstIndex(where: { $0.node == node }) {
+            nodeViewModels.remove(at: index)
+            node.removeFromParentNode()
+        }
+    }
+
     func updateFeatures(using anchor: ARFaceAnchor) {
         nodeViewModels.forEach { viewModel in
             let node = viewModel.node
@@ -37,10 +58,25 @@ final class ARView: ARSCNView {
                 mainNode?.geometry?.firstMaterial = node.material
             } else {
                 let child = mainNode?.childNode(withName: node.name ?? "", recursively: false) as? FaceNode
-                let vertices = node.indices.map { anchor.geometry.vertices[$0] }
-                child?.updatePosition(for: vertices)
-                child?.position.z += 0.01
+
+                if let panningPosition = viewModel.panPosition {
+                    child?.localTranslate(by: panningPosition)
+                    child?.position = panningPosition
+                } else {
+                    let vertices = node.indices.map { anchor.geometry.vertices[$0] }
+                    child?.updatePosition(for: vertices)
+                    child?.position.z += 0.01
+                }
             }
+        }
+    }
+
+    func updatePosition(for node: FaceNode, with position: SCNVector3) {
+        guard let viewModel = getViewModel(from: node)
+        else { return }
+        viewModel.panPosition = position
+        if position.z > 2.0 || position.z < 0.05 {
+            viewModel.panPosition?.z = 0.07
         }
     }
 
@@ -53,5 +89,16 @@ final class ARView: ARSCNView {
         }) else { return }
 
         faceMaskViewModel.updateMaterial(with: material)
+    }
+
+    func showHighlight(_ node: FaceNode) {
+        guard let viewModel = getViewModel(from: node) else { return }
+        viewModel.showHighlight()
+    }
+
+    func hideAllHighlights() {
+        nodeViewModels.forEach {
+            $0.hideHighlight()
+        }
     }
 }

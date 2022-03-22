@@ -11,6 +11,7 @@ import SceneKit
 class DrawingNodeViewModel: FaceNodeViewModelProtocol {
 
     var node: FaceNode
+    var panPosition: SCNVector3?
     var isFaceMask: Bool
 
     init(node: DrawingNode) {
@@ -32,6 +33,9 @@ class DrawingNodeViewModel: FaceNodeViewModelProtocol {
                 plane.firstMaterial?.diffuse.contents = image
                 plane.firstMaterial?.isDoubleSided = true
             }
+
+            addHighlightNode()
+            hideHighlight()
         }
     }
 

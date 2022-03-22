@@ -15,9 +15,11 @@ final class HomeViewController: UIViewController {
     private let settingsButton = UIButton(type: .system)
     private let menuBar = MenuBar()
     private let faceMaskMaterialMenu = MaterialMenuView()
+    private let arToolsView = ToolsView()
     
     private var viewModel: HomeViewModelProtocol!
     var arView = ARView()
+    var arRecoder: ARCapture?
     
     init(viewModel: HomeViewModelProtocol) {
         self.viewModel = viewModel
@@ -33,7 +35,7 @@ final class HomeViewController: UIViewController {
         setUpLayout()
         setUpViews()
         bind(to: viewModel)
-        
+        arRecoder = ARCapture(view: arView)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -72,9 +74,10 @@ extension HomeViewController {
     private func setUpLayout() {
         view.addSubViews(
             arView,
-            settingsButton,
             menuBar,
-            faceMaskMaterialMenu
+            faceMaskMaterialMenu,
+            settingsButton,
+            arToolsView
         )
         
         arView.snp.makeConstraints {
@@ -98,28 +101,127 @@ extension HomeViewController {
             $0.bottom.equalTo(menuBar.snp.top)
             $0.leading.trailing.equalToSuperview()
         }
+
+        arToolsView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalTo(settingsButton.snp.top)
+            $0.bottom.equalTo(menuBar.snp.top)
+        }
     }
     
     private func setUpViews() {
+        navigationController?.isNavigationBarHidden = true
+        
         arView.delegate = self
         arView.scene = SCNScene()
         arView.autoenablesDefaultLighting = true
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapARView(_:)))
         arView.addGestureRecognizer(tapRecognizer)
+
+        let panRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didMoveARNode(_:)))
+        arView.addGestureRecognizer(panRecognizer)
+        
+        let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(didResizeARNode(_:)))
+        arView.addGestureRecognizer(pinchRecognizer)
         
         settingsButton.setImage(Asset.common.settings(), for: .normal)
-        settingsButton.tintColor = .primaryGray
-        
+        settingsButton.tintColor = .white
+
         faceMaskMaterialMenu.isHidden = true
         faceMaskMaterialMenu.delegate = self
+
+        arToolsView.isHidden = true
+        arToolsView.delegate = self
         
         menuBar.delegate = self
+    }
+
+    @objc private func didTapARView(_ sender: UITapGestureRecognizer) {
+        hideARTools()
+
+        let location = sender.location(in: arView)
         
-        view.bringSubviewToFront(settingsButton)
+        guard let nodeHitTest = arView.hitTest(location, options: nil).first
+        else { return }
+        let hitNode = nodeHitTest.node
+
+        arToolsView.node = hitNode
+
+        if hitNode.name == "mainNode",
+           ((hitNode.geometry?.firstMaterial?.diffuse.contents as? UIImage) != nil) {
+            showFaceMaskMaterialMenu()
+            arToolsView.isHidden = false
+            arToolsView.hidePosZSlider(true)
+        } else if let node = hitNode as? FaceNode {
+            arView.showHighlight(node)
+            arToolsView.isHidden = false
+            arToolsView.resetSlider()
+            arToolsView.hidePosZSlider(false)
+            if node as? DrawingNode != nil {
+                arToolsView.hideEditButton(false)
+            } else {
+                arToolsView.hideEditButton(true)
+            }
+        }
+        
+        arView.selectedNode = hitNode
+    }
+
+    @objc private func didMoveARNode(_ sender: UIPanGestureRecognizer) {
+        let location = sender.location(in: arView)
+
+        switch sender.state {
+        case .began:
+            guard let nodeHitTest = arView.hitTest(location, options: nil).first
+            else { return }
+            arView.lastDragPosition = nodeHitTest.localCoordinates
+            arView.selectedNode = nodeHitTest.node
+            arView.panStartZ = CGFloat(arView.projectPoint(nodeHitTest.node.position).z)
+        case .changed:
+            guard let lastDragPosition = arView.lastDragPosition,
+                  let draggingNode = arView.selectedNode as? FaceNode,
+                  let panStartZ = arView.panStartZ
+            else { return }
+            let localTouchPosition = arView.unprojectPoint(SCNVector3(location.x, location.y, panStartZ))
+            let movementVector = SCNVector3(
+                (localTouchPosition.x * -1.0) - lastDragPosition.x,
+                (localTouchPosition.y * -1.0),
+                lastDragPosition.z
+            )
+            arView.selectedNode?.localTranslate(by: movementVector)
+            arView.updatePosition(for: draggingNode, with: movementVector)
+
+            arView.lastDragPosition = localTouchPosition
+        case .ended:
+            (arView.lastDragPosition, arView.selectedNode, arView.panStartZ) = (nil, nil, nil)
+        default:
+            break
+        }
     }
     
-    private func showFaceMaskMaterialMenu() {
+    @objc private func didResizeARNode(_ sender: UIPinchGestureRecognizer) {
+        if let selectedNode = arView.selectedNode, selectedNode.name != "mainNode" {
+            switch sender.state {
+            case .changed:
+                let pinchScaleX = Float(sender.scale) * selectedNode.scale.x
+                let pinchScaleY = Float(sender.scale) * selectedNode.scale.y
+                let pinchScaleZ = Float(sender.scale) * selectedNode.scale.z
+                arView.selectedNode?.scale = SCNVector3(pinchScaleX, pinchScaleY, pinchScaleZ)
+                sender.scale = 1
+            default:
+                break
+            }
+            
+        }
+    }
+}
+
+// Shared Functions
+
+extension HomeViewController {
+
+    func showFaceMaskMaterialMenu() {
         faceMaskMaterialMenu.show { [weak self] in
             guard let self = self else { return }
             self.faceMaskMaterialMenu.snp.remakeConstraints {
@@ -130,8 +232,8 @@ extension HomeViewController {
             self.view.layoutIfNeeded()
         }
     }
-    
-    private func hideFaceMaskMaterialMenu() {
+
+    func hideFaceMaskMaterialMenu() {
         faceMaskMaterialMenu.hide { [weak self] in
             guard let self = self else { return }
             self.faceMaskMaterialMenu.snp.remakeConstraints {
@@ -143,162 +245,13 @@ extension HomeViewController {
         }
     }
     
-    @objc private func didTapARView(_ sender: UITapGestureRecognizer) {
-        let location = sender.location(in: arView)
-        
-        guard let nodeHitTest = arView.hitTest(location, options: nil).first
-        else {
-            if !faceMaskMaterialMenu.isHidden {
-                hideFaceMaskMaterialMenu()
-            }
-            return
-        }
-        let hitNode = nodeHitTest.node
-        
-        if hitNode.name == "mainNode",
-           ((hitNode.geometry?.firstMaterial?.diffuse.contents as? UIImage) != nil),
-           faceMaskMaterialMenu.isHidden {
-            showFaceMaskMaterialMenu()
-        } else {
-            hideFaceMaskMaterialMenu()
-        }
-    }
-}
-
-// MARK: - MenuBarDelegate
-
-extension HomeViewController: MenuBarDelegate {
-    
-    func didTapCameraButton(state: MenuBar.CameraMode) {
-        // TODO: implement in integration
+    func hideARTools() {
+        arToolsView.isHidden = true
+        arView.hideAllHighlights()
+        hideFaceMaskMaterialMenu()
     }
     
-    func didTapRecordButton() {
-        // TODO: implement in integration
-    }
-    
-    func didTapImageButton() {
-        let imagepickerVC = ImagePickerViewController()
-        imagepickerVC.delegate = self
-        present(imagepickerVC, animated: true, completion: nil)
-    }
-    
-    func didTapDrawButton() {
-        let drawingBoardVC = DrawingBoardViewController()
-        drawingBoardVC.delegate = self
-        let navVC = UINavigationController(rootViewController: drawingBoardVC)
-        navVC.modalPresentationStyle = .fullScreen
-        navigationController?.present(navVC, animated: true)
-    }
-    
-    func didTapTextButton() {
-        let textEditorVC = TextEditorViewController()
-        textEditorVC.delegate = self
-        let navVC = UINavigationController(rootViewController: textEditorVC)
-        navVC.modalPresentationStyle = .overFullScreen
-        navigationController?.present(navVC, animated: true)
-        
-    }
-    
-    func didTapBeautificationButton() {
-        // TODO: implement in integration
-    }
-}
-
-// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
-extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-        guard let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage ??
-                info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-        
-        let imageToDisplay = fixOrientation(img: pickedImage)
-        let faceNode = FaceNode(at: FeatureIndices.nose)
-        let timestamp = Date().timeIntervalSince1970
-        let imageNodeName = "image\(timestamp)"
-        faceNode.name = imageNodeName
-        let viewModel = FaceNodeViewModel(node: faceNode)
-        viewModel.addImage(imageToDisplay)
-        arView.addNode(from: viewModel)
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func fixOrientation(img: UIImage) -> UIImage {
-        if (img.imageOrientation == .up) {
-            return img
-        }
-        
-        UIGraphicsBeginImageContextWithOptions(img.size, false, img.scale)
-        let rect = CGRect(x: 0, y: 0, width: img.size.width, height: img.size.height)
-        img.draw(in: rect)
-        
-        let normalizedImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        return normalizedImage
-    }
-    
-}
-
-// MARK: - DrawingBoardDelegate
-
-extension HomeViewController: DrawingBoardDelegate {
-    
-    func didFinishDrawing(_ image: UIImage, isFaceMask: Bool) {
-        let drawingNode = DrawingNode(at: FeatureIndices.nose, isFaceMask: isFaceMask)
-        let timestamp = Date().timeIntervalSince1970
-        let drawNodeName = "draw\(timestamp)"
-        drawingNode.name = drawNodeName
-        let viewModel = DrawingNodeViewModel(node: drawingNode)
-        viewModel.addImage(image)
-        arView.addNode(from: viewModel)
-        
-        if isFaceMask {
-            faceMaskMaterialMenu.resetValue()
-            showFaceMaskMaterialMenu()
-        }
-    }
-}
-
-// MARK: - MaterialMenuViewDelegate
-
-extension HomeViewController: MaterialMenuViewDelegate {
-    
-    func didUpdateMaterial(type: MaterialMenuView.MaterialType, value: Float) {
-        let material = SCNMaterial()
-        switch type {
-        case .metalness: material.metalness.contents = value
-        case .roughness: material.roughness.contents = value
-        case .shininess: material.shininess = CGFloat(value)
-        }
-        arView.updateFaceMask(with: material)
-    }
-}
-
-// MARK: - TextEditorDelegate
-
-extension HomeViewController: TextEditorDelegate {
-    
-    func didFinishTyping(_ text: String, color: UIColor, size: CGFloat, font: String, width: CGFloat, height: CGFloat) {
-        let typedText = SCNText(string: text, extrusionDepth: 0.2)
-        typedText.font = UIFont(name: font, size: size)
-        typedText.containerFrame = CGRect(origin: .init(x: 0.0, y: 0.0), size: CGSize(width: width, height: height))
-        typedText.isWrapped = true
-        typedText.alignmentMode = "center"
-        typedText.truncationMode = "end"
-        
-        let material = SCNMaterial()
-        material.diffuse.contents = color.cgColor
-        typedText.materials = [material]
-        
-        let node = FaceNode(at: FeatureIndices.nose)
-        let timestamp = Date().timeIntervalSince1970
-        let textNodeName = "text\(timestamp)"
-        node.name = textNodeName
-        node.scale = SCNVector3(x: 0.001, y: 0.001, z: 0.001)
-        node.geometry = typedText
-        let viewModel = FaceNodeViewModel(node: node)
-        
-        arView.addNode(from: viewModel)
+    func resetFaceMaskMenu() {
+        faceMaskMaterialMenu.resetValue()
     }
 }
