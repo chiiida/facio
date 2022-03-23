@@ -1,0 +1,9 @@
+    Facio is an iOS application for customizing face filters with augmented reality. The application allows the users to fulfill their imagination with several face filter features. The main feature of the application is face detection and face tracking. The user can see their face filter results in real-time with augmented reality to detect and track their face. The application also detects facial expressions.
+
+    Our application mainly focused on four features which are drawing board, add images, add text, and beautification. Drawing board allows users to draw their own drawing or face mask and attach it to their face. The users can browse images from the photos library and attach them to their face. The application also provides a text editor for users to add some words and custom the font and color as well. Apart from that, the users can adjust the appearance with the beautification tools. After the users are done creating their own filter, they can take a picture or record a video then save and share those media.
+
+
+Hope you enjoyed ;)
+
+Chananchida F.
+Sirikon S.

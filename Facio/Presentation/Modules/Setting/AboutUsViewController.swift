@@ -1,5 +1,5 @@
 //
-//  TermsOfUseViewController.swift
+//  AboutUsViewController.swift
 //  Facio
 //
 //  Created by Sirikonss on 24/3/2565 BE.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TermsOfUseViewController: UIViewController {
+final class AboutUsViewController: UIViewController {
     
     private let cancelButton = UIButton(type: .system)
     private let details = UITextView()
@@ -27,7 +27,7 @@ final class TermsOfUseViewController: UIViewController {
     }
 }
 
-extension TermsOfUseViewController {
+extension AboutUsViewController {
     
     private func setUpLayout() {
         view.addSubViews(
@@ -50,7 +50,7 @@ extension TermsOfUseViewController {
     }
     
     private func loadTerms() {
-        if let filepath = Bundle.main.path(forResource: "TermsOfUse", ofType: "txt") {
+        if let filepath = Bundle.main.path(forResource: "AboutUs", ofType: "txt") {
             do {
                 let contents = try String(contentsOfFile: filepath)
                 details.text = contents
@@ -61,7 +61,7 @@ extension TermsOfUseViewController {
     }
     
     private func setUpNavigationBar() {
-        navigationItem.title = "Terms of Use"
+        navigationItem.title = "About Us"
         navigationItem.leftBarButtonItems = [
             UIBarButtonItem(customView: cancelButton)
         ]

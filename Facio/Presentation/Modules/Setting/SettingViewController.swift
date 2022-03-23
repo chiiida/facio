@@ -128,8 +128,8 @@ extension SettingViewController {
         version.snp.makeConstraints {
             $0.width.equalTo(129.0)
             $0.height.equalTo(66.0)
-            $0.top.equalToSuperview().inset(300.0)
-            $0.leading.trailing.equalToSuperview().inset(130.0)
+            $0.top.equalToSuperview().inset(320.0)
+            $0.leading.trailing.equalToSuperview().inset(120.0)
         }
     }
     
@@ -152,6 +152,9 @@ extension SettingViewController {
     }
     
     @objc private func didTapAboutUs() {
-        navigationController?.dismiss(animated: true, completion: nil)
+        let privacyVC = AboutUsViewController()
+        let navVC = UINavigationController(rootViewController: privacyVC)
+        navVC.modalPresentationStyle = .currentContext
+        navigationController?.present(navVC, animated: true)
     }
 }

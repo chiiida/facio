@@ -12,6 +12,8 @@
 		0E585C5B27EB97520009B4C4 /* PrivacyPolicy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E585C5A27EB97520009B4C4 /* PrivacyPolicy.txt */; };
 		0E585C5E27EB9F290009B4C4 /* TermsOfUse.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E585C5D27EB9F290009B4C4 /* TermsOfUse.txt */; };
 		0E585C6027EBA1030009B4C4 /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E585C5F27EBA1030009B4C4 /* TermsOfUseViewController.swift */; };
+		0E585C6227EBA5490009B4C4 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E585C6127EBA5490009B4C4 /* AboutUsViewController.swift */; };
+		0E585C6427EBA57B0009B4C4 /* AboutUs.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E585C6327EBA57B0009B4C4 /* AboutUs.txt */; };
 		0EBF01CD27A9B071004D1439 /* TextEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBF01CC27A9B071004D1439 /* TextEditorViewController.swift */; };
 		0EBFCF0E27CF701400CA3017 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EBFCF0B27CF701400CA3017 /* Nunito-Regular.ttf */; };
 		0EBFCF0F27CF701400CA3017 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EBFCF0C27CF701400CA3017 /* Nunito-SemiBold.ttf */; };
@@ -105,6 +107,8 @@
 		0E585C5A27EB97520009B4C4 /* PrivacyPolicy.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = PrivacyPolicy.txt; sourceTree = "<group>"; };
 		0E585C5D27EB9F290009B4C4 /* TermsOfUse.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TermsOfUse.txt; sourceTree = "<group>"; };
 		0E585C5F27EBA1030009B4C4 /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
+		0E585C6127EBA5490009B4C4 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		0E585C6327EBA57B0009B4C4 /* AboutUs.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = AboutUs.txt; sourceTree = "<group>"; };
 		0EBF01CC27A9B071004D1439 /* TextEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorViewController.swift; sourceTree = "<group>"; };
 		0EBFCF0B27CF701400CA3017 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		0EBFCF0C27CF701400CA3017 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 				0E585C5627EB66F50009B4C4 /* SettingViewController.swift */,
 				0E585C5827EB93CB0009B4C4 /* PrivacyViewController.swift */,
 				0E585C5F27EBA1030009B4C4 /* TermsOfUseViewController.swift */,
+				0E585C6127EBA5490009B4C4 /* AboutUsViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 			children = (
 				0E585C5A27EB97520009B4C4 /* PrivacyPolicy.txt */,
 				0E585C5D27EB9F290009B4C4 /* TermsOfUse.txt */,
+				0E585C6327EBA57B0009B4C4 /* AboutUs.txt */,
 			);
 			path = Documents;
 			sourceTree = "<group>";
@@ -837,6 +843,7 @@
 				43FF0686278F45B700C3A6EA /* Comfortaa-Medium.ttf in Resources */,
 				0EBFCF1727D4FCD400CA3017 /* Oswald-Regular.ttf in Resources */,
 				0EBFCF1D27D504F400CA3017 /* Poppins-Bold.ttf in Resources */,
+				0E585C6427EBA57B0009B4C4 /* AboutUs.txt in Resources */,
 				432C1BB82700ECCF0024B2EB /* Assets.xcassets in Resources */,
 				0EBFCF1027CF701400CA3017 /* Nunito-Bold.ttf in Resources */,
 				0EBFCF1E27D504F400CA3017 /* Poppins-SemiBold.ttf in Resources */,
@@ -1029,6 +1036,7 @@
 				432C1BAF2700ECCB0024B2EB /* AppDelegate.swift in Sources */,
 				0EC39ACF2794327700CFA7F2 /* ImagePickerViewController.swift in Sources */,
 				43FF068D278F49DB00C3A6EA /* Double+DeviceSizeAdjusted.swift in Sources */,
+				0E585C6227EBA5490009B4C4 /* AboutUsViewController.swift in Sources */,
 				0EBF01CD27A9B071004D1439 /* TextEditorViewController.swift in Sources */,
 				43ED95B727903DCE00D29F8B /* UIFont+Size.swift in Sources */,
 				431F18E427AAED6400E851D1 /* Slider.swift in Sources */,
