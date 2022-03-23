@@ -7,7 +7,7 @@
 
 protocol HomeViewModelInput {
 
-    func didTapSettingsButton()
+//    func didTapSettingsButton()
 }
 
 protocol HomeViewModelOutput {}
@@ -16,7 +16,7 @@ protocol HomeViewModelProtocol: HomeViewModelInput, HomeViewModelOutput {}
 
 final class HomeViewModel: HomeViewModelProtocol {
 
-    func didTapSettingsButton() {
-        // TODO: implement in integration
-    }
+//    func didTapSettingsButton() {
+//        // TODO: implement in integration
+//    }
 }
