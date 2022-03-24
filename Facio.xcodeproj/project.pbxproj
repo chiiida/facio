@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E585C5727EB66F50009B4C4 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E585C5627EB66F50009B4C4 /* SettingViewController.swift */; };
+		0E585C5927EB93CB0009B4C4 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E585C5827EB93CB0009B4C4 /* PrivacyViewController.swift */; };
+		0E585C5B27EB97520009B4C4 /* PrivacyPolicy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E585C5A27EB97520009B4C4 /* PrivacyPolicy.txt */; };
+		0E585C5E27EB9F290009B4C4 /* TermsOfUse.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E585C5D27EB9F290009B4C4 /* TermsOfUse.txt */; };
+		0E585C6027EBA1030009B4C4 /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E585C5F27EBA1030009B4C4 /* TermsOfUseViewController.swift */; };
+		0E585C6227EBA5490009B4C4 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E585C6127EBA5490009B4C4 /* AboutUsViewController.swift */; };
+		0E585C6427EBA57B0009B4C4 /* AboutUs.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E585C6327EBA57B0009B4C4 /* AboutUs.txt */; };
 		0EBF01CD27A9B071004D1439 /* TextEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBF01CC27A9B071004D1439 /* TextEditorViewController.swift */; };
 		0EBFCF0E27CF701400CA3017 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EBFCF0B27CF701400CA3017 /* Nunito-Regular.ttf */; };
 		0EBFCF0F27CF701400CA3017 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EBFCF0C27CF701400CA3017 /* Nunito-SemiBold.ttf */; };
@@ -95,6 +102,13 @@
 
 /* Begin PBXFileReference section */
 		0A02B8B632612226BA62C2BF /* Pods-Facio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Facio.debug.xcconfig"; path = "Target Support Files/Pods-Facio/Pods-Facio.debug.xcconfig"; sourceTree = "<group>"; };
+		0E585C5627EB66F50009B4C4 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		0E585C5827EB93CB0009B4C4 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		0E585C5A27EB97520009B4C4 /* PrivacyPolicy.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = PrivacyPolicy.txt; sourceTree = "<group>"; };
+		0E585C5D27EB9F290009B4C4 /* TermsOfUse.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TermsOfUse.txt; sourceTree = "<group>"; };
+		0E585C5F27EBA1030009B4C4 /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
+		0E585C6127EBA5490009B4C4 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		0E585C6327EBA57B0009B4C4 /* AboutUs.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = AboutUs.txt; sourceTree = "<group>"; };
 		0EBF01CC27A9B071004D1439 /* TextEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorViewController.swift; sourceTree = "<group>"; };
 		0EBFCF0B27CF701400CA3017 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		0EBFCF0C27CF701400CA3017 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -202,6 +216,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E585C5527EB66E00009B4C4 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				0E585C5627EB66F50009B4C4 /* SettingViewController.swift */,
+				0E585C5827EB93CB0009B4C4 /* PrivacyViewController.swift */,
+				0E585C5F27EBA1030009B4C4 /* TermsOfUseViewController.swift */,
+				0E585C6127EBA5490009B4C4 /* AboutUsViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		0E585C5C27EB9CBB0009B4C4 /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				0E585C5A27EB97520009B4C4 /* PrivacyPolicy.txt */,
+				0E585C5D27EB9F290009B4C4 /* TermsOfUse.txt */,
+				0E585C6327EBA57B0009B4C4 /* AboutUs.txt */,
+			);
+			path = Documents;
+			sourceTree = "<group>";
+		};
 		0EBF01CB27A9B023004D1439 /* TextEditor */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +408,7 @@
 		432C1BE12700F07E0024B2EB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0E585C5C27EB9CBB0009B4C4 /* Documents */,
 				43FF0678278F433900C3A6EA /* Fonts */,
 				432C1BB72700ECCF0024B2EB /* Assets.xcassets */,
 			);
@@ -407,6 +443,7 @@
 		432C1BE62700F0DE0024B2EB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0E585C5527EB66E00009B4C4 /* Setting */,
 				0EBF01CB27A9B023004D1439 /* TextEditor */,
 				43B4B4E127D2907100FB425E /* CameraPreview */,
 				43EC1E492791D11A008CF316 /* DrawingBoard */,
@@ -802,9 +839,11 @@
 				0EBFCF1C27D504F400CA3017 /* Poppins-Regular.ttf in Resources */,
 				43FF0681278F455D00C3A6EA /* OpenSans-Bold.ttf in Resources */,
 				43FF0683278F455D00C3A6EA /* OpenSans-SemiBold.ttf in Resources */,
+				0E585C5B27EB97520009B4C4 /* PrivacyPolicy.txt in Resources */,
 				43FF0686278F45B700C3A6EA /* Comfortaa-Medium.ttf in Resources */,
 				0EBFCF1727D4FCD400CA3017 /* Oswald-Regular.ttf in Resources */,
 				0EBFCF1D27D504F400CA3017 /* Poppins-Bold.ttf in Resources */,
+				0E585C6427EBA57B0009B4C4 /* AboutUs.txt in Resources */,
 				432C1BB82700ECCF0024B2EB /* Assets.xcassets in Resources */,
 				0EBFCF1027CF701400CA3017 /* Nunito-Bold.ttf in Resources */,
 				0EBFCF1E27D504F400CA3017 /* Poppins-SemiBold.ttf in Resources */,
@@ -812,6 +851,7 @@
 				0EBFCF1627D4FCD400CA3017 /* Oswald-SemiBold.ttf in Resources */,
 				0EBFCF2427D50A8A00CA3017 /* FiraMono-Regular.ttf in Resources */,
 				0EBFCF2327D50A8A00CA3017 /* FiraMono-Medium.ttf in Resources */,
+				0E585C5E27EB9F290009B4C4 /* TermsOfUse.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -996,6 +1036,7 @@
 				432C1BAF2700ECCB0024B2EB /* AppDelegate.swift in Sources */,
 				0EC39ACF2794327700CFA7F2 /* ImagePickerViewController.swift in Sources */,
 				43FF068D278F49DB00C3A6EA /* Double+DeviceSizeAdjusted.swift in Sources */,
+				0E585C6227EBA5490009B4C4 /* AboutUsViewController.swift in Sources */,
 				0EBF01CD27A9B071004D1439 /* TextEditorViewController.swift in Sources */,
 				43ED95B727903DCE00D29F8B /* UIFont+Size.swift in Sources */,
 				431F18E427AAED6400E851D1 /* Slider.swift in Sources */,
@@ -1004,6 +1045,7 @@
 				438CE38927BBA5D6004E646E /* HomeViewController+ToolsViewDelegate.swift in Sources */,
 				43ED95C7279069B600D29F8B /* DependencyFactory+ViewModelFactoryProtocol.swift in Sources */,
 				430CB49327A86718005CB711 /* FaceNodeViewModel.swift in Sources */,
+				0E585C6027EBA1030009B4C4 /* TermsOfUseViewController.swift in Sources */,
 				430CB49527A86F51005CB711 /* DrawingNodeViewModel.swift in Sources */,
 				43AC807C27A7081900983CFC /* DrawingNode.swift in Sources */,
 				43EC1E4B2791D139008CF316 /* DrawingBoardViewController.swift in Sources */,
@@ -1012,6 +1054,8 @@
 				438CE39127BBA673004E646E /* HomeViewController+MaterialMenuViewDelegate.swift in Sources */,
 				4344CD6A27954A880070B938 /* FeatureIndices.swift in Sources */,
 				43FF067A278F437900C3A6EA /* R.swift+Typealias.swift in Sources */,
+				0E585C5927EB93CB0009B4C4 /* PrivacyViewController.swift in Sources */,
+				0E585C5727EB66F50009B4C4 /* SettingViewController.swift in Sources */,
 				43FF0690278F4A5800C3A6EA /* Device.swift in Sources */,
 				432C1BF02700F5170024B2EB /* R.generated.swift in Sources */,
 				43FD29892794300200E34F8C /* FaceNode.swift in Sources */,

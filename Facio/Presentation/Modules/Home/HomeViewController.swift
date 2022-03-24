@@ -67,7 +67,7 @@ extension HomeViewController {
     
     private func bind(to viewModel: HomeViewModelProtocol) {
         settingsButton.addAction(for: .touchUpInside) { _ in
-            viewModel.didTapSettingsButton()
+            self.didTapSettingsButton()
         }
     }
     
@@ -135,6 +135,14 @@ extension HomeViewController {
         arToolsView.delegate = self
         
         menuBar.delegate = self
+    }
+    
+    @objc private func didTapSettingsButton() {
+        let settingVC = SettingViewController()
+        let navVC = UINavigationController(rootViewController: settingVC)
+        navVC.modalPresentationStyle = .popover
+        navigationController?.present(navVC, animated: true)
+        
     }
 
     @objc private func didTapARView(_ sender: UITapGestureRecognizer) {
