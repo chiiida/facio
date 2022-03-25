@@ -8,18 +8,7 @@
 import ARKit
 
 extension HomeViewController: ARSCNViewDelegate {
-    
-    func addParticle() {
-        if let particle = SCNParticleSystem(named: "Particles/Stars.scnp", inDirectory: "art.scnassets") {
-            let particleNode = SCNNode()
-            particleNode.addParticleSystem(particle)
-            particleNode.scale = SCNVector3Make(0.5, 0.5, 0.5)
-            
-            let pos = SCNVector3Make(0.0, 1.0, 0.0)
-            particleNode.position = pos
-            arView.pointOfView?.addChildNode(particleNode)
-        }
-    }
+
 
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         let device: MTLDevice!
@@ -32,13 +21,10 @@ extension HomeViewController: ARSCNViewDelegate {
         let node = SCNNode(geometry: faceGeometry)
         node.name = "mainNode"
         arView.scene.rootNode.addChildNode(node)
-        
-        material?.lightingModel = .constant
-        
-        addParticle()
 
         arView.mainNode = node
         arView.updateFeatures(using: faceAnchor)
+        arView.updateParticle()
 
         return node
     }
@@ -55,9 +41,8 @@ extension HomeViewController: ARSCNViewDelegate {
 
         faceGeometry.update(from: faceAnchor.geometry)
         
-        addParticle()
-        
         arView.mainNode = node
         arView.updateFeatures(using: faceAnchor)
+        arView.updateParticle()
     }
 }

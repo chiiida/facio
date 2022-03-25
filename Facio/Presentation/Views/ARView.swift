@@ -11,6 +11,7 @@ import UIKit
 final class ARView: ARSCNView {
 
     private var nodeViewModels = [FaceNodeViewModelProtocol]()
+    private var particleNodeViewModel: ParticleNodeViewModelProtocol = ParticleNodeViewModel()
     
     var lastDragPosition: SCNVector3?
     var selectedNode: SCNNode?
@@ -24,6 +25,8 @@ final class ARView: ARSCNView {
         return viewModel
     }
 
+    // MARK: - Face Nodes
+    
     func addNode(from viewModel: FaceNodeViewModelProtocol) {
         if let drawingNode = viewModel.node as? DrawingNode, drawingNode.isFaceMask {
             nodeViewModels.removeAll {
@@ -38,7 +41,7 @@ final class ARView: ARSCNView {
         mainNode?.addChildNode(viewModel.node)
         nodeViewModels.append(viewModel)
     }
-
+    
     func removeNode(_ node: SCNNode) {
         if node == mainNode {
             mainNode?.geometry?.firstMaterial?.diffuse.contents = nil
@@ -100,5 +103,38 @@ final class ARView: ARSCNView {
         nodeViewModels.forEach {
             $0.hideHighlight()
         }
+    }
+    
+    // MARK: - Particle
+    
+    func addParticle(_ particle: Particle) {
+        particleNodeViewModel.selectParticle(particle)
+    }
+    
+    func removeParticle() {
+        particleNodeViewModel.removeParticle()
+    }
+    
+    func updateParticle() {
+        guard let selectedParticle = particleNodeViewModel.selectedParticle
+        else { return }
+
+        let particlePath = "Particles/\(selectedParticle).scnp"
+        guard let particle = SCNParticleSystem(named: particlePath, inDirectory: "art.scnassets")
+        else { return }
+
+        let particleNode = SCNNode()
+        particleNode.addParticleSystem(particle)
+        particleNode.scale = SCNVector3Make(0.5, 0.5, 0.5)
+
+        let pos = SCNVector3Make(0.0, 1.0, 0.0)
+        particleNode.position = pos
+        
+        particleNodeViewModel.updateCurrentParticleNode(particleNode)
+        
+        guard let currentParticleNode = particleNodeViewModel.currentParticleNode
+        else { return }
+        pointOfView?.addChildNode(currentParticleNode)
+        
     }
 }
