@@ -7,12 +7,14 @@
 
 import UIKit
 
+
 class ThreeDBar: UIView {
     
     private let particleLabel = UILabel()
     private let particleButton = UIButton()
     private let objectsLabel = UILabel()
     private let objectsButton = UIButton()
+    private let backButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -36,6 +38,7 @@ class ThreeDBar: UIView {
     }
     
     private func setUpButtons() {
+        
         particleButton.snp.makeConstraints {
             $0.centerX.equalToSuperview().offset(-50)
             $0.centerY.equalToSuperview().offset(-20)
@@ -60,6 +63,11 @@ class ThreeDBar: UIView {
     private func setUpViews() {
         self.backgroundColor = .white
         
+        backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+        backButton.tintColor = .primaryGray
+        backButton.imageView?.image?.withRenderingMode(.alwaysOriginal)
+        backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
+        
         particleLabel.text = "Particle"
         particleLabel.font = .regular(.comfortaa, ofSize: .xxSmall)
         particleLabel.textColor = .primaryGray
@@ -83,5 +91,9 @@ class ThreeDBar: UIView {
     
     @objc private func didTapObjectsButton() {
         
+    }
+    
+    @objc private func didTapBackButton() {
+
     }
 }
