@@ -14,6 +14,7 @@
 		0E585C6027EBA1030009B4C4 /* TermsOfUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E585C5F27EBA1030009B4C4 /* TermsOfUseViewController.swift */; };
 		0E585C6227EBA5490009B4C4 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E585C6127EBA5490009B4C4 /* AboutUsViewController.swift */; };
 		0E585C6427EBA57B0009B4C4 /* AboutUs.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E585C6327EBA57B0009B4C4 /* AboutUs.txt */; };
+		0E585C6627ECDE110009B4C4 /* ThreeDBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E585C6527ECDE110009B4C4 /* ThreeDBar.swift */; };
 		0EBF01CD27A9B071004D1439 /* TextEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBF01CC27A9B071004D1439 /* TextEditorViewController.swift */; };
 		0EBFCF0E27CF701400CA3017 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EBFCF0B27CF701400CA3017 /* Nunito-Regular.ttf */; };
 		0EBFCF0F27CF701400CA3017 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EBFCF0C27CF701400CA3017 /* Nunito-SemiBold.ttf */; };
@@ -111,6 +112,7 @@
 		0E585C5F27EBA1030009B4C4 /* TermsOfUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfUseViewController.swift; sourceTree = "<group>"; };
 		0E585C6127EBA5490009B4C4 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		0E585C6327EBA57B0009B4C4 /* AboutUs.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = AboutUs.txt; sourceTree = "<group>"; };
+		0E585C6527ECDE110009B4C4 /* ThreeDBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDBar.swift; sourceTree = "<group>"; };
 		0EBF01CC27A9B071004D1439 /* TextEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorViewController.swift; sourceTree = "<group>"; };
 		0EBFCF0B27CF701400CA3017 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		0EBFCF0C27CF701400CA3017 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 				431F18E127AADE7600E851D1 /* SliderView.swift */,
 				431F18E327AAED6400E851D1 /* Slider.swift */,
 				439C082F27B2A63900F73A85 /* ToolsView.swift */,
+				0E585C6527ECDE110009B4C4 /* ThreeDBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1057,6 +1060,7 @@
 				0E585C6027EBA1030009B4C4 /* TermsOfUseViewController.swift in Sources */,
 				430CB49527A86F51005CB711 /* DrawingNodeViewModel.swift in Sources */,
 				43AC807C27A7081900983CFC /* DrawingNode.swift in Sources */,
+				0E585C6627ECDE110009B4C4 /* ThreeDBar.swift in Sources */,
 				43EC1E4B2791D139008CF316 /* DrawingBoardViewController.swift in Sources */,
 				438CE38D27BBA623004E646E /* HomeViewController+UIImagePickerControllerDelegate.swift in Sources */,
 				43B0894727A9AC3200E93879 /* MaterialMenuView.swift in Sources */,
