@@ -58,7 +58,7 @@ extension HomeViewController: MenuBarDelegate {
         navigationController?.present(navVC, animated: true)
     }
 
-    func didTapBeautificationButton() {
-        // TODO: implement in integration
+    func didTapthreeDButtonButton() {
+//        To implement
     }
 }
