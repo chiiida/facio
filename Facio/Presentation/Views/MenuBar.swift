@@ -28,7 +28,6 @@ class MenuBar: UIView {
     private let beautificationButton = UIButton()
     private let cameraModePicker = UIPickerView()
     private let threeDBar = ThreeDBar()
-    private let backButton = UIButton()
     
     private var currentCameraMode: CameraMode = .camera
     private var cameraModeList = [CameraMode.camera.title, CameraMode.record.title]
@@ -65,8 +64,7 @@ class MenuBar: UIView {
             textButton,
             threeDButton,
             cameraModePicker,
-            threeDBar,
-            backButton
+            threeDBar
         )
         
         setUpButtons()
@@ -109,10 +107,6 @@ class MenuBar: UIView {
             $0.centerY.equalToSuperview()
         }
         
-        backButton.snp.makeConstraints {
-            $0.centerX.equalToSuperview().offset(-150)
-            $0.centerY.equalToSuperview().offset(0.0)
-        }
     }
     
     private func setUpViews() {
@@ -142,11 +136,6 @@ class MenuBar: UIView {
         threeDButton.imageView?.image?.withRenderingMode(.alwaysOriginal)
         threeDButton.addTarget(self, action: #selector(didTapthreeDButton), for: .touchUpInside)
         
-        backButton.isHidden = true
-        backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
-        backButton.tintColor = .primaryGray
-        backButton.imageView?.image?.withRenderingMode(.alwaysOriginal)
-        backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
     }
     
     private func hideButtonsWhenRecording(_ isHidden: Bool) {
@@ -171,39 +160,6 @@ class MenuBar: UIView {
     
     @objc private func didTapthreeDButton() {
         delegate?.didTapthreeDButtonButton()
-        UIView.transition(with: threeDBar,
-                          duration: 0.1,
-                          options: [.transitionCurlUp],
-                          animations: {
-            self.cameraButton.isHidden = true
-            self.imageButton.isHidden = true
-            self.drawButton.isHidden = true
-            self.textButton.isHidden = true
-            self.threeDButton.isHidden = true
-            self.cameraModePicker.isHidden = true
-            self.threeDBar.isHidden = false
-            self.backButton.isHidden = false
-        },
-                          completion: {_ in}
-        )
-    }
-    
-    @objc private func didTapBackButton() {
-        UIView.transition(with: threeDBar,
-                          duration: 0.1,
-                          options: [.transitionCurlDown],
-                          animations: {
-            self.cameraButton.isHidden = false
-            self.imageButton.isHidden = false
-            self.drawButton.isHidden = false
-            self.textButton.isHidden = false
-            self.threeDButton.isHidden = false
-            self.cameraModePicker.isHidden = false
-            self.threeDBar.isHidden = true
-            self.backButton.isHidden = true
-        },
-                          completion: {_ in}
-        )
     }
     
     @objc private func didTapCameraButton(_ sender: UIButton) {
