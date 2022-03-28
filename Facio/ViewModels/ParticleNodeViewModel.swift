@@ -13,7 +13,6 @@ enum Particle: String {
     case bokeh
     case stars
     case rain
-    case firework
 }
 
 protocol ParticleNodeViewModelProtocol: AnyObject {
