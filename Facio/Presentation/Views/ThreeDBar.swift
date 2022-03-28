@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ThreeDBarDelegate: AnyObject {
+
+    
+}
 
 class ThreeDBar: UIView {
     
@@ -14,7 +18,8 @@ class ThreeDBar: UIView {
     private let particleButton = UIButton()
     private let objectsLabel = UILabel()
     private let objectsButton = UIButton()
-    private let backButton = UIButton()
+    
+    weak var delegate: ThreeDBarDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -60,13 +65,9 @@ class ThreeDBar: UIView {
             $0.centerY.equalTo(particleLabel)
         }
     }
+    
     private func setUpViews() {
         self.backgroundColor = .white
-        
-        backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
-        backButton.tintColor = .primaryGray
-        backButton.imageView?.image?.withRenderingMode(.alwaysOriginal)
-        backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
         
         particleLabel.text = "Particle"
         particleLabel.font = .regular(.comfortaa, ofSize: .xxSmall)
@@ -83,17 +84,15 @@ class ThreeDBar: UIView {
         objectsButton.setImage(Asset.mainMenu.objectsIcon(), for: .normal)
         objectsButton.imageView?.image?.withRenderingMode(.alwaysOriginal)
         objectsButton.addTarget(self, action: #selector(didTapObjectsButton), for: .touchUpInside)
+        
     }
-        
+
     @objc private func didTapParticleButton() {
-        
+//        print("ParticleButton")
     }
     
     @objc private func didTapObjectsButton() {
+//        print("ObjectsButton")
+    }
         
-    }
-    
-    @objc private func didTapBackButton() {
-
-    }
 }

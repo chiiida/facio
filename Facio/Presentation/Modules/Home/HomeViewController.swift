@@ -13,7 +13,9 @@ import SnapKit
 final class HomeViewController: UIViewController {
     
     private let settingsButton = UIButton(type: .system)
-    private let menuBar = MenuBar()
+    let menuBar = MenuBar()
+    let threeDBar = ThreeDBar()
+    let backButton = UIButton()
     private let faceMaskMaterialMenu = MaterialMenuView()
     private let arToolsView = ToolsView()
     
@@ -75,6 +77,8 @@ extension HomeViewController {
         view.addSubViews(
             arView,
             menuBar,
+            threeDBar,
+            backButton,
             faceMaskMaterialMenu,
             settingsButton,
             arToolsView
@@ -95,6 +99,18 @@ extension HomeViewController {
             $0.top.equalTo(arView.snp.bottom)
             $0.bottom.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
+        }
+        
+        threeDBar.snp.makeConstraints {
+            $0.top.equalTo(arView.snp.bottom)
+            $0.bottom.equalToSuperview()
+            $0.leading.trailing.equalToSuperview()
+        }
+        
+        backButton.snp.makeConstraints {
+            $0.top.equalTo(arView.snp.bottom).offset(-20)
+            $0.bottom.equalToSuperview()
+            $0.leading.equalToSuperview().offset(40)
         }
         
         faceMaskMaterialMenu.snp.makeConstraints {
@@ -135,6 +151,13 @@ extension HomeViewController {
         arToolsView.delegate = self
         
         menuBar.delegate = self
+        threeDBar.isHidden = true
+        
+        backButton.isHidden = true
+        backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+        backButton.tintColor = .primaryGray
+        backButton.imageView?.image?.withRenderingMode(.alwaysOriginal)
+        backButton.addTarget(self, action: #selector(didTapBackButton), for: .touchUpInside)
     }
     
     @objc private func didTapSettingsButton() {
@@ -142,7 +165,6 @@ extension HomeViewController {
         let navVC = UINavigationController(rootViewController: settingVC)
         navVC.modalPresentationStyle = .popover
         navigationController?.present(navVC, animated: true)
-        
     }
 
     @objc private func didTapARView(_ sender: UITapGestureRecognizer) {
