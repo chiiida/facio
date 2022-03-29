@@ -9,6 +9,7 @@ import ARKit
 
 extension HomeViewController: ARSCNViewDelegate {
 
+
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         let device: MTLDevice!
         device = MTLCreateSystemDefaultDevice()
@@ -23,6 +24,7 @@ extension HomeViewController: ARSCNViewDelegate {
 
         arView.mainNode = node
         arView.updateFeatures(using: faceAnchor)
+        arView.updateParticle()
 
         return node
     }
@@ -38,7 +40,9 @@ extension HomeViewController: ARSCNViewDelegate {
         }
 
         faceGeometry.update(from: faceAnchor.geometry)
+        
         arView.mainNode = node
         arView.updateFeatures(using: faceAnchor)
+        arView.updateParticle()
     }
 }
