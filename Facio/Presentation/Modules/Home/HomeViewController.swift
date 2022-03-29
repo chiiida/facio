@@ -15,6 +15,7 @@ final class HomeViewController: UIViewController {
     private let settingsButton = UIButton(type: .system)
     let menuBar = MenuBar()
     let threeDBar = ThreeDBar()
+    let particleBar = ParticleBar()
     let backButton = UIButton()
     private let faceMaskMaterialMenu = MaterialMenuView()
     private let arToolsView = ToolsView()
@@ -154,7 +155,9 @@ extension HomeViewController {
         arToolsView.delegate = self
         
         menuBar.delegate = self
+        
         threeDBar.isHidden = true
+        threeDBar.delegate = self
         
         backButton.isHidden = true
         backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
