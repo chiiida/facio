@@ -125,6 +125,9 @@ extension HomeViewController {
         let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(didResizeARNode(_:)))
         arView.addGestureRecognizer(pinchRecognizer)
         
+        let rotateRecognizer = UIRotationGestureRecognizer(target: self, action: #selector(didRotateARNode(_:)))
+        arView.addGestureRecognizer(rotateRecognizer)
+        
         settingsButton.setImage(Asset.common.settings(), for: .normal)
         settingsButton.tintColor = .white
 
@@ -220,7 +223,28 @@ extension HomeViewController {
             default:
                 break
             }
-            
+        }
+    }
+    
+    @objc private func didRotateARNode(_ sender: UIRotationGestureRecognizer) {
+        let location = sender.location(in: arView)
+
+        guard let nodeHitTest = arView.hitTest(location, options: nil).first,
+              let hitNode = nodeHitTest.node as? FaceNode
+        else { return }
+
+        switch sender.state {
+        case .began:
+            arView.updateRotation(for: hitNode, with: hitNode.eulerAngles)
+        case .changed:
+            guard var originalRotation = arView.getViewModel(from: hitNode)?.originalRotation
+            else { return }
+            originalRotation.z -= Float(sender.rotation)
+            hitNode.eulerAngles = originalRotation
+        default:
+            guard let viewModel = arView.getViewModel(from: hitNode)
+            else { return }
+            viewModel.originalRotation = nil
         }
     }
 }

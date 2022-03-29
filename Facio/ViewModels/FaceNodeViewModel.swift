@@ -12,6 +12,7 @@ protocol FaceNodeViewModelProtocol: AnyObject {
 
     var node: FaceNode { get set }
     var panPosition: SCNVector3? { get set }
+    var originalRotation: SCNVector3? { get set }
 
     func updateMaterial(with material: SCNMaterial)
     func addImage(_ image: UIImage)
@@ -24,6 +25,7 @@ class FaceNodeViewModel: FaceNodeViewModelProtocol {
 
     var node: FaceNode
     var panPosition: SCNVector3?
+    var originalRotation: SCNVector3?
 
     init(node: FaceNode) {
         self.node = node

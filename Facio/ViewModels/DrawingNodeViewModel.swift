@@ -12,6 +12,7 @@ class DrawingNodeViewModel: FaceNodeViewModelProtocol {
 
     var node: FaceNode
     var panPosition: SCNVector3?
+    var originalRotation: SCNVector3?
     var isFaceMask: Bool
 
     init(node: DrawingNode) {
