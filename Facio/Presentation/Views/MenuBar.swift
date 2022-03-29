@@ -126,6 +126,14 @@ class MenuBar: UIView {
         beautificationButton.imageView?.image?.withRenderingMode(.alwaysOriginal)
         beautificationButton.addTarget(self, action: #selector(didTapBeautificationButton), for: .touchUpInside)
     }
+    
+    private func hideButtonsWhenRecording(_ isHidden: Bool) {
+        imageButton.isHidden = isHidden
+        drawButton.isHidden = isHidden
+        textButton.isHidden = isHidden
+        beautificationButton.isHidden = isHidden
+        cameraModePicker.isHidden = isHidden
+    }
 
     @objc private func didTapImageButton() {
         delegate?.didTapImageButton()
@@ -151,6 +159,7 @@ class MenuBar: UIView {
         case .record:
             AudioServicesPlayAlertSound(1_118)
             isRecording.toggle()
+            hideButtonsWhenRecording(isRecording)
             if isRecording {
                 cameraButton.setImage(Asset.mainMenu.recordingButton(), for: .normal)
             } else {
