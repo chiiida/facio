@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E02EC9F27F34893008F1628 /* ParticleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E02EC9E27F34893008F1628 /* ParticleBar.swift */; };
+		0E02ECA127F34CE7008F1628 /* HomeViewController+ThreeDBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E02ECA027F34CE7008F1628 /* HomeViewController+ThreeDBarDelegate.swift */; };
+		0E02ECA427F351EB008F1628 /* ParticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E02ECA327F351EB008F1628 /* ParticleViewController.swift */; };
+		0E02ECA627F37E61008F1628 /* ParticleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E02ECA527F37E60008F1628 /* ParticleSlider.swift */; };
 		0E585C5727EB66F50009B4C4 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E585C5627EB66F50009B4C4 /* SettingViewController.swift */; };
 		0E585C5927EB93CB0009B4C4 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E585C5827EB93CB0009B4C4 /* PrivacyViewController.swift */; };
 		0E585C5B27EB97520009B4C4 /* PrivacyPolicy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E585C5A27EB97520009B4C4 /* PrivacyPolicy.txt */; };
@@ -103,6 +107,10 @@
 
 /* Begin PBXFileReference section */
 		0A02B8B632612226BA62C2BF /* Pods-Facio.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Facio.debug.xcconfig"; path = "Target Support Files/Pods-Facio/Pods-Facio.debug.xcconfig"; sourceTree = "<group>"; };
+		0E02EC9E27F34893008F1628 /* ParticleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleBar.swift; sourceTree = "<group>"; };
+		0E02ECA027F34CE7008F1628 /* HomeViewController+ThreeDBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+ThreeDBarDelegate.swift"; sourceTree = "<group>"; };
+		0E02ECA327F351EB008F1628 /* ParticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleViewController.swift; sourceTree = "<group>"; };
+		0E02ECA527F37E60008F1628 /* ParticleSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleSlider.swift; sourceTree = "<group>"; };
 		0E585C5627EB66F50009B4C4 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		0E585C5827EB93CB0009B4C4 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		0E585C5A27EB97520009B4C4 /* PrivacyPolicy.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = PrivacyPolicy.txt; sourceTree = "<group>"; };
@@ -218,6 +226,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E02ECA227F351C3008F1628 /* ThreeDContents */ = {
+			isa = PBXGroup;
+			children = (
+				0E02ECA327F351EB008F1628 /* ParticleViewController.swift */,
+			);
+			path = ThreeDContents;
+			sourceTree = "<group>";
+		};
 		0E585C5527EB66E00009B4C4 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -445,6 +461,7 @@
 		432C1BE62700F0DE0024B2EB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0E02ECA227F351C3008F1628 /* ThreeDContents */,
 				0E585C5527EB66E00009B4C4 /* Setting */,
 				0EBF01CB27A9B023004D1439 /* TextEditor */,
 				43B4B4E127D2907100FB425E /* CameraPreview */,
@@ -475,6 +492,8 @@
 				431F18E327AAED6400E851D1 /* Slider.swift */,
 				439C082F27B2A63900F73A85 /* ToolsView.swift */,
 				0E585C6527ECDE110009B4C4 /* ThreeDBar.swift */,
+				0E02EC9E27F34893008F1628 /* ParticleBar.swift */,
+				0E02ECA527F37E60008F1628 /* ParticleSlider.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -529,6 +548,7 @@
 				433C33BE27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift */,
 				438CE38827BBA5D6004E646E /* HomeViewController+ToolsViewDelegate.swift */,
 				438CE38A27BBA5FE004E646E /* HomeViewController+MenuBarDelegate.swift */,
+				0E02ECA027F34CE7008F1628 /* HomeViewController+ThreeDBarDelegate.swift */,
 				438CE38C27BBA623004E646E /* HomeViewController+UIImagePickerControllerDelegate.swift */,
 				438CE38E27BBA643004E646E /* HomeViewController+DrawingBoardDelegate.swift */,
 				438CE39027BBA673004E646E /* HomeViewController+MaterialMenuViewDelegate.swift */,
@@ -1022,10 +1042,12 @@
 			files = (
 				431DF95D27E86657007FBDA5 /* ARFrameGenerator.swift in Sources */,
 				43FF0693278F4D1500C3A6EA /* UIColor+Application.swift in Sources */,
+				0E02ECA127F34CE7008F1628 /* HomeViewController+ThreeDBarDelegate.swift in Sources */,
 				43ED95AF2790107900D29F8B /* HomeViewModel.swift in Sources */,
 				431DF95F27E86676007FBDA5 /* ARCapture.swift in Sources */,
 				438CE38F27BBA643004E646E /* HomeViewController+DrawingBoardDelegate.swift in Sources */,
 				43B4B4E327D2915E00FB425E /* SnapshotPreviewViewController.swift in Sources */,
+				0E02ECA627F37E61008F1628 /* ParticleSlider.swift in Sources */,
 				43ED95BE2790431900D29F8B /* MenuBar.swift in Sources */,
 				439C083027B2A63900F73A85 /* ToolsView.swift in Sources */,
 				43FF0689278F47F600C3A6EA /* UIView+SubView.swift in Sources */,
@@ -1035,6 +1057,7 @@
 				433C33BF27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift in Sources */,
 				43B4B4E527D29D7300FB425E /* VideoPreviewViewController.swift in Sources */,
 				43FD298B27944B0700E34F8C /* ARView.swift in Sources */,
+				0E02ECA427F351EB008F1628 /* ParticleViewController.swift in Sources */,
 				431DF95B27E8662A007FBDA5 /* ARAssetWriter.swift in Sources */,
 				432C1BAF2700ECCB0024B2EB /* AppDelegate.swift in Sources */,
 				0EC39ACF2794327700CFA7F2 /* ImagePickerViewController.swift in Sources */,
@@ -1063,6 +1086,7 @@
 				43FF0690278F4A5800C3A6EA /* Device.swift in Sources */,
 				432C1BF02700F5170024B2EB /* R.generated.swift in Sources */,
 				43FD29892794300200E34F8C /* FaceNode.swift in Sources */,
+				0E02EC9F27F34893008F1628 /* ParticleBar.swift in Sources */,
 				43ED95C5279068BE00D29F8B /* DependencyFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

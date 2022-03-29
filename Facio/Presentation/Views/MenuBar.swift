@@ -63,8 +63,7 @@ class MenuBar: UIView {
             drawButton,
             textButton,
             threeDButton,
-            cameraModePicker,
-            threeDBar
+            cameraModePicker
         )
         
         setUpButtons()
@@ -102,16 +101,10 @@ class MenuBar: UIView {
             $0.height.width.equalTo(35.0)
         }
         
-        threeDBar.snp.makeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.centerY.equalToSuperview()
-        }
-        
     }
     
     private func setUpViews() {
         backgroundColor = .white
-        threeDBar.isHidden = true
         
         cameraModePicker.dataSource = self
         cameraModePicker.delegate = self

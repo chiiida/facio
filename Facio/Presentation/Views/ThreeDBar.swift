@@ -8,7 +8,9 @@
 import UIKit
 
 protocol ThreeDBarDelegate: AnyObject {
-
+    
+    func didTapParticleButton()
+    func didTapObjectsButton()
     
 }
 
@@ -64,6 +66,7 @@ class ThreeDBar: UIView {
             $0.centerX.equalToSuperview().offset(50)
             $0.centerY.equalTo(particleLabel)
         }
+
     }
     
     private func setUpViews() {
@@ -80,19 +83,20 @@ class ThreeDBar: UIView {
         particleButton.setImage(Asset.mainMenu.particleIcon(), for: .normal)
         particleButton.imageView?.image?.withRenderingMode(.alwaysOriginal)
         particleButton.addTarget(self, action: #selector(didTapParticleButton), for: .touchUpInside)
-
+        
         objectsButton.setImage(Asset.mainMenu.objectsIcon(), for: .normal)
         objectsButton.imageView?.image?.withRenderingMode(.alwaysOriginal)
         objectsButton.addTarget(self, action: #selector(didTapObjectsButton), for: .touchUpInside)
         
     }
-
+    
     @objc private func didTapParticleButton() {
-//        print("ParticleButton")
+        delegate?.didTapParticleButton()
+        
     }
     
     @objc private func didTapObjectsButton() {
-//        print("ObjectsButton")
+        delegate?.didTapObjectsButton()
     }
-        
+    
 }

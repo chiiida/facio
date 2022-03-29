@@ -67,7 +67,7 @@ extension HomeViewController: MenuBarDelegate {
     @objc func didTapBackButton() {
         menuBar.isHidden = false
         threeDBar.isHidden = true
+        particleBar.isHidden = true
         backButton.isHidden = true
     }
-}
-    
+}  
