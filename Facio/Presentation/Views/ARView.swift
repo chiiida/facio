@@ -17,7 +17,7 @@ final class ARView: ARSCNView {
     var panStartZ: CGFloat?
     var mainNode: SCNNode?
 
-    private func getViewModel(from node: SCNNode) -> FaceNodeViewModelProtocol? {
+    func getViewModel(from node: SCNNode) -> FaceNodeViewModelProtocol? {
         guard let viewModel = nodeViewModels.first(where: {
             $0.node == node
         }) else { return nil }
@@ -89,6 +89,12 @@ final class ARView: ARSCNView {
         }) else { return }
 
         faceMaskViewModel.updateMaterial(with: material)
+    }
+    
+    func updateRotation(for node: FaceNode, with angle: SCNVector3) {
+        guard let viewModel = getViewModel(from: node)
+        else { return }
+        viewModel.originalRotation = angle
     }
 
     func showHighlight(_ node: FaceNode) {
