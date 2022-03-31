@@ -16,8 +16,10 @@ protocol ParticleDelegate: AnyObject {
 final class ParticleViewController: UIViewController {
     
     private let particleSlider = ParticleSlider()
+    private let particleSelector = ParticleSelector()
     private let particleBar = ParticleBar()
-    private var currentParticle = "Bokeh"
+    
+    var currentParticle = "None"
     private let doneButton = UIButton(type: .system)
     
     weak var delegate: ParticleDelegate?
@@ -41,6 +43,7 @@ final class ParticleViewController: UIViewController {
         particleBar.loadLayoutSubviews()
     }
     
+    
 }
 
 extension ParticleViewController {
@@ -49,7 +52,8 @@ extension ParticleViewController {
         view.addSubViews(
             particleBar,
             doneButton,
-            particleSlider
+            particleSlider,
+            particleSelector
         )
         
         setUpNavigationBar()
@@ -64,12 +68,14 @@ extension ParticleViewController {
         doneButton.titleLabel?.font = .regular(ofSize: .small)
         doneButton.tintColor = .primaryGray
         
+        particleBar.delegate = self
         particleBar.snp.makeConstraints {
             $0.height.equalTo(180)
             $0.bottom.equalToSuperview()
             $0.leading.trailing.equalToSuperview()
         }
         
+        particleSlider.delegate = self
         particleSlider.isHidden = true
         particleSlider.snp.makeConstraints {
             $0.height.equalTo(120.0)
@@ -78,7 +84,18 @@ extension ParticleViewController {
             $0.leading.trailing.equalToSuperview()
         }
         
-        showParticleSlider()
+        particleSelector.delegate = self
+        particleSelector.isHidden = true
+        particleSelector.snp.makeConstraints {
+            $0.height.equalTo(55.0)
+            $0.width.equalToSuperview()
+            $0.top.equalTo(particleBar.snp.top)
+            $0.leading.trailing.equalToSuperview()
+
+        }
+        
+        showParticleSlider(particleMode: currentParticle)
+        showParticleSelector(particleMode: currentParticle)
     }
        
     private func setUpNavigationBar() {
@@ -87,9 +104,20 @@ extension ParticleViewController {
         ]
     }
     
-    private func showParticleSlider() {
-        if currentParticle != "None" {
+    func showParticleSlider(particleMode: String) {
+        if particleMode == "None" {
+            particleSlider.isHidden = true
+        } else {
             particleSlider.isHidden = false
+        }
+    }
+    
+    func showParticleSelector(particleMode: String) {
+        
+        if particleMode == "None" {
+            particleSelector.isHidden = true
+        } else {
+            particleSelector.isHidden = false
         }
     }
     
@@ -100,11 +128,4 @@ extension ParticleViewController {
     }
 }
 
-extension ParticleViewController: ParticleBarDelegate {
-    
-    func didSelectParticle(_ particle: String) {
-        currentParticle = particle
-        
-    }
 
-}

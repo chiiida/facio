@@ -19,6 +19,9 @@
 		0E585C6227EBA5490009B4C4 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E585C6127EBA5490009B4C4 /* AboutUsViewController.swift */; };
 		0E585C6427EBA57B0009B4C4 /* AboutUs.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E585C6327EBA57B0009B4C4 /* AboutUs.txt */; };
 		0E585C6627ECDE110009B4C4 /* ThreeDBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E585C6527ECDE110009B4C4 /* ThreeDBar.swift */; };
+		0EBC302927F60F0E00DFE327 /* ParticleSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBC302827F60F0E00DFE327 /* ParticleSelector.swift */; };
+		0EBC302B27F61DE800DFE327 /* ParticleViewController+ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBC302A27F61DE800DFE327 /* ParticleViewController+ImagePickerDelegate.swift */; };
+		0EBC302D27F61E2D00DFE327 /* ParticleViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBC302C27F61E2D00DFE327 /* ParticleViewController+Delegates.swift */; };
 		0EBF01CD27A9B071004D1439 /* TextEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBF01CC27A9B071004D1439 /* TextEditorViewController.swift */; };
 		0EBFCF0E27CF701400CA3017 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EBFCF0B27CF701400CA3017 /* Nunito-Regular.ttf */; };
 		0EBFCF0F27CF701400CA3017 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EBFCF0C27CF701400CA3017 /* Nunito-SemiBold.ttf */; };
@@ -121,6 +124,9 @@
 		0E585C6127EBA5490009B4C4 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		0E585C6327EBA57B0009B4C4 /* AboutUs.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = AboutUs.txt; sourceTree = "<group>"; };
 		0E585C6527ECDE110009B4C4 /* ThreeDBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDBar.swift; sourceTree = "<group>"; };
+		0EBC302827F60F0E00DFE327 /* ParticleSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleSelector.swift; sourceTree = "<group>"; };
+		0EBC302A27F61DE800DFE327 /* ParticleViewController+ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParticleViewController+ImagePickerDelegate.swift"; sourceTree = "<group>"; };
+		0EBC302C27F61E2D00DFE327 /* ParticleViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParticleViewController+Delegates.swift"; sourceTree = "<group>"; };
 		0EBF01CC27A9B071004D1439 /* TextEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorViewController.swift; sourceTree = "<group>"; };
 		0EBFCF0B27CF701400CA3017 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		0EBFCF0C27CF701400CA3017 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -234,6 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				0E02ECA327F351EB008F1628 /* ParticleViewController.swift */,
+				0EBC302C27F61E2D00DFE327 /* ParticleViewController+Delegates.swift */,
+				0EBC302A27F61DE800DFE327 /* ParticleViewController+ImagePickerDelegate.swift */,
 			);
 			path = ThreeDContents;
 			sourceTree = "<group>";
@@ -500,6 +508,7 @@
 				0E585C6527ECDE110009B4C4 /* ThreeDBar.swift */,
 				0E02EC9E27F34893008F1628 /* ParticleBar.swift */,
 				0E02ECA527F37E60008F1628 /* ParticleSlider.swift */,
+				0EBC302827F60F0E00DFE327 /* ParticleSelector.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1055,6 +1064,7 @@
 				431DF95F27E86676007FBDA5 /* ARCapture.swift in Sources */,
 				438CE38F27BBA643004E646E /* HomeViewController+DrawingBoardDelegate.swift in Sources */,
 				43B4B4E327D2915E00FB425E /* SnapshotPreviewViewController.swift in Sources */,
+				0EBC302B27F61DE800DFE327 /* ParticleViewController+ImagePickerDelegate.swift in Sources */,
 				0E02ECA627F37E61008F1628 /* ParticleSlider.swift in Sources */,
 				43ED95BE2790431900D29F8B /* MenuBar.swift in Sources */,
 				439C083027B2A63900F73A85 /* ToolsView.swift in Sources */,
@@ -1073,6 +1083,7 @@
 				0E585C6227EBA5490009B4C4 /* AboutUsViewController.swift in Sources */,
 				0EBF01CD27A9B071004D1439 /* TextEditorViewController.swift in Sources */,
 				43ED95B727903DCE00D29F8B /* UIFont+Size.swift in Sources */,
+				0EBC302927F60F0E00DFE327 /* ParticleSelector.swift in Sources */,
 				431F18E427AAED6400E851D1 /* Slider.swift in Sources */,
 				438CE38B27BBA5FE004E646E /* HomeViewController+MenuBarDelegate.swift in Sources */,
 				43ED95B2279019CA00D29F8B /* UIControl+ActionHandler.swift in Sources */,
@@ -1095,6 +1106,7 @@
 				43FF0690278F4A5800C3A6EA /* Device.swift in Sources */,
 				432C1BF02700F5170024B2EB /* R.generated.swift in Sources */,
 				43FD29892794300200E34F8C /* FaceNode.swift in Sources */,
+				0EBC302D27F61E2D00DFE327 /* ParticleViewController+Delegates.swift in Sources */,
 				0E02EC9F27F34893008F1628 /* ParticleBar.swift in Sources */,
 				43ED95C5279068BE00D29F8B /* DependencyFactory.swift in Sources */,
 			);
