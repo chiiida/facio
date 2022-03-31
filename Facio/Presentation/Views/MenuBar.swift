@@ -138,7 +138,7 @@ class MenuBar: UIView {
         beautificationButton.isHidden = isHidden
         cameraModePicker.isHidden = isHidden
     }
-
+    
     @objc private func didTapImageButton() {
         delegate?.didTapImageButton()
     }
