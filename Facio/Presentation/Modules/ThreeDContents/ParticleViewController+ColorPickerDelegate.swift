@@ -8,7 +8,7 @@
 import UIKit
 import Alderis
 
-extension ParticleViewController: ColorPickerDelegate{
+extension ParticleViewController: ColorPickerDelegate {
     
     @objc(colorPicker:didSelectColor:)
     func colorPicker(_ colorPicker: ColorPickerViewController, didSelect selectedColor: UIColor) {

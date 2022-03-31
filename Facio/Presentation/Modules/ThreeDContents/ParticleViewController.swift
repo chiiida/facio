@@ -10,7 +10,7 @@ import UIKit
 protocol ParticleDelegate: AnyObject {
     
     func didTapDoneButton()
-
+    
 }
 
 final class ParticleViewController: UIViewController {
@@ -44,6 +44,7 @@ final class ParticleViewController: UIViewController {
         particleSelector.loadLayoutSubviews()
     }
     
+}
 
 extension ParticleViewController {
     
@@ -90,13 +91,13 @@ extension ParticleViewController {
             $0.width.equalToSuperview()
             $0.top.equalTo(particleBar.snp.top)
             $0.leading.trailing.equalToSuperview()
-
+            
         }
         
         showParticleSlider(particleMode: currentParticle)
         showParticleSelector(particleMode: currentParticle)
     }
-       
+    
     private func setUpNavigationBar() {
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(customView: doneButton)
@@ -126,4 +127,5 @@ extension ParticleViewController {
         
     }
 }
+
 
