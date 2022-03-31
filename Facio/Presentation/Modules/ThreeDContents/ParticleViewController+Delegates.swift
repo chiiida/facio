@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alderis
 
 extension ParticleViewController: ParticleBarDelegate,ParticleSliderDelegate, ParticleSelectorDelegate {
     
@@ -16,7 +17,6 @@ extension ParticleViewController: ParticleBarDelegate,ParticleSliderDelegate, Pa
     func didUpdateBirthRate(value: Float) {
         
     }
-    
     
     func didSelectParticle(_ particle: String) {
         currentParticle = particle
@@ -31,4 +31,10 @@ extension ParticleViewController: ParticleBarDelegate,ParticleSliderDelegate, Pa
         present(imagepickerVC, animated: true, completion: nil)
     }
 
+    func didTapSelectColor() {
+        let colorPickerVC = ColorPickerViewController()
+        colorPickerVC.delegate = self
+        colorPickerVC.configuration = ColorPickerConfiguration(color: .white)
+        present(colorPickerVC, animated: true)
+    }
 }

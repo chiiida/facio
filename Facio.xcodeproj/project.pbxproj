@@ -22,6 +22,7 @@
 		0EBC302927F60F0E00DFE327 /* ParticleSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBC302827F60F0E00DFE327 /* ParticleSelector.swift */; };
 		0EBC302B27F61DE800DFE327 /* ParticleViewController+ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBC302A27F61DE800DFE327 /* ParticleViewController+ImagePickerDelegate.swift */; };
 		0EBC302D27F61E2D00DFE327 /* ParticleViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBC302C27F61E2D00DFE327 /* ParticleViewController+Delegates.swift */; };
+		0EBC302F27F6261200DFE327 /* ParticleViewController+ColorPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBC302E27F6261200DFE327 /* ParticleViewController+ColorPickerDelegate.swift */; };
 		0EBF01CD27A9B071004D1439 /* TextEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBF01CC27A9B071004D1439 /* TextEditorViewController.swift */; };
 		0EBFCF0E27CF701400CA3017 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EBFCF0B27CF701400CA3017 /* Nunito-Regular.ttf */; };
 		0EBFCF0F27CF701400CA3017 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EBFCF0C27CF701400CA3017 /* Nunito-SemiBold.ttf */; };
@@ -128,8 +129,12 @@
 		0EBC302827F60F0E00DFE327 /* ParticleSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleSelector.swift; sourceTree = "<group>"; };
 		0EBC302A27F61DE800DFE327 /* ParticleViewController+ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParticleViewController+ImagePickerDelegate.swift"; sourceTree = "<group>"; };
 		0EBC302C27F61E2D00DFE327 /* ParticleViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParticleViewController+Delegates.swift"; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 =======
 >>>>>>> b876e1d4e478f21718afc44a1b76f090ef30db91
+=======
+		0EBC302E27F6261200DFE327 /* ParticleViewController+ColorPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParticleViewController+ColorPickerDelegate.swift"; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 		0EBF01CC27A9B071004D1439 /* TextEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorViewController.swift; sourceTree = "<group>"; };
 		0EBFCF0B27CF701400CA3017 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		0EBFCF0C27CF701400CA3017 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -246,8 +251,12 @@
 <<<<<<< HEAD
 				0EBC302C27F61E2D00DFE327 /* ParticleViewController+Delegates.swift */,
 				0EBC302A27F61DE800DFE327 /* ParticleViewController+ImagePickerDelegate.swift */,
+<<<<<<< Updated upstream
 =======
 >>>>>>> b876e1d4e478f21718afc44a1b76f090ef30db91
+=======
+				0EBC302E27F6261200DFE327 /* ParticleViewController+ColorPickerDelegate.swift */,
+>>>>>>> Stashed changes
 			);
 			path = ThreeDContents;
 			sourceTree = "<group>";
@@ -1068,6 +1077,7 @@
 			files = (
 				431DF95D27E86657007FBDA5 /* ARFrameGenerator.swift in Sources */,
 				43FF0693278F4D1500C3A6EA /* UIColor+Application.swift in Sources */,
+				0EBC302F27F6261200DFE327 /* ParticleViewController+ColorPickerDelegate.swift in Sources */,
 				0E02ECA127F34CE7008F1628 /* HomeViewController+ThreeDBarDelegate.swift in Sources */,
 				43ED95AF2790107900D29F8B /* HomeViewModel.swift in Sources */,
 				431DF95F27E86676007FBDA5 /* ARCapture.swift in Sources */,
