@@ -20,10 +20,5 @@ extension HomeViewController: ThreeDBarDelegate {
     func didTapObjectsButton() {
         // To implement
     }
-}
-  
-extension HomeViewController: ParticleDelegate {
-    func didTapDoneButton() {
-        
-    }
+    
 }

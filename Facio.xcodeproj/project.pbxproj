@@ -19,6 +19,7 @@
 		0E585C6227EBA5490009B4C4 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E585C6127EBA5490009B4C4 /* AboutUsViewController.swift */; };
 		0E585C6427EBA57B0009B4C4 /* AboutUs.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E585C6327EBA57B0009B4C4 /* AboutUs.txt */; };
 		0E585C6627ECDE110009B4C4 /* ThreeDBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E585C6527ECDE110009B4C4 /* ThreeDBar.swift */; };
+		0E85C9C027FC20C70009C5C4 /* HomeViewController+ParticleViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E85C9BF27FC20C70009C5C4 /* HomeViewController+ParticleViewDelegate.swift */; };
 		0EBC302927F60F0E00DFE327 /* ParticleSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBC302827F60F0E00DFE327 /* ParticleSelector.swift */; };
 		0EBC302B27F61DE800DFE327 /* ParticleViewController+ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBC302A27F61DE800DFE327 /* ParticleViewController+ImagePickerDelegate.swift */; };
 		0EBC302D27F61E2D00DFE327 /* ParticleViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBC302C27F61E2D00DFE327 /* ParticleViewController+Delegates.swift */; };
@@ -125,6 +126,7 @@
 		0E585C6127EBA5490009B4C4 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		0E585C6327EBA57B0009B4C4 /* AboutUs.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = AboutUs.txt; sourceTree = "<group>"; };
 		0E585C6527ECDE110009B4C4 /* ThreeDBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDBar.swift; sourceTree = "<group>"; };
+		0E85C9BF27FC20C70009C5C4 /* HomeViewController+ParticleViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+ParticleViewDelegate.swift"; sourceTree = "<group>"; };
 		0EBC302827F60F0E00DFE327 /* ParticleSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleSelector.swift; sourceTree = "<group>"; };
 		0EBC302A27F61DE800DFE327 /* ParticleViewController+ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParticleViewController+ImagePickerDelegate.swift"; sourceTree = "<group>"; };
 		0EBC302C27F61E2D00DFE327 /* ParticleViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParticleViewController+Delegates.swift"; sourceTree = "<group>"; };
@@ -571,6 +573,7 @@
 				438CE38E27BBA643004E646E /* HomeViewController+DrawingBoardDelegate.swift */,
 				438CE39027BBA673004E646E /* HomeViewController+MaterialMenuViewDelegate.swift */,
 				43E5F06D27D632E900E0E1A0 /* HomeViewController+TextEditorDelegate.swift */,
+				0E85C9BF27FC20C70009C5C4 /* HomeViewController+ParticleViewDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -1079,6 +1082,7 @@
 				433C33BF27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift in Sources */,
 				43B4B4E527D29D7300FB425E /* VideoPreviewViewController.swift in Sources */,
 				43FD298B27944B0700E34F8C /* ARView.swift in Sources */,
+				0E85C9C027FC20C70009C5C4 /* HomeViewController+ParticleViewDelegate.swift in Sources */,
 				0E02ECA427F351EB008F1628 /* ParticleViewController.swift in Sources */,
 				431DF95B27E8662A007FBDA5 /* ARAssetWriter.swift in Sources */,
 				432C1BAF2700ECCB0024B2EB /* AppDelegate.swift in Sources */,

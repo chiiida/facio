@@ -8,21 +8,32 @@
 import UIKit
 import Alderis
 
-extension ParticleViewController: ParticleBarDelegate,ParticleSliderDelegate, ParticleSelectorDelegate {
+extension ParticleViewController: ParticleBarDelegate, ParticleSliderDelegate, ParticleSelectorDelegate {
     
     func didUpdateSpeed(value: Float) {
-    
+        birthRateValue = value * 10
+        delegate?.didSelectParticle(
+            particle: currentParticle,
+            birthRate: Float(birthRateValue),
+            speed: Float(speedValue))
     }
     
     func didUpdateBirthRate(value: Float) {
-        
+        speedValue = value * 10
+        delegate?.didSelectParticle(
+            particle: currentParticle,
+            birthRate: Float(birthRateValue),
+            speed: Float(speedValue))
     }
     
     func didSelectParticle(_ particle: String) {
         currentParticle = particle
-        print(currentParticle)
         showParticleSlider(particleMode: currentParticle)
         showParticleSelector(particleMode: currentParticle)
+        delegate?.didSelectParticle(
+            particle: currentParticle,
+            birthRate: Float(birthRateValue),
+            speed: Float(speedValue))
     }
     
     func didTapImageButton() {

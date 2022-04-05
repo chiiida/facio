@@ -21,8 +21,7 @@ class ParticleBar: UIView {
         Particle.bokeh.title,
         Particle.confetti.title,
         Particle.stars.title,
-        Particle.rain.title,
-        Particle.firework.title
+        Particle.rain.title
     ]
     
     weak var delegate: ParticleBarDelegate?
@@ -73,7 +72,6 @@ extension ParticleBar {
         case confetti
         case stars
         case rain
-        case firework
         
         var title: String {
             switch self {
@@ -82,7 +80,6 @@ extension ParticleBar {
             case .confetti: return "Confetti"
             case .stars: return "Stars"
             case .rain: return "Rain"
-            case .firework: return "Firework"
             }
         }
     }

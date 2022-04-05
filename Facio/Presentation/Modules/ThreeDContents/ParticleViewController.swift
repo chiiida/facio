@@ -9,17 +9,21 @@ import UIKit
 
 protocol ParticleDelegate: AnyObject {
     
-    func didTapDoneButton()
+//    func didTapDoneButton(particle: String, birthRate: Float, speed: Float)
+    func didSelectParticle(particle: String, birthRate: Float, speed: Float)
     
 }
 
 final class ParticleViewController: UIViewController {
     
+    var currentParticle = "None"
+    var birthRateValue: Float = 10.0
+    var speedValue: Float = 10.0
+    
     let particleSlider = ParticleSlider()
     let particleSelector = ParticleSelector()
     let particleBar = ParticleBar()
     
-    var currentParticle = "None"
     private let doneButton = UIButton(type: .system)
     
     weak var delegate: ParticleDelegate?
@@ -122,10 +126,6 @@ extension ParticleViewController {
     }
     
     @objc internal func didTapDoneButton() {
-        delegate?.didTapDoneButton()
         navigationController?.dismiss(animated: true, completion: nil)
-        
     }
 }
-
-

@@ -34,9 +34,10 @@ class ParticleNodeViewModel: ParticleNodeViewModelProtocol {
     var currentSpeedFactor: CGFloat?
     var currentBirthRate: CGFloat?
     
-    
     func selectParticle(_ particle: Particle) {
         selectedParticle = particle
+        currentSpeedFactor = nil
+        currentBirthRate = nil
     }
     
     func removeParticle() {
