@@ -113,9 +113,19 @@ final class ARView: ARSCNView {
     
     // MARK: - Particle
     
-    func addParticle(_ particle: Particle, birthRate: CGFloat, speed: CGFloat) {
+    func addParticle(_ particle: Particle) {
         particleNodeViewModel.selectParticle(particle)
+    }
+    
+    func colorParticle(color: UIColor) {
+        particleNodeViewModel.currentParticleColor = color
+    }
+    
+    func updateBirthRate(birthRate: CGFloat) {
         particleNodeViewModel.currentBirthRate = birthRate
+    }
+    
+    func updateSpeed(speed: CGFloat) {
         particleNodeViewModel.currentBirthRate = speed
     }
     

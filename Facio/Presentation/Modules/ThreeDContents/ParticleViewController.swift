@@ -9,7 +9,10 @@ import UIKit
 
 protocol ParticleDelegate: AnyObject {
     
-    func didSelectParticle(particle: String, birthRate: Float, speed: Float)
+    func didSelectParticle(particle: String)
+    func didSelectColor(color: UIColor)
+    func didUpdateBirthRate(birthRate: Float)
+    func didUpdateSpeed(speed: Float)
     
 }
 
@@ -69,7 +72,7 @@ extension ParticleViewController {
         doneButton.setTitle("Done", for: .normal)
         doneButton.addTarget(self, action: #selector(didTapDoneButton), for: .touchUpInside)
         doneButton.titleLabel?.font = .regular(ofSize: .small)
-        doneButton.tintColor = .primaryGray
+        doneButton.tintColor = .white
         
         particleBar.delegate = self
         particleBar.snp.makeConstraints {
@@ -111,16 +114,17 @@ extension ParticleViewController {
         if particleMode == "None" {
             particleSlider.isHidden = true
         } else {
+            particleSlider.resetValue()
             particleSlider.isHidden = false
         }
     }
     
     func showParticleSelector(particleMode: String) {
         
-        if particleMode == "None" {
-            particleSelector.isHidden = true
-        } else {
+        if particleMode == "Bokeh" || particleMode == "Stars" {
             particleSelector.isHidden = false
+        } else {
+            particleSelector.isHidden = true
         }
     }
     

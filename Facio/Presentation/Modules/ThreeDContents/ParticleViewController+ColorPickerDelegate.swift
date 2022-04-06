@@ -12,13 +12,13 @@ extension ParticleViewController: ColorPickerDelegate {
     
     @objc(colorPicker:didSelectColor:)
     func colorPicker(_ colorPicker: ColorPickerViewController, didSelect selectedColor: UIColor) {
-        print(selectedColor)
         particleSelector.colorButton.backgroundColor = selectedColor
+        delegate?.didSelectColor(color: selectedColor)
     }
     
     @objc(colorPicker:didAcceptColor:)
     func colorPicker(_ colorPicker: ColorPickerViewController, didAccept selectedColor: UIColor) {
-        print(selectedColor)
         particleSelector.colorButton.backgroundColor = selectedColor
+        delegate?.didSelectColor(color: selectedColor)
     }
 }

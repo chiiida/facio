@@ -12,34 +12,20 @@ extension ParticleViewController: ParticleBarDelegate, ParticleSliderDelegate, P
     
     func didUpdateSpeed(value: Float) {
         birthRateValue = value * 10
-        delegate?.didSelectParticle(
-            particle: currentParticle,
-            birthRate: Float(birthRateValue),
-            speed: Float(speedValue))
+        delegate?.didUpdateSpeed(speed: Float(speedValue))
     }
     
     func didUpdateBirthRate(value: Float) {
         speedValue = value * 10
-        delegate?.didSelectParticle(
-            particle: currentParticle,
-            birthRate: Float(birthRateValue),
-            speed: Float(speedValue))
+        delegate?.didUpdateBirthRate(birthRate: Float(birthRateValue))
     }
     
     func didSelectParticle(_ particle: String) {
         currentParticle = particle
         showParticleSlider(particleMode: currentParticle)
         showParticleSelector(particleMode: currentParticle)
-        delegate?.didSelectParticle(
-            particle: currentParticle,
-            birthRate: Float(birthRateValue),
-            speed: Float(speedValue))
-    }
-    
-    func didTapImageButton() {
-        let imagepickerVC = ImagePickerViewController()
-        imagepickerVC.delegate = self
-        present(imagepickerVC, animated: true, completion: nil)
+        particleSelector.colorButton.backgroundColor = .clear
+        delegate?.didSelectParticle(particle: currentParticle)
     }
 
     func didTapSelectColor() {

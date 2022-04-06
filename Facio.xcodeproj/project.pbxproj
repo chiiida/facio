@@ -20,10 +20,9 @@
 		0E585C6427EBA57B0009B4C4 /* AboutUs.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0E585C6327EBA57B0009B4C4 /* AboutUs.txt */; };
 		0E585C6627ECDE110009B4C4 /* ThreeDBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E585C6527ECDE110009B4C4 /* ThreeDBar.swift */; };
 		0E85C9C027FC20C70009C5C4 /* HomeViewController+ParticleViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E85C9BF27FC20C70009C5C4 /* HomeViewController+ParticleViewDelegate.swift */; };
+		0E85C9C227FDDEBE0009C5C4 /* ParticleViewController+ColorPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E85C9C127FDDEBE0009C5C4 /* ParticleViewController+ColorPickerDelegate.swift */; };
 		0EBC302927F60F0E00DFE327 /* ParticleSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBC302827F60F0E00DFE327 /* ParticleSelector.swift */; };
-		0EBC302B27F61DE800DFE327 /* ParticleViewController+ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBC302A27F61DE800DFE327 /* ParticleViewController+ImagePickerDelegate.swift */; };
 		0EBC302D27F61E2D00DFE327 /* ParticleViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBC302C27F61E2D00DFE327 /* ParticleViewController+Delegates.swift */; };
-		0EBC303127F6318600DFE327 /* ParticleViewController+ColorPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBC303027F6318600DFE327 /* ParticleViewController+ColorPickerDelegate.swift */; };
 		0EBF01CD27A9B071004D1439 /* TextEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBF01CC27A9B071004D1439 /* TextEditorViewController.swift */; };
 		0EBFCF0E27CF701400CA3017 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EBFCF0B27CF701400CA3017 /* Nunito-Regular.ttf */; };
 		0EBFCF0F27CF701400CA3017 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0EBFCF0C27CF701400CA3017 /* Nunito-SemiBold.ttf */; };
@@ -127,10 +126,9 @@
 		0E585C6327EBA57B0009B4C4 /* AboutUs.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = AboutUs.txt; sourceTree = "<group>"; };
 		0E585C6527ECDE110009B4C4 /* ThreeDBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeDBar.swift; sourceTree = "<group>"; };
 		0E85C9BF27FC20C70009C5C4 /* HomeViewController+ParticleViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+ParticleViewDelegate.swift"; sourceTree = "<group>"; };
+		0E85C9C127FDDEBE0009C5C4 /* ParticleViewController+ColorPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParticleViewController+ColorPickerDelegate.swift"; sourceTree = "<group>"; };
 		0EBC302827F60F0E00DFE327 /* ParticleSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleSelector.swift; sourceTree = "<group>"; };
-		0EBC302A27F61DE800DFE327 /* ParticleViewController+ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParticleViewController+ImagePickerDelegate.swift"; sourceTree = "<group>"; };
 		0EBC302C27F61E2D00DFE327 /* ParticleViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParticleViewController+Delegates.swift"; sourceTree = "<group>"; };
-		0EBC303027F6318600DFE327 /* ParticleViewController+ColorPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ParticleViewController+ColorPickerDelegate.swift"; sourceTree = "<group>"; };
 		0EBF01CC27A9B071004D1439 /* TextEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorViewController.swift; sourceTree = "<group>"; };
 		0EBFCF0B27CF701400CA3017 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		0EBFCF0C27CF701400CA3017 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -245,8 +243,7 @@
 			children = (
 				0E02ECA327F351EB008F1628 /* ParticleViewController.swift */,
 				0EBC302C27F61E2D00DFE327 /* ParticleViewController+Delegates.swift */,
-				0EBC302A27F61DE800DFE327 /* ParticleViewController+ImagePickerDelegate.swift */,
-				0EBC303027F6318600DFE327 /* ParticleViewController+ColorPickerDelegate.swift */,
+				0E85C9C127FDDEBE0009C5C4 /* ParticleViewController+ColorPickerDelegate.swift */,
 			);
 			path = ThreeDContents;
 			sourceTree = "<group>";
@@ -1065,13 +1062,11 @@
 			files = (
 				431DF95D27E86657007FBDA5 /* ARFrameGenerator.swift in Sources */,
 				43FF0693278F4D1500C3A6EA /* UIColor+Application.swift in Sources */,
-				0EBC303127F6318600DFE327 /* ParticleViewController+ColorPickerDelegate.swift in Sources */,
 				0E02ECA127F34CE7008F1628 /* HomeViewController+ThreeDBarDelegate.swift in Sources */,
 				43ED95AF2790107900D29F8B /* HomeViewModel.swift in Sources */,
 				431DF95F27E86676007FBDA5 /* ARCapture.swift in Sources */,
 				438CE38F27BBA643004E646E /* HomeViewController+DrawingBoardDelegate.swift in Sources */,
 				43B4B4E327D2915E00FB425E /* SnapshotPreviewViewController.swift in Sources */,
-				0EBC302B27F61DE800DFE327 /* ParticleViewController+ImagePickerDelegate.swift in Sources */,
 				0E02ECA627F37E61008F1628 /* ParticleSlider.swift in Sources */,
 				43ED95BE2790431900D29F8B /* MenuBar.swift in Sources */,
 				439C083027B2A63900F73A85 /* ToolsView.swift in Sources */,
@@ -1087,6 +1082,7 @@
 				431DF95B27E8662A007FBDA5 /* ARAssetWriter.swift in Sources */,
 				432C1BAF2700ECCB0024B2EB /* AppDelegate.swift in Sources */,
 				0EC39ACF2794327700CFA7F2 /* ImagePickerViewController.swift in Sources */,
+				0E85C9C227FDDEBE0009C5C4 /* ParticleViewController+ColorPickerDelegate.swift in Sources */,
 				43FF068D278F49DB00C3A6EA /* Double+DeviceSizeAdjusted.swift in Sources */,
 				0E585C6227EBA5490009B4C4 /* AboutUsViewController.swift in Sources */,
 				0EBF01CD27A9B071004D1439 /* TextEditorViewController.swift in Sources */,
