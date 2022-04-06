@@ -9,7 +9,6 @@ import UIKit
 
 protocol ParticleDelegate: AnyObject {
     
-//    func didTapDoneButton(particle: String, birthRate: Float, speed: Float)
     func didSelectParticle(particle: String, birthRate: Float, speed: Float)
     
 }
