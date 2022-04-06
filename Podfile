@@ -9,6 +9,7 @@ target 'Facio' do
   pod 'SwiftLint'
   pod 'LabelSwitch'
   pod 'Alderis', '~> 1.1'
+  pod 'YUCIHighPassSkinSmoothing'
 
   target 'FacioTests' do
     inherit! :search_paths

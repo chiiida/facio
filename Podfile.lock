@@ -6,6 +6,9 @@ PODS:
   - R.swift.Library (5.3.0)
   - SnapKit (5.0.1)
   - SwiftLint (0.43.1)
+  - Vivid (0.9)
+  - YUCIHighPassSkinSmoothing (1.4):
+    - Vivid
 
 DEPENDENCIES:
   - Alderis (~> 1.1)
@@ -13,6 +16,7 @@ DEPENDENCIES:
   - R.swift
   - SnapKit
   - SwiftLint
+  - YUCIHighPassSkinSmoothing
 
 SPEC REPOS:
   trunk:
@@ -22,6 +26,8 @@ SPEC REPOS:
     - R.swift.Library
     - SnapKit
     - SwiftLint
+    - Vivid
+    - YUCIHighPassSkinSmoothing
 
 SPEC CHECKSUMS:
   Alderis: 226746f04e677de7a7a43316475162a6a217794a
@@ -30,7 +36,9 @@ SPEC CHECKSUMS:
   R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
+  Vivid: 0fde7409beac71224deb151dd78f98a5bb860497
+  YUCIHighPassSkinSmoothing: 8418fd1bf605ec22b647c57745b863b352f72097
 
-PODFILE CHECKSUM: b43a44b10d2824aca8cc1b7a9bc0e8e251917d2b
+PODFILE CHECKSUM: ff63881c41e4a5231d66bae3efc739d67e158cab
 
 COCOAPODS: 1.11.2

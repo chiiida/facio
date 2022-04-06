@@ -48,6 +48,13 @@
 		433537582795785C0057DC75 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 433537572795785C0057DC75 /* GoogleService-Info.plist */; };
 		433C33BF27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433C33BE27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift */; };
 		4344CD6A27954A880070B938 /* FeatureIndices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344CD6927954A880070B938 /* FeatureIndices.swift */; };
+		4359394A27F0292600143ED5 /* SkinSmoothing.shader in Resources */ = {isa = PBXBuildFile; fileRef = 4359394927F0292600143ED5 /* SkinSmoothing.shader */; };
+		4359394D27F0294000143ED5 /* ShaderModifiers.m in Sources */ = {isa = PBXBuildFile; fileRef = 4359394C27F0294000143ED5 /* ShaderModifiers.m */; };
+		4359395027F0C61200143ED5 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4359394F27F0C61200143ED5 /* Renderer.swift */; };
+		4359395227F0C67900143ED5 /* HomeViewController+MTKViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4359395127F0C67900143ED5 /* HomeViewController+MTKViewDelegate.swift */; };
+		4359395427F0C7A200143ED5 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4359395327F0C7A200143ED5 /* Shaders.metal */; };
+		4359395627F0C7E500143ED5 /* ShaderTypes.h in Sources */ = {isa = PBXBuildFile; fileRef = 4359395527F0C7E500143ED5 /* ShaderTypes.h */; };
+		4359395827F0CBAA00143ED5 /* GaussianBlur.metal in Sources */ = {isa = PBXBuildFile; fileRef = 4359395727F0CBAA00143ED5 /* GaussianBlur.metal */; };
 		438CE38927BBA5D6004E646E /* HomeViewController+ToolsViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438CE38827BBA5D6004E646E /* HomeViewController+ToolsViewDelegate.swift */; };
 		438CE38B27BBA5FE004E646E /* HomeViewController+MenuBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438CE38A27BBA5FE004E646E /* HomeViewController+MenuBarDelegate.swift */; };
 		438CE38D27BBA623004E646E /* HomeViewController+UIImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438CE38C27BBA623004E646E /* HomeViewController+UIImagePickerControllerDelegate.swift */; };
@@ -151,6 +158,14 @@
 		433537572795785C0057DC75 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		433C33BE27A053530047FB15 /* HomeViewController+ARSCNViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+ARSCNViewDelegate.swift"; sourceTree = "<group>"; };
 		4344CD6927954A880070B938 /* FeatureIndices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureIndices.swift; sourceTree = "<group>"; };
+		4359394927F0292600143ED5 /* SkinSmoothing.shader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SkinSmoothing.shader; sourceTree = "<group>"; };
+		4359394B27F0294000143ED5 /* Facio-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Facio-Bridging-Header.h"; sourceTree = "<group>"; };
+		4359394C27F0294000143ED5 /* ShaderModifiers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShaderModifiers.m; sourceTree = "<group>"; };
+		4359394F27F0C61200143ED5 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		4359395127F0C67900143ED5 /* HomeViewController+MTKViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+MTKViewDelegate.swift"; sourceTree = "<group>"; };
+		4359395327F0C7A200143ED5 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
+		4359395527F0C7E500143ED5 /* ShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
+		4359395727F0CBAA00143ED5 /* GaussianBlur.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = GaussianBlur.metal; sourceTree = "<group>"; };
 		438CE38827BBA5D6004E646E /* HomeViewController+ToolsViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+ToolsViewDelegate.swift"; sourceTree = "<group>"; };
 		438CE38A27BBA5FE004E646E /* HomeViewController+MenuBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+MenuBarDelegate.swift"; sourceTree = "<group>"; };
 		438CE38C27BBA623004E646E /* HomeViewController+UIImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+UIImagePickerControllerDelegate.swift"; sourceTree = "<group>"; };
@@ -367,6 +382,7 @@
 				43ED95BF279067FB00D29F8B /* Factories */,
 				432C1BE72700F0E20024B2EB /* Models */,
 				43ED95AD278FE10400D29F8B /* Presentation */,
+				4359394827F0221900143ED5 /* Shaders */,
 				432C1BEC2700F4640024B2EB /* Supports */,
 				43FF068E278F4A4400C3A6EA /* Utilities */,
 				430CB49127A866FE005CB711 /* ViewModels */,
@@ -536,8 +552,23 @@
 				438CE38E27BBA643004E646E /* HomeViewController+DrawingBoardDelegate.swift */,
 				438CE39027BBA673004E646E /* HomeViewController+MaterialMenuViewDelegate.swift */,
 				43E5F06D27D632E900E0E1A0 /* HomeViewController+TextEditorDelegate.swift */,
+				4359395127F0C67900143ED5 /* HomeViewController+MTKViewDelegate.swift */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		4359394827F0221900143ED5 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				4359395327F0C7A200143ED5 /* Shaders.metal */,
+				4359395527F0C7E500143ED5 /* ShaderTypes.h */,
+				4359395727F0CBAA00143ED5 /* GaussianBlur.metal */,
+				4359394927F0292600143ED5 /* SkinSmoothing.shader */,
+				4359394C27F0294000143ED5 /* ShaderModifiers.m */,
+				4359394B27F0294000143ED5 /* Facio-Bridging-Header.h */,
+			);
+			name = Shaders;
+			path = Application/Shaders;
 			sourceTree = "<group>";
 		};
 		4392C2DC27DBD363003BD739 /* ARCapture */ = {
@@ -682,6 +713,7 @@
 			children = (
 				43FF068F278F4A5800C3A6EA /* Device.swift */,
 				4392C2DC27DBD363003BD739 /* ARCapture */,
+				4359394F27F0C61200143ED5 /* Renderer.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -839,6 +871,7 @@
 				0EBFCF2527D50A8A00CA3017 /* FiraMono-Bold.ttf in Resources */,
 				0EBFCF2827D50CFB00CA3017 /* MrDeHaviland-Regular.ttf in Resources */,
 				432C1BBB2700ECCF0024B2EB /* LaunchScreen.storyboard in Resources */,
+				4359394A27F0292600143ED5 /* SkinSmoothing.shader in Resources */,
 				0EBFCF1527D4FCD400CA3017 /* Oswald-Bold.ttf in Resources */,
 				43FF0680278F455D00C3A6EA /* OpenSans-Regular.ttf in Resources */,
 				433537582795785C0057DC75 /* GoogleService-Info.plist in Resources */,
@@ -1025,10 +1058,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4359394D27F0294000143ED5 /* ShaderModifiers.m in Sources */,
 				431DF95D27E86657007FBDA5 /* ARFrameGenerator.swift in Sources */,
 				43FF0693278F4D1500C3A6EA /* UIColor+Application.swift in Sources */,
 				43ED95AF2790107900D29F8B /* HomeViewModel.swift in Sources */,
 				431DF95F27E86676007FBDA5 /* ARCapture.swift in Sources */,
+				4359395827F0CBAA00143ED5 /* GaussianBlur.metal in Sources */,
 				438CE38F27BBA643004E646E /* HomeViewController+DrawingBoardDelegate.swift in Sources */,
 				43B4B4E327D2915E00FB425E /* SnapshotPreviewViewController.swift in Sources */,
 				43ED95BE2790431900D29F8B /* MenuBar.swift in Sources */,
@@ -1055,19 +1090,23 @@
 				430CB49327A86718005CB711 /* FaceNodeViewModel.swift in Sources */,
 				438E5A0927EDA1EF004EDE78 /* ParticleNodeViewModel.swift in Sources */,
 				0E585C6027EBA1030009B4C4 /* TermsOfUseViewController.swift in Sources */,
+				4359395627F0C7E500143ED5 /* ShaderTypes.h in Sources */,
 				430CB49527A86F51005CB711 /* DrawingNodeViewModel.swift in Sources */,
 				43AC807C27A7081900983CFC /* DrawingNode.swift in Sources */,
+				4359395227F0C67900143ED5 /* HomeViewController+MTKViewDelegate.swift in Sources */,
 				43EC1E4B2791D139008CF316 /* DrawingBoardViewController.swift in Sources */,
 				438CE38D27BBA623004E646E /* HomeViewController+UIImagePickerControllerDelegate.swift in Sources */,
 				43B0894727A9AC3200E93879 /* MaterialMenuView.swift in Sources */,
 				438CE39127BBA673004E646E /* HomeViewController+MaterialMenuViewDelegate.swift in Sources */,
 				4344CD6A27954A880070B938 /* FeatureIndices.swift in Sources */,
 				43FF067A278F437900C3A6EA /* R.swift+Typealias.swift in Sources */,
+				4359395427F0C7A200143ED5 /* Shaders.metal in Sources */,
 				0E585C5927EB93CB0009B4C4 /* PrivacyViewController.swift in Sources */,
 				0E585C5727EB66F50009B4C4 /* SettingViewController.swift in Sources */,
 				43FF0690278F4A5800C3A6EA /* Device.swift in Sources */,
 				432C1BF02700F5170024B2EB /* R.generated.swift in Sources */,
 				43FD29892794300200E34F8C /* FaceNode.swift in Sources */,
+				4359395027F0C61200143ED5 /* Renderer.swift in Sources */,
 				43ED95C5279068BE00D29F8B /* DependencyFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1238,6 +1277,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
@@ -1261,6 +1301,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Facio/Application/Shaders/Facio-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1273,6 +1314,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
@@ -1296,6 +1338,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Facio/Application/Shaders/Facio-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

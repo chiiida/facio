@@ -9,6 +9,7 @@ import UIKit
 import ARKit
 import SceneKit
 import SnapKit
+import MetalKit
 
 final class HomeViewController: UIViewController {
     
@@ -20,6 +21,12 @@ final class HomeViewController: UIViewController {
     private var viewModel: HomeViewModelProtocol!
     var arView = ARView()
     var arRecoder: ARCapture?
+    var renderer: Renderer?
+    
+    var metalView = MTKView()
+    var context: CIContext!
+    let filter = CIFilter(name: "CIGaussianBlur")!
+    let colorSpace = CGColorSpaceCreateDeviceRGB()
     
     init(viewModel: HomeViewModelProtocol) {
         self.viewModel = viewModel
@@ -36,6 +43,22 @@ final class HomeViewController: UIViewController {
         setUpViews()
         bind(to: viewModel)
         arRecoder = ARCapture(view: arView)
+    
+//        let view = metalView
+        metalView.device = arView.device
+        metalView.delegate = self
+        
+        guard metalView.device != nil else {
+            print("Metal is not supported on this device")
+            return
+        }
+        
+        // Configure the renderer to draw to the view
+        renderer = Renderer(session: arView.session, metalDevice: metalView.device!, renderDestination: metalView)
+                    
+        renderer?.drawRectResized(size: view.bounds.size)
+        
+        context = CIContext(mtlDevice: metalView.device!)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,6 +75,7 @@ final class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         let configuration = ARFaceTrackingConfiguration()
         arView.session.run(configuration)
+        arView.session.delegate = self
         arView.delegate = self
     }
     
@@ -249,7 +273,7 @@ extension HomeViewController {
     }
 }
 
-// Shared Functions
+// MARK: - Shared Functions
 
 extension HomeViewController {
 
