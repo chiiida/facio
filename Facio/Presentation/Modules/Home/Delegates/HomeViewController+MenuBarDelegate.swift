@@ -8,7 +8,7 @@
 import UIKit
 
 extension HomeViewController: MenuBarDelegate {
-
+    
     func didTapCameraButton() {
         let image = arView.snapshot()
         let previewVC = SnapshotPreviewViewController(image: image)
@@ -16,7 +16,7 @@ extension HomeViewController: MenuBarDelegate {
         navVC.modalPresentationStyle = .fullScreen
         navigationController?.present(navVC, animated: true)
     }
-
+    
     func didTapRecordButton(_ isRecording: Bool) {
         hideARTools()
         if isRecording {
@@ -35,13 +35,13 @@ extension HomeViewController: MenuBarDelegate {
             }
         }
     }
-
+    
     func didTapImageButton() {
         let imagepickerVC = ImagePickerViewController()
         imagepickerVC.delegate = self
         present(imagepickerVC, animated: true, completion: nil)
     }
-
+    
     func didTapDrawButton() {
         let drawingBoardVC = DrawingBoardViewController()
         drawingBoardVC.delegate = self
@@ -49,7 +49,7 @@ extension HomeViewController: MenuBarDelegate {
         navVC.modalPresentationStyle = .fullScreen
         navigationController?.present(navVC, animated: true)
     }
-
+    
     func didTapTextButton() {
         let textEditorVC = TextEditorViewController()
         textEditorVC.delegate = self
@@ -57,8 +57,17 @@ extension HomeViewController: MenuBarDelegate {
         navVC.modalPresentationStyle = .overFullScreen
         navigationController?.present(navVC, animated: true)
     }
-
-    func didTapBeautificationButton() {
-        // TODO: implement in integration
+    
+    func didTapthreeDButtonButton() {
+        menuBar.isHidden = true
+        threeDBar.isHidden = false
+        backButton.isHidden = false
     }
-}
+    
+    @objc func didTapBackButton() {
+        menuBar.isHidden = false
+        threeDBar.isHidden = true
+        particleBar.isHidden = true
+        backButton.isHidden = true
+    }
+}  

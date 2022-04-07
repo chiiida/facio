@@ -9,7 +9,6 @@ import ARKit
 
 extension HomeViewController: ARSCNViewDelegate {
 
-
     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         let device: MTLDevice!
         device = MTLCreateSystemDefaultDevice()
