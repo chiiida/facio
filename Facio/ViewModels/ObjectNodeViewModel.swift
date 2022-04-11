@@ -30,10 +30,12 @@ class ObjectNodeViewModel: ObjectNodeViewModelProtocol {
     var currentObject: SCNScene?
     
     func addObject(with type: ObjectType) {
+        removeObject()
+        
         objectType = type
-        guard let scencNode = SCNScene(named: "art.scnassets/Models/\(type).scn")
+        guard let sceneNode = SCNScene(named: "art.scnassets/Models/\(type).scn")
         else { return }
-        currentObject = scencNode
+        currentObject = sceneNode
     }
     
     func removeObject() {
