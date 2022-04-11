@@ -7,7 +7,7 @@
 
 import SceneKit
 
-enum ObjectType: String {
+enum ThreeDObjectType: String {
     
     case begalGlasses
     case pizzaFace
@@ -15,21 +15,21 @@ enum ObjectType: String {
     case microphone
 }
 
-protocol ObjectNodeViewModelProtocol: AnyObject {
+protocol ThreeDObjectNodeViewModelProtocol: AnyObject {
     
-    var objectType: ObjectType? { get set }
+    var objectType: ThreeDObjectType? { get set }
     var currentObject: SCNScene? { get set }
     
-    func addObject(with type: ObjectType)
+    func addObject(with type: ThreeDObjectType)
     func removeObject()
 }
 
-class ObjectNodeViewModel: ObjectNodeViewModelProtocol {
+class ThreeDObjectNodeViewModel: ThreeDObjectNodeViewModelProtocol {
     
-    var objectType: ObjectType?
+    var objectType: ThreeDObjectType?
     var currentObject: SCNScene?
     
-    func addObject(with type: ObjectType) {
+    func addObject(with type: ThreeDObjectType) {
         removeObject()
         
         objectType = type

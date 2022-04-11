@@ -12,7 +12,7 @@ final class ARView: ARSCNView {
 
     private var nodeViewModels = [FaceNodeViewModelProtocol]()
     private var particleNodeViewModel: ParticleNodeViewModelProtocol = ParticleNodeViewModel()
-    private var objectNodeViewModel: ObjectNodeViewModelProtocol = ObjectNodeViewModel()
+    private var threeDObjectNodeViewModel: ThreeDObjectNodeViewModelProtocol = ThreeDObjectNodeViewModel()
     
     var lastDragPosition: SCNVector3?
     var selectedNode: SCNNode?
@@ -159,15 +159,15 @@ final class ARView: ARSCNView {
     // MARK: - 3D objects
     
     func updateThreeDObject() {
-        guard let threeDObject = objectNodeViewModel.currentObject else { return }
+        guard let threeDObject = threeDObjectNodeViewModel.currentObject else { return }
         mainNode?.addChildNode(threeDObject.rootNode)
     }
     
-    func addObject(with type: ObjectType) {
-        objectNodeViewModel.addObject(with: type)
+    func addObject(with type: ThreeDObjectType) {
+        threeDObjectNodeViewModel.addObject(with: type)
     }
     
     func removeObject() {
-        objectNodeViewModel.removeObject()
+        threeDObjectNodeViewModel.removeObject()
     }
 }
