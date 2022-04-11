@@ -18,6 +18,11 @@ extension HomeViewController: ThreeDBarDelegate {
     }
     
     func didTapObjectsButton() {
-        // To implement
+        let objectType = arView.getCurrentThreeDObj()
+        let threeDObjectVC = ThreeDObjectViewController(currentThreeDObj: objectType)
+        threeDObjectVC.delegate = self
+        let navVC = UINavigationController(rootViewController: threeDObjectVC)
+        navVC.modalPresentationStyle = .overFullScreen
+        navigationController?.present(navVC, animated: true)
     }
 }

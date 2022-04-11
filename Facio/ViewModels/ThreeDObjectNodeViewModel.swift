@@ -7,17 +7,28 @@
 
 import SceneKit
 
-enum ThreeDObjectType: String {
-    
-    case begalGlasses
+enum ThreeDObjectType: String, CaseIterable {
+
+    case none
+    case bagelGlasses
     case pizzaFace
     case fruitHead
     case microphone
+
+    var title: String {
+        switch self {
+        case .none: return "None"
+        case .bagelGlasses: return "Bagel Glasses"
+        case .pizzaFace: return "Pizza Face"
+        case .fruitHead: return "Fruit Head"
+        case .microphone: return "Microphone"
+        }
+    }
 }
 
 protocol ThreeDObjectNodeViewModelProtocol: AnyObject {
     
-    var objectType: ThreeDObjectType? { get set }
+    var objectType: ThreeDObjectType { get set }
     var currentObject: SCNScene? { get set }
     
     func addObject(with type: ThreeDObjectType)
@@ -26,21 +37,25 @@ protocol ThreeDObjectNodeViewModelProtocol: AnyObject {
 
 class ThreeDObjectNodeViewModel: ThreeDObjectNodeViewModelProtocol {
     
-    var objectType: ThreeDObjectType?
+    var objectType: ThreeDObjectType = .none
     var currentObject: SCNScene?
     
     func addObject(with type: ThreeDObjectType) {
         removeObject()
-        
-        objectType = type
-        guard let sceneNode = SCNScene(named: "art.scnassets/Models/\(type).scn")
-        else { return }
-        currentObject = sceneNode
+
+        if type != .none {
+            objectType = type
+            guard let sceneNode = SCNScene(named: "art.scnassets/Models/\(type).scn")
+            else { return }
+            currentObject = sceneNode
+        }
     }
     
     func removeObject() {
-        currentObject?.rootNode.removeFromParentNode()
-        currentObject = nil
-        objectType = nil
+        if currentObject != nil {
+            currentObject?.rootNode.removeFromParentNode()
+            currentObject = nil
+            objectType = .none
+        }
     }
 }
