@@ -33,8 +33,7 @@ class ThreeDObjectBar: UIView {
 
     func loadLayoutSubviews() {
         threeDObjPicker.snp.remakeConstraints {
-            $0.centerX.equalToSuperview()
-            $0.centerY.equalToSuperview().offset(20.0)
+            $0.center.equalToSuperview()
             $0.width.equalToSuperview()
             $0.height.equalTo(500)
         }
@@ -81,17 +80,27 @@ extension ThreeDObjectBar: UIPickerViewDataSource, UIPickerViewDelegate {
         optionView.frame = CGRect(x: 0, y: 0, width: 100.0, height: 100.0)
         optionView.backgroundColor = .clear
 
-        let optionLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 75.0, height: 75.0))
+        let optionImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 75.0, height: 75.0))
+        optionImageView.image = UIImage(named: "ThreeDObject/\(threeDObjList[row])")
+        optionImageView.contentMode = .scaleAspectFill
+        optionImageView.layer.masksToBounds = false
+        optionImageView.layer.borderColor = UIColor.darkGray.cgColor
+        optionImageView.layer.borderWidth = 3.0
+        optionImageView.layer.cornerRadius = optionImageView.frame.width / 2
+        optionImageView.clipsToBounds = true
+
+        let optionLabel = UILabel()
         optionLabel.font = .regular(.comfortaa, ofSize: .xxSmall)
         optionLabel.textColor = .primaryGray
         optionLabel.text = threeDObjList[row].title
         optionLabel.textAlignment = .center
-        optionLabel.layer.borderColor = UIColor.darkGray.cgColor
-        optionLabel.layer.borderWidth = 3.0
-        optionLabel.layer.cornerRadius = optionLabel.frame.width / 2
 
-        optionView.addSubview(optionLabel)
+        optionView.addSubViews(optionImageView, optionLabel)
         optionView.transform = CGAffineTransform(rotationAngle: 90 * (.pi / 180))
+        optionLabel.snp.makeConstraints {
+            $0.top.equalTo(optionImageView.snp.bottom).offset(10.0)
+            $0.centerX.equalTo(optionImageView)
+        }
 
         return optionView
     }
