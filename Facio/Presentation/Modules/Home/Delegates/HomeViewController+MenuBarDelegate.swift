@@ -10,6 +10,8 @@ import UIKit
 extension HomeViewController: MenuBarDelegate {
     
     func didTapCameraButton() {
+        hideARTools()
+
         let image = arView.snapshot()
         let previewVC = SnapshotPreviewViewController(image: image)
         let navVC = UINavigationController(rootViewController: previewVC)
@@ -37,12 +39,16 @@ extension HomeViewController: MenuBarDelegate {
     }
     
     func didTapImageButton() {
+        hideARTools()
+
         let imagepickerVC = ImagePickerViewController()
         imagepickerVC.delegate = self
         present(imagepickerVC, animated: true, completion: nil)
     }
     
     func didTapDrawButton() {
+        hideARTools()
+
         let drawingBoardVC = DrawingBoardViewController()
         drawingBoardVC.delegate = self
         let navVC = UINavigationController(rootViewController: drawingBoardVC)
@@ -51,6 +57,8 @@ extension HomeViewController: MenuBarDelegate {
     }
     
     func didTapTextButton() {
+        hideARTools()
+
         let textEditorVC = TextEditorViewController()
         textEditorVC.delegate = self
         let navVC = UINavigationController(rootViewController: textEditorVC)
@@ -70,4 +78,4 @@ extension HomeViewController: MenuBarDelegate {
         particleBar.isHidden = true
         backButton.isHidden = true
     }
-}  
+}
