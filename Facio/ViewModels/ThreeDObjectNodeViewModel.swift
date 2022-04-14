@@ -14,6 +14,7 @@ enum ThreeDObjectType: String, CaseIterable {
     case pizzaFace
     case fruitHead
     case microphone
+    case musicNote
 
     var title: String {
         switch self {
@@ -22,6 +23,7 @@ enum ThreeDObjectType: String, CaseIterable {
         case .pizzaFace: return "Pizza Face"
         case .fruitHead: return "Fruit Head"
         case .microphone: return "Microphone"
+        case .musicNote: return "Music Note"
         }
     }
 }

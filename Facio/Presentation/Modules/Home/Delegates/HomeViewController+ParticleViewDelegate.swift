@@ -22,7 +22,6 @@ extension HomeViewController: ParticleDelegate {
     }
     
     func didSelectParticle(particle: String) {
-        
         if particle == "Bokeh" {
             arView.addParticle(Particle.bokeh)
         } else if particle == "Confetti" {
