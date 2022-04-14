@@ -25,7 +25,6 @@ class MenuBar: UIView {
     private let drawButton = UIButton()
     private let textButton = UIButton()
     private let threeDButton = UIButton()
-    private let beautificationButton = UIButton()
     private let cameraModePicker = UIPickerView()
     private let threeDBar = ThreeDBar()
     
@@ -135,7 +134,7 @@ class MenuBar: UIView {
         imageButton.isHidden = isHidden
         drawButton.isHidden = isHidden
         textButton.isHidden = isHidden
-        beautificationButton.isHidden = isHidden
+        threeDButton.isHidden = isHidden
         cameraModePicker.isHidden = isHidden
     }
     
