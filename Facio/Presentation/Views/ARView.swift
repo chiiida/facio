@@ -170,4 +170,8 @@ final class ARView: ARSCNView {
     func removeObject() {
         threeDObjectNodeViewModel.removeObject()
     }
+
+    func getCurrentThreeDObj() -> ThreeDObjectType {
+        return threeDObjectNodeViewModel.objectType
+    }
 }

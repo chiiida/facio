@@ -10,6 +10,8 @@ import UIKit
 extension HomeViewController: ThreeDBarDelegate {
     
     func didTapParticleButton() {
+        hideARTools()
+        
         let particleVC = ParticleViewController()
         particleVC.delegate = self
         let navVC = UINavigationController(rootViewController: particleVC)
@@ -18,6 +20,13 @@ extension HomeViewController: ThreeDBarDelegate {
     }
     
     func didTapObjectsButton() {
-        // To implement
+        hideARTools()
+
+        let objectType = arView.getCurrentThreeDObj()
+        let threeDObjectVC = ThreeDObjectViewController(currentThreeDObj: objectType)
+        threeDObjectVC.delegate = self
+        let navVC = UINavigationController(rootViewController: threeDObjectVC)
+        navVC.modalPresentationStyle = .overFullScreen
+        navigationController?.present(navVC, animated: true)
     }
 }
