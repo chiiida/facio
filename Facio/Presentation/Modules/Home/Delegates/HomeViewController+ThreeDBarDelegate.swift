@@ -20,5 +20,4 @@ extension HomeViewController: ThreeDBarDelegate {
     func didTapObjectsButton() {
         // To implement
     }
-    
 }

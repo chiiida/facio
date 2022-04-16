@@ -24,7 +24,8 @@ extension HomeViewController: ARSCNViewDelegate {
         arView.mainNode = node
         arView.updateFeatures(using: faceAnchor)
         arView.updateParticle()
-
+        arView.updateThreeDObject()
+        
         return node
     }
 
@@ -43,5 +44,6 @@ extension HomeViewController: ARSCNViewDelegate {
         arView.mainNode = node
         arView.updateFeatures(using: faceAnchor)
         arView.updateParticle()
+        arView.updateThreeDObject()
     }
 }
