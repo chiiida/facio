@@ -101,6 +101,7 @@ class ToolsView: UIView {
         
         editButton.setImage(UIImage(systemName: "square.and.pencil", withConfiguration: config), for: .normal)
         editButton.tintColor = .white
+        editButton.isHidden = true
         editButton.addTarget(self, action: #selector(didTapEditButton), for: .touchUpInside)
 
         removeButton.setImage(UIImage(systemName: "trash", withConfiguration: config), for: .normal)

@@ -194,12 +194,7 @@ extension HomeViewController {
             arView.showHighlight(node)
             arToolsView.isHidden = false
             arToolsView.resetSlider()
-            arToolsView.hidePosZSlider(false)
-            if node as? DrawingNode != nil {
-                arToolsView.hideEditButton(false)
-            } else {
-                arToolsView.hideEditButton(true)
-            }
+            arToolsView.hidePosZSlider(false) 
         }
         
         arView.selectedNode = hitNode
