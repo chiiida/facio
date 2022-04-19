@@ -21,6 +21,7 @@ final class HomeViewController: UIViewController {
     private let arToolsView = ToolsView()
     
     private var viewModel: HomeViewModelProtocol!
+    private var selectedNode: SCNNode?
     var arView = ARView()
     var arRecoder: ARCapture?
     
@@ -180,8 +181,12 @@ extension HomeViewController {
         let location = sender.location(in: arView)
         
         guard let nodeHitTest = arView.hitTest(location, options: nil).first
-        else { return }
+        else {
+            selectedNode = nil
+            return
+        }
         let hitNode = nodeHitTest.node
+        selectedNode = hitNode
 
         arToolsView.node = hitNode
 
@@ -194,7 +199,7 @@ extension HomeViewController {
             arView.showHighlight(node)
             arToolsView.isHidden = false
             arToolsView.resetSlider()
-            arToolsView.hidePosZSlider(false) 
+            arToolsView.hidePosZSlider(false)
         }
         
         arView.selectedNode = hitNode
@@ -248,22 +253,18 @@ extension HomeViewController {
     }
     
     @objc private func didRotateARNode(_ sender: UIRotationGestureRecognizer) {
-        let location = sender.location(in: arView)
-
-        guard let nodeHitTest = arView.hitTest(location, options: nil).first,
-              let hitNode = nodeHitTest.node as? FaceNode
-        else { return }
+        guard let selectNode = selectedNode as? FaceNode else { return }
 
         switch sender.state {
         case .began:
-            arView.updateRotation(for: hitNode, with: hitNode.eulerAngles)
+            arView.updateRotation(for: selectNode, with: selectNode.eulerAngles)
         case .changed:
-            guard var originalRotation = arView.getViewModel(from: hitNode)?.originalRotation
+            guard var originalRotation = arView.getViewModel(from: selectNode)?.originalRotation
             else { return }
             originalRotation.z -= Float(sender.rotation)
-            hitNode.eulerAngles = originalRotation
+            selectNode.eulerAngles = originalRotation
         default:
-            guard let viewModel = arView.getViewModel(from: hitNode)
+            guard let viewModel = arView.getViewModel(from: selectNode)
             else { return }
             viewModel.originalRotation = nil
         }
