@@ -2,14 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Allow access to save videos and photos to photo library.</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Allow access to record audio.</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Allow access to take pictures, record videos, and detect your face.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Allow access to read and save videos and photos to photo library.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Comfortaa-Medium.ttf</string>
@@ -24,7 +16,5 @@
 		<string>FiraMono-Regular.ttf</string>
 		<string>MrDeHaviland-Regular.ttf</string>
 	</array>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
 </dict>
 </plist>

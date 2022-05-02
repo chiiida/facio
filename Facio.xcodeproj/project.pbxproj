@@ -1320,8 +1320,10 @@
 				DEVELOPMENT_TEAM = RT44NCJNJ3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Facio/Application/Configurations/Plists/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to take pictures, record video, and detect your face.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow access to photo library";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to take pictures, record videos, and detect your face.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow access to record audio.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow access to save videos and photos to photo library.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow access to read and save videos and photos to photo library.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
@@ -1332,7 +1334,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.facio.Facio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1355,8 +1357,10 @@
 				DEVELOPMENT_TEAM = RT44NCJNJ3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Facio/Application/Configurations/Plists/Info.plist;
-				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to take pictures, record video, and detect your face.";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow access to photo library";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to take pictures, record videos, and detect your face.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Allow access to record audio.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Allow access to save videos and photos to photo library.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow access to read and save videos and photos to photo library.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = LaunchScreen;
@@ -1367,7 +1371,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.facio.Facio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
